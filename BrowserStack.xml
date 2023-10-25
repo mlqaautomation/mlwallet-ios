@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="IOSBrowserStack" parallel="tests" thread-count="2">
+
+    <parameter name="browserType" value="chrome"/>
+    <parameter name="url" value="https://www.google.com/"></parameter>
+
+    <listeners>
+
+        <listener class-name="com.utility.ExtentReporter"/>
+
+    </listeners>
+
+    <test name="BrowserStack_Demo">
+        <parameter name="portno" value="4723"></parameter>
+        <parameter name="deviceName" value="iPhone 11 Pro"></parameter>
+
+        <classes>
+            <class name="com.mlwallet.test.MLWalletSettingsScripts"/>
+        </classes>
+
+    </test>
+
+    <test name="BrowserStack_Demo2">
+        <parameter name="portno" value="4723"></parameter>
+        <parameter name="deviceName" value="iPhone 11 Pro Max"></parameter>
+        <classes>
+            <class name="com.mlwallet.test.MLWalletLoginScripts"/>
+        </classes>
+    </test>
+</suite>
