@@ -3951,6 +3951,20 @@ public class Utilities extends ExtentReporter {
 
     }
 
+    public static void pullToRefresh1(){
+
+        int deviceWidth = getDriver().manage().window().getSize().getWidth();
+        int deviceHeight = getDriver().manage().window().getSize().getHeight();
+        int midX = (deviceWidth / 2);
+        int midY = (deviceHeight / 2);
+        int bottomEdge = (int) (deviceHeight * 0.85f);
+        new TouchAction(getDriver())
+                .press(PointOption.point(midX, midY))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
+                .moveTo(PointOption.point(midX, bottomEdge))
+                .release().perform();
+    }
+
 }
 
 

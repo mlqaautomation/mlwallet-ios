@@ -77,5 +77,5 @@ public class MLWalletTransactionHistoryPage {
 		return	By.xpath("//*[contains(@name,'"+billModule+"')]");
 	}
 
-
+	public static By objBackBtn = By.xpath("");
 }

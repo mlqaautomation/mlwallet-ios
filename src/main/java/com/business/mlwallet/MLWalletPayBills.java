@@ -457,61 +457,67 @@ public class MLWalletPayBills extends BaseClass{
             System.out.println("-----------------------------------------------------------");
         }
     }
-    //
-//						public void addBillerInvalidInputs_PB_TC_13() throws Exception {
-//							HeaderChildNode("Add Biller Invalid Inputs");
-//							mlWalletLogin(prop.getproperty("Branch_Verified"));
-//							verifyElementPresent(MLWalletPayBillsPage.objPayBills,getTextVal(MLWalletPayBillsPage.objPayBills,"Icon"));
-//							click(MLWalletPayBillsPage.objPayBills,getTextVal(MLWalletPayBillsPage.objPayBills,"Icon"));
-//							click(MLWalletPayBillsPage.objSavedBiller, getTextVal(MLWalletPayBillsPage.objSavedBiller, "Button"));
-//							explicitWaitVisible(MLWalletPayBillsPage.objAddBiller,5);
-//							click(MLWalletPayBillsPage.objAddBiller, getTextVal(MLWalletPayBillsPage.objAddBiller, "Button"));
-//							addSelectedBiller();
-    //
-//							type(MLWalletPayBillsPage.objAddAccountNumber,"ABC","Account Number Input Field");
-//							click(MLWalletPayBillsPage.objProceedBtn,getTextVal(MLWalletPayBillsPage.objProceedBtn,"Button"));
-//							if(verifyElementPresent(MLWalletPayBillsPage.objAddAccountNumber,getTextVal(MLWalletPayBillsPage.objAddAccountNumber,"Error Message"))){
-//								String sAccountNumberRequiredErrorMsg = getText(MLWalletPayBillsPage.objAccountNumberRequiredMsg);
-//								String sExceptedAccountNumberRequiredErrorMsg = "Account Number is required";
-//								assertionValidation(sAccountNumberRequiredErrorMsg,sExceptedAccountNumberRequiredErrorMsg);
-//							}
-    //
-//							click(MLWalletPayBillsPage.objProceedBtn,getTextVal(MLWalletPayBillsPage.objProceedBtn,"Button"));
-//							type(MLWalletPayBillsPage.objAddAccountNumber,prop.getproperty("AccountNumber"),"Account Number Input Field");
-//							if(verifyElementPresent(MLWalletPayBillsPage.objFirstNameRequiredMsg,getTextVal(MLWalletPayBillsPage.objFirstNameRequiredMsg,"Error Message"))){
-//								String sFirstNameRequiredErrorMsg = getText(MLWalletPayBillsPage.objFirstNameRequiredMsg);
-//								String sExceptedFirstNameRequiredErrorMsg = "First name is required";
-//								assertionValidation(sFirstNameRequiredErrorMsg,sExceptedFirstNameRequiredErrorMsg);
-//							}
-    //
-//							click(MLWalletPayBillsPage.objProceedBtn,getTextVal(MLWalletPayBillsPage.objProceedBtn,"Button"));
-//							type(MLWalletPayBillsPage.objAddFirstName,prop.getproperty("Invalid_First_Name"),"First Name Input Field");
-//							if(verifyElementPresent(MLWalletPayBillsPage.objLastNameRequiredMsg,getTextVal(MLWalletPayBillsPage.objLastNameRequiredMsg,"Error Message"))){
-//								String sLastNameRequiredErrorMsg = getText(MLWalletPayBillsPage.objLastNameRequiredMsg);
-//								String sExceptedLastNameRequiredErrorMsg = "Last name is required";
-//								assertionValidation(sLastNameRequiredErrorMsg,sExceptedLastNameRequiredErrorMsg);
-//							}
-    //
-//							click(MLWalletPayBillsPage.objProceedBtn,getTextVal(MLWalletPayBillsPage.objProceedBtn,"Button"));
-//							type(MLWalletPayBillsPage.objAddLastName,prop.getproperty("Invalid_Last_Name"),"Last Name Input Field");
-////							billerDetails(prop.getproperty("Invalid_First_Name"),prop.getproperty("Invalid_Middle_Name"),prop.getproperty("Invalid_Last_Name"),"0.99");
-    //
-    //
-//							if(verifyElementPresent(MLWalletPayBillsPage.objInvalidFirstNameMsg,getTextVal(MLWalletPayBillsPage.objInvalidFirstNameMsg,"Error Message"))){
-//								String sInvalidFirstNameErrorMsg = getText(MLWalletPayBillsPage.objInvalidFirstNameMsg);
-//								String sExceptedFirstNameErrorMsg = "First name must only contain letters and spaces";
-//								assertionValidation(sInvalidFirstNameErrorMsg,sExceptedFirstNameErrorMsg);
-//							}
-//							if(verifyElementPresent(MLWalletPayBillsPage.objInvalidSecondNameMsg,getTextVal(MLWalletPayBillsPage.objInvalidSecondNameMsg,"Error Message"))){
-//								String sInvalidSecondNameErrorMsg = getText(MLWalletPayBillsPage.objInvalidSecondNameMsg);
-//								String sExceptedSecondNameErrorMsg = "Middle name must only contain letters and spaces";
-//								assertionValidation(sInvalidSecondNameErrorMsg,sExceptedSecondNameErrorMsg);
-//							}
-//							if(verifyElementPresent(MLWalletPayBillsPage.objInvalidLastName,getTextVal(MLWalletPayBillsPage.objInvalidLastName,"Error Message"))){
-//								String sInvalidThirdNameErrorMsg = getText(MLWalletPayBillsPage.objInvalidLastName);
-//								String sExceptedThirdNameErrorMsg = "Last name must only contain letters and spaces";
-//								assertionValidation(sInvalidThirdNameErrorMsg,sExceptedThirdNameErrorMsg);
-//							}
+    public void payBillsAddBillerWithInvalidInputsValidation_PB_TC_13() throws Exception {
+        HeaderChildNode("Pay bills, Add biller with invalid inputs validation");
+        waitTime(2000);
+        changeNumberPage();
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
+        payBillsNavigation();
+        waitTime(10000);
+        verifyElementPresentAndClick(MLWalletPayBillsPage.objSavedBiller, getTextVal(MLWalletPayBillsPage.objSavedBiller, "Button"));
+        waitTime(10000);
+        click(MLWalletPayBillsPage.objAddBiller, getTextVal(MLWalletPayBillsPage.objAddBiller, "Button"));
+
+        click(MLWalletPayBillsPage.objProceedBtn, getTextVal(MLWalletPayBillsPage.objProceedBtn, "Button"));
+        if (verifyElementPresent(MLWalletPayBillsPage.objBillerRequiredMsg, getTextVal(MLWalletPayBillsPage.objBillerRequiredMsg, "Error Message"))) {
+            String sAccountNumberRequiredErrorMsg = getText(MLWalletPayBillsPage.objBillerRequiredMsg);
+            String sExceptedAccountNumberRequiredErrorMsg = "Biller is required";
+            assertionValidation(sAccountNumberRequiredErrorMsg, sExceptedAccountNumberRequiredErrorMsg);
+        }
+        addSelectedBiller();
+        type(MLWalletPayBillsPage.objAddAccountNumber, prop.getproperty("AccountNumber"), "Account Number Input Field");
+        click(MLWalletPayBillsPage.objProceedBtn, getTextVal(MLWalletPayBillsPage.objProceedBtn, "Button"));
+        click(MLWalletPayBillsPage.objProceedBtn, getTextVal(MLWalletPayBillsPage.objProceedBtn, "Button"));
+        if (verifyElementPresent(MLWalletPayBillsPage.objFirstNameRequiredMsg, getTextVal(MLWalletPayBillsPage.objFirstNameRequiredMsg, "Error Message"))) {
+            String sFirstNameRequiredErrorMsg = getText(MLWalletPayBillsPage.objFirstNameRequiredMsg);
+            String sExceptedFirstNameRequiredErrorMsg = "First name is required";
+            assertionValidation(sFirstNameRequiredErrorMsg, sExceptedFirstNameRequiredErrorMsg);
+        }
+
+       type(MLWalletPayBillsPage.objAddFirstName, prop.getproperty("Invalid_First_Name"), "First Name Input Field");
+        click(MLWalletPayBillsPage.objProceedBtn, getTextVal(MLWalletPayBillsPage.objProceedBtn, "Button"));
+        click(MLWalletPayBillsPage.objProceedBtn, getTextVal(MLWalletPayBillsPage.objProceedBtn, "Button"));
+        if (verifyElementPresent(MLWalletPayBillsPage.objFirstNameInvalidMsg, getTextVal(MLWalletPayBillsPage.objFirstNameInvalidMsg, "Error Message"))) {
+            String sInvalidFirstNameErrorMsg = getText(MLWalletPayBillsPage.objFirstNameInvalidMsg);
+            String sExceptedFirstNameErrorMsg = "First name is invalid";
+            assertionValidation(sInvalidFirstNameErrorMsg, sExceptedFirstNameErrorMsg);
+        }
+
+        clearField(MLWalletPayBillsPage.objAddFirstName,"First name input field");
+        type(MLWalletPayBillsPage.objAddFirstName, prop.getproperty("First_Name"), "First Name Input Field");
+        type(MLWalletPayBillsPage.objAddMiddleName, prop.getproperty("Middle_Name"), "Middle Name Input Field");
+        click(MLWalletPayBillsPage.objProceedBtn, getTextVal(MLWalletPayBillsPage.objProceedBtn, "Button"));
+        click(MLWalletPayBillsPage.objProceedBtn, getTextVal(MLWalletPayBillsPage.objProceedBtn, "Button"));
+        if (verifyElementPresent(MLWalletPayBillsPage.objLastNameRequiredMsg, getTextVal(MLWalletPayBillsPage.objLastNameRequiredMsg, "Error Message"))) {
+            String sLastNameRequiredErrorMsg = getText(MLWalletPayBillsPage.objLastNameRequiredMsg);
+            String sExceptedLastNameRequiredErrorMsg = "Last name is required";
+            assertionValidation(sLastNameRequiredErrorMsg, sExceptedLastNameRequiredErrorMsg);
+        }
+        type(MLWalletPayBillsPage.objAddLastName, prop.getproperty("Invalid_Last_Name"), "Last Name Input Field");
+        click(MLWalletPayBillsPage.objProceedBtn, getTextVal(MLWalletPayBillsPage.objProceedBtn, "Button"));
+        click(MLWalletPayBillsPage.objProceedBtn, getTextVal(MLWalletPayBillsPage.objProceedBtn, "Button"));
+
+        if (verifyElementPresent(MLWalletPayBillsPage.objLastNameInvalidMsg, getTextVal(MLWalletPayBillsPage.objLastNameInvalidMsg, "Error Message"))) {
+            String sInvalidLastNameErrorMsg = getText(MLWalletPayBillsPage.objLastNameInvalidMsg);
+            String sExceptedLastNameErrorMsg = "Last name is invalid";
+            assertionValidation(sInvalidLastNameErrorMsg, sExceptedLastNameErrorMsg);
+        }
+
+        logger.info("PB_TC_13, Pay bills, Add biller with invalid inputs validated");
+        extentLoggerPass("PB_TC_13", "PB_TC_13, Pay bills, Add biller with invalid inputs validated");
+        System.out.println("-----------------------------------------------------------");
+
+    }
 
     public void editAddedBillerToPayBills_PB_TC_14() throws Exception {
         HeaderChildNode("Edit Added Biller to Pay bIlls");
@@ -591,6 +597,26 @@ public class MLWalletPayBills extends BaseClass{
         }
     }
 
+    public void payBillsBillerPayInformationPageUIValidation_PB_TC_17() throws Exception {
+        HeaderChildNode("Pay bills, Biller pay information page UI validation");
+        waitTime(2000);
+        changeNumberPage();
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
+        payBillsNavigation();
+        searchBiller();
+        if(verifyElementPresent(MLWalletPayBillsPage.objBillsPayInformation,getTextVal(MLWalletPayBillsPage.objBillsPayInformation,"Page"))){
+            verifyElementPresent(MLWalletPayBillsPage.objAccountNumberField, "Account Number Text Field");
+            verifyElementPresent(MLWalletPayBillsPage.objFirstNameField,"First Name Text Field");
+            verifyElementPresent(MLWalletPayBillsPage.objMiddleNameField,"Middle Name Text Field");
+            verifyElementPresent(MLWalletPayBillsPage.objLastnameField,"Last Name Text Field");
+            verifyElementPresent(MLWalletPayBillsPage.objSuffixField,"Suffix dropdown");
+            verifyElementPresent(MLWalletPayBillsPage.objAmountField,"Amount to Send Text Field");
+            verifyElementPresent(MLWalletPayBillsPage.objConfirmBtn,getTextVal(MLWalletPayBillsPage.objConfirmBtn,"Button"));
+            logger.info("PB_TC_17, Pay bills, Biller pay information page UI Validated");
+            extentLoggerPass("PB_TC_17", "PB_TC_17, Pay bills, Biller pay information page UI Validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+    }
 
     public void payBillsAddBillerPageUIValidation_PB_TC_18() throws Exception {
         HeaderChildNode("PayBills Add Biller Page UI Validation");
@@ -637,8 +663,6 @@ public class MLWalletPayBills extends BaseClass{
         verifyElementPresent(MLWalletPayBillsPage.objTransactionDetails,getTextVal(MLWalletPayBillsPage.objTransactionDetails,"Page"));
         Swipe("UP",1);
         verifyElementPresentAndClick(MLWalletPayBillsPage.objNewTransactionBtn,getTextVal(MLWalletPayBillsPage.objNewTransactionBtn,"Button"));
-//							backArrowBtn(1);
-//							verifyRecentTransaction1();
         waitTime(2000);
         verifyElementPresentAndClick(MLWalletPayBillsPage.objRecentTransactionOne,"Recent Transaction");
         waitTime(2000);

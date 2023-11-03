@@ -75,6 +75,7 @@ public class MLWalletPayBillsPage {
      public static By objMiddleNameField1 = By.xpath("(//*[@name='Middle name must only contain letters and spaces']/preceding-sibling::XCUIElementTypeOther/child::XCUIElementTypeTextField)[3]");
 
      public static By objLastnameField = By.xpath("//*[@name='Last Name']/XCUIElementTypeTextField");
+     public static By objSuffixField = By.xpath("//XCUIElementTypeOther[@name=\"CCTAV8\"]");
 
      public static By objLastnameField1 = By.xpath("(//*[@name='Last name must only contain letters and spaces']/preceding-sibling::XCUIElementTypeOther/child::XCUIElementTypeTextField)[4]");
 
@@ -97,10 +98,14 @@ public class MLWalletPayBillsPage {
      public static By objInvalidAmount = By.xpath("//*[@name='The amount should not be less than 1']");
 
      public static By objAccountNumberRequiredMsg = By.xpath("//*[@name='Account Number is required']");
+     public static By objBillerRequiredMsg = By.xpath("//*[@name='Biller is required']");
 
      public static By objFirstNameRequiredMsg = By.xpath("//*[@name='First name is required']");
+     public static By objFirstNameInvalidMsg = By.xpath("//*[@name='First name is invalid']");
+     public static By objMiddleNameInvalidMsg = By.xpath("//*[@name='Middle name is invalid']");
 
      public static By objLastNameRequiredMsg = By.xpath("//*[@name='Last name is required']");
+     public static By objLastNameInvalidMsg = By.xpath("//*[@name='Last name is invalid']");
 
      public static By objBillerName = By.xpath("(//*[@name='Biller'])[3]");
 
@@ -128,11 +133,11 @@ public class MLWalletPayBillsPage {
 
      public static By objAddAccountNumber = By.xpath("//*[@name='Account Number']/XCUIElementTypeTextField");
 
-     public static By objAddFirstName = By.xpath("//*[@name='Account Holder First Name']/XCUIElementTypeTextField");
+     public static By objAddFirstName = By.xpath("//XCUIElementTypeTextField[@name=\"3XBNMC\"]");
 
      public static By objAddMiddleName = By.xpath("//*[@name='Account Holder Middle Name']/XCUIElementTypeTextField");
 
-     public static By objAddLastName = By.xpath("//*[@name='Account Holder Last Name']");
+     public static By objAddLastName = By.xpath("//XCUIElementTypeTextField[@name=\"ML8KUN\"]");
 
      public static By objAddNickName = By.xpath("//*[@name='Nickname']/XCUIElementTypeTextField");
 

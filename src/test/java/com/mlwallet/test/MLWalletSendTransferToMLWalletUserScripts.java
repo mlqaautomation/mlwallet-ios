@@ -1,5 +1,7 @@
 package com.mlwallet.test;
 
+import com.driverInstance.DriverManager;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 public class MLWalletSendTransferToMLWalletUserScripts extends BaseTest{
@@ -212,5 +214,11 @@ public class MLWalletSendTransferToMLWalletUserScripts extends BaseTest{
     @Test(priority = 39)
     public void sendMoneyToMLWalletOTPContinueBtnFunctionality_STW_TC_67() throws Exception {
         mlWalletSendTransferToMLWalletUser.sendMoneyToMLWalletOTPContinueBtnFunctionality_STW_TC_67();
+    }
+    @AfterMethod()
+    public void afterMethod(){
+        System.out.println("Reset");
+        DriverManager.getAppiumDriver().resetApp();
+        System.out.println("Reset complete");
     }
 }

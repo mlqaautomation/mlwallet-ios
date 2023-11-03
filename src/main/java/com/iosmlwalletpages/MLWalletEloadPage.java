@@ -138,6 +138,8 @@ public class MLWalletEloadPage {
 
 	public static By objLDLoad3000 = By.xpath("(//*[@name='PHP 3000 LD3000 LD3000'])[2]");
 
+	public static By objData10 = By.xpath("//XCUIElementTypeStaticText[@name=\"DATA 10\"]");
+
 	public static By objLDLoad500 = By.xpath("(//*[@name='PHP 500 LD500 REGULAR LOAD'])[2]");
 
 	public static By objMaxLimitErrorMsg = By.xpath("//*[@name='The maximum E-load per transaction set for your verification level is P2,000.00. Please try again.']");
@@ -152,5 +154,9 @@ public class MLWalletEloadPage {
 	public static By objAskMeLater = By.xpath("//*[@resource-id='android:id/button3']");
 	public static By objAllowAccess = By.xpath("//*[@resource-id='android:id/button1']");
 	public static By objNewTransaction = By.xpath("//*[@text='New Transaction']");
+	public static By objFailedPaymentMsg = By.xpath("//XCUIElementTypeOther[@name=\"Ok\"]/preceding-sibling::XCUIElementTypeStaticText");
+	public static By objRequestRefund = By.xpath("//XCUIElementTypeStaticText[@name=\"Request Refund\"]");
+	public static By objRequestRefundBtn = By.xpath("(//XCUIElementTypeOther[@name=\"Request Refund\"])[2]");
+	public static By objSelfServiceSupportForm = By.xpath("//XCUIElementTypeStaticText[@name=\"Self-Service Support Form\"]");
 
 }

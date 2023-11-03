@@ -630,4 +630,22 @@ public class MLWalletShopItemsPage {
 	public static By objMyProfileHeader = By.xpath("(//*[@text='My Profile'])[2]");
 	public static By objMyPurchase = By.xpath("//*[@text='My Purchases']");
 	public static By objSubtotalAmount = By.xpath("//*[@resource-id='cart-subtotal']");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

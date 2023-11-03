@@ -479,6 +479,63 @@ public class MLWalletLogin extends BaseClass {
         }
     }
 
+    public void loginUnregisteredNumberConfirmationMSgValidation_Lgn_TC_14() throws Exception {
+        HeaderChildNode("Login, Unregistered number confirmation msg validation");
+        waitTime(2000);
+        changeNumberPage();
+        type(MLWalletLoginPage.objMobileNumberTextField, "9999999970", "Mobile Number Text Field");
+        waitTime(5000);
+        click(MLWalletLoginPage.objLoginBtn, "Login Button");
+        if(verifyElementPresent(MLWalletLoginPage.objUnregisteredNumberMsg,getTextVal(MLWalletLoginPage.objUnregisteredNumberMsg,"Popup msg"))){
+            String sActualMsg = getText(MLWalletLoginPage.objUnregisteredNumberMsg);
+            String sExceptedMsg = "We are unable to log you in using this mobile number. To create an account using this mobile number, please click Register below:";
+            assertionValidation(sActualMsg,sExceptedMsg);
+            verifyElementPresent(MLWalletLoginPage.objRegisterBtn,getTextVal(MLWalletLoginPage.objRegisterBtn,"Button"));
+            logger.info("Lgn_TC_14, Login, Unregistered number confirmation msg validated");
+            extentLoggerPass("Lgn_TC_14", "Lgn_TC_14, Login, Unregistered number confirmation msg validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+    }
+
+//    ============================= K T Demo 2==============================//
+
+    public void sendMoneyToMLBranch_SB_TC_01(String sAmount) throws Exception {
+        HeaderChildNode("Send money to ML Branch validation");
+        waitTime(2000);
+        changeNumberPage();
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
+        verifyElementPresentAndClick(MLWalletLoginPage.objSendBtn,getAttributValue("label",MLWalletLoginPage.objSendBtn)+" Button");
+        verifyElementPresent(MLWalletLoginPage.objSendMoneyPage,getTextVal(MLWalletLoginPage.objSendMoneyPage,"Page"));
+        verifyElementPresentAndClick(MLWalletLoginPage.objToAnyMLBranchOption,getTextVal(MLWalletLoginPage.objToAnyMLBranchOption,"Option"));
+        verifyElementPresent(MLWalletLoginPage.objKwartaPadala,getTextVal(MLWalletLoginPage.objKwartaPadala,"Page"));
+        type(MLWalletLoginPage.objFirstNameInputField,prop.getproperty("First_Name"),"First Name input field");
+        type(MLWalletLoginPage.objMiddleNameInputField,prop.getproperty("Middle_Name"),"Middle Name input field");
+        type(MLWalletLoginPage.objLastNameInputField,prop.getproperty("Last_Name"),"Last Name input field");
+        type(MLWalletLoginPage.objMobileNumberInputField,prop.getproperty("New_Branch_Verified"),"Mobile Number input field");
+        click(MLWalletLoginPage.objKwartaPadalaNextBtn,getTextVal(MLWalletLoginPage.objKwartaPadalaNextBtn,"Button"));
+        waitTime(3000);
+        type(MLWalletLoginPage.objAmountInputField,sAmount,"Amount input field");
+        click(MLWalletLoginPage.objAmountNextButton,getAttributValue("label",MLWalletLoginPage.objAmountNextButton)+" Button");
+        verifyElementPresentAndClick(MLWalletLoginPage.objMLWalletBalanceBtn,getTextVal(MLWalletLoginPage.objMLWalletBalanceBtn,"Button"));
+        verifyElementPresent(MLWalletLoginPage.objConfirmDetailsPage,getTextVal(MLWalletLoginPage.objConfirmDetailsPage,"Page"));
+        verifyElementPresentAndClick(MLWalletLoginPage.objConfirmBtn,getAttributValue("label",MLWalletLoginPage.objConfirmBtn)+" Button");
+        enterOTP("111111");
+        verifyElementPresent(MLWalletLoginPage.objSendMoneySuccessfulPage,getTextVal(MLWalletLoginPage.objSendMoneySuccessfulPage,"Page"));
+        String sRefNo = getText(MLWalletLoginPage.objRefNoInTransactionSuccessPage);
+        String sRefNoInTransaction = sRefNo.substring(9,20);
+        System.out.println(sRefNoInTransaction);
+        Swipe("UP",2);
+        verifyElementPresentAndClick(MLWalletLoginPage.objBackToHomeBtn,getAttributValue("label",MLWalletLoginPage.objBackToHomeBtn)+" Button");
+        Swipe("DOWN",2);
+        verifyElementPresentAndClick(MLWalletLoginPage.objRecentTransaction,getAttributValue("label",MLWalletLoginPage.objRecentTransaction)+" recent transaction");
+        if(verifyElementPresent(MLWalletLoginPage.objTransactionDetailsPage,getTextVal(MLWalletLoginPage.objTransactionDetailsPage,"Page"))){
+            String sRefNoInTransactionDetails = getText(MLWalletLoginPage.objRefNoInTransactionDetails);
+            assertionValidation(sRefNoInTransaction,sRefNoInTransactionDetails);
+            logger.info("SB_TC_01, Send money to ML Branch validated");
+            extentLoggerPass("SB_TC_01","SB_TC_01, Send money to ML Branch validated");
+        }
+    }
+
 
 
 }

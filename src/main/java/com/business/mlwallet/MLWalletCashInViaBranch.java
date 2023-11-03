@@ -4,6 +4,8 @@ import static com.business.mlwallet.MLWalletLogin.*;
 import static com.utility.Utilities.*;
 import com.iosmlwalletpages.*;
 
+import java.time.Duration;
+
 public class MLWalletCashInViaBranch extends BaseClass {
 
     public MLWalletCashInViaBranch() {
@@ -507,6 +509,306 @@ public class MLWalletCashInViaBranch extends BaseClass {
             assertionValidation(sErrorMsg, sExpectedErrorMsg);
             logger.info("CIBR_TC_20, Cash In Via Branch Max Transaction Limit Semi-verified Tier User Validated");
             extentLoggerPass("CIBR_TC_20", "CIBR_TC_20, Cash In Via Branch Max Transaction Limit Semi-verified Tier User Validated");
+        }
+    }
+
+    public void cashInViaBranchMaxTransactionFullyVerifiedTierUser_CIBR_TC_21() throws Exception {
+        HeaderChildNode("Cash In Via Branch Max Transaction Limit Fully-verified Tier User");
+        maxTransactionLimitValidation(prop.getproperty("Fully_verified"));
+        waitTime(5000);
+        if(verifyElementPresent(MLWalletCashInViaBranchPage.objBankMaxLimitTxt,getTextVal(MLWalletCashInViaBranchPage.objBankMaxLimitTxt,"Error Message"))) {
+            String sErrorMsg = getText(MLWalletCashInViaBranchPage.objBankMaxLimitTxt);
+            String sExpectedErrorMsg = "The maximum Branch Cash-in per transaction set for your verification level is P50,000.00. Please try again.";
+            assertionValidation(sErrorMsg, sExpectedErrorMsg);
+            logger.info("CIBR_TC_21, Cash In Via Branch Max Transaction Limit Fully-verified Tier User Validated");
+            extentLoggerPass("CIBR_TC_21", "CIBR_TC_21, Cash In Via Branch Max Transaction Limit Fully-verified Tier User Validated");
+        }
+    }
+
+    public void cashInViaBranchTransactionDetailsUIValidation_CIBR_TC_22() throws Exception {
+        HeaderChildNode("Cash In Via Branch Transaction Details UI Validation");
+        cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
+        cashInViaBranchEnterAmount("100");
+        waitTime(2000);
+        verifyElementPresent(MLWalletCashInViaBranchPage.objWarningPopup,getTextVal(MLWalletCashInViaBranchPage.objWarningPopup, "Pop Up"));
+        click(MLWalletCashInViaBranchPage.objContinueButton, "Continue Button");
+        waitTime(2000);
+        enterOTP(prop.getproperty("Valid_OTP"));
+        waitTime(10000);
+        verifyElementPresent(MLWalletCashInViaBranchPage.objCashInToBranch,getTextVal(MLWalletCashInViaBranchPage.objCashInToBranch,"Header"));
+        verifyElementPresent(MLWalletCashInViaBranchPage.objPHP, getTextVal(MLWalletCashInViaBranchPage.objPHP, "PHP"));
+        verifyElementPresent(MLWalletCashInViaBranchPage.objCreatedDate, getTextVal(MLWalletCashInViaBranchPage.objCreatedDate, "Date"));
+        verifyElementPresent(MLWalletCashInViaBranchPage.objStatus, getTextVal(MLWalletCashInViaBranchPage.objStatus, "Status"));
+        verifyElementPresent(MLWalletCashInViaBranchPage.objTransactionNo, getTextVal(MLWalletCashInViaBranchPage.objTransactionNo, "Transaction Number"));
+        verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objCrossBtn, "Cash In Branch Cross Button");
+        verifyRecentTransaction3(prop.getproperty("Branch_Verified"));
+        verifyElementPresentAndClick(MLWalletCashInBank.objCashInTransaction, getTextVal(MLWalletCashInBank.objCashInTransaction, "Transaction"));
+        waitTime(2000);
+        if (verifyElementPresent(MLWalletTransactionHistoryPage.objTransactionDetails, getTextVal(MLWalletTransactionHistoryPage.objTransactionDetails, "Page"))) {
+            verifyElementPresent(MLWalletTransactionHistoryPage.objReferenceNumberInTransactionDetails, getTextVal(MLWalletTransactionHistoryPage.objReferenceNumberInTransactionDetails, "Reference Number"));
+            verifyElementPresent(MLWalletTransactionHistoryPage.objDate, getTextVal(MLWalletTransactionHistoryPage.objDate, "Date"));
+            verifyElementPresent(MLWalletTransactionHistoryPage.objReceiverMobileNo, getTextVal(MLWalletTransactionHistoryPage.objReceiverMobileNo, "Receiver's Mobile Number"));
+            verifyElementPresent(MLWalletTransactionHistoryPage.objPaymentMethod, getTextVal(MLWalletTransactionHistoryPage.objPaymentMethod, "Payment Method"));
+            verifyElementPresent(MLWalletTransactionHistoryPage.objTransactionType, getTextVal(MLWalletTransactionHistoryPage.objTransactionType, "Payment Method"));
+            verifyElementPresent(MLWalletTransactionHistoryPage.objAmount, getTextVal(MLWalletTransactionHistoryPage.objAmount, "Amount"));
+            verifyElementPresent(MLWalletTransactionHistoryPage.objServiceFee, getTextVal(MLWalletTransactionHistoryPage.objServiceFee, "Service Fee"));
+            verifyElementPresent(MLWalletTransactionHistoryPage.objTotalCashIn, getTextVal(MLWalletTransactionHistoryPage.objTotalCashIn, "Total Cash In"));
+            logger.info("CIBR_TC_22,Cash In Via Branch Transaction Details UI Validated");
+            extentLoggerPass("CIBR_TC_22", "'CIBR_TC_22',Cash In Via Branch Transaction Details UI Validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+    }
+
+    public void cashInViaBranchTransactionPendingStatusValidation_CIBR_TC_23() throws Exception {
+        HeaderChildNode("Cash In Via Branch Transaction Pending status Validation");
+        cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
+        cashInViaBranchEnterAmount("100");
+        waitTime(2000);
+        verifyElementPresent(MLWalletCashInViaBranchPage.objWarningPopup,getTextVal(MLWalletCashInViaBranchPage.objWarningPopup, "Pop Up"));
+        click(MLWalletCashInViaBranchPage.objContinueButton, "Continue Button");
+        waitTime(2000);
+        enterOTP(prop.getproperty("Valid_OTP"));
+        waitTime(10000);
+        verifyElementPresent(MLWalletCashInViaBranchPage.objCashInToBranch,getTextVal(MLWalletCashInViaBranchPage.objCashInToBranch,"Header"));
+        verifyElementPresent(MLWalletCashInViaBranchPage.objPHP,getTextVal(MLWalletCashInViaBranchPage.objPHP,"PHP"));
+        verifyElementPresent(MLWalletCashInViaBranchPage.objCreatedDate,getTextVal(MLWalletCashInViaBranchPage.objCreatedDate,"Date"));
+        verifyElementPresent(MLWalletCashInViaBranchPage.objStatus,getTextVal(MLWalletCashInViaBranchPage.objStatus,"Status"));
+        verifyElementPresent(MLWalletCashInViaBranchPage.objTransactionNo,getTextVal(MLWalletCashInViaBranchPage.objTransactionNo,"Transaction Number"));
+        verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objCrossBtn,"Cash In Branch Cross Button");
+        verifyRecentTransaction3(prop.getproperty("Branch_Verified"));
+        if(verifyElementPresent(MLWalletCashInBank.objCashInTransaction,getTextVal(MLWalletCashInBank.objCashInTransaction,"Transaction"))) {
+            verifyElementPresent(MLWalletCashInBank.objPendingStatus,getTextVal(MLWalletCashInBank.objPendingStatus,"Status"));
+            String sStatus = getText(MLWalletCashInBank.objPendingStatus);
+            String pendingStatus=sStatus.substring(2, 9);
+            String sExpectedStatus = "Pending";
+            assertionValidation(pendingStatus,sExpectedStatus);
+            logger.info("CIBR_TC_23,Cash In Via Branch Transaction Pending status Validated");
+            extentLoggerPass("CIBR_TC_23", "'CIBR_TC_23',Cash In Via Branch Transaction Pending status Validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+    }
+
+    public void cashInViaBranchTransactionCancelledStatusValidation_CIBR_TC_26() throws Exception {
+        HeaderChildNode("Cash In Via Branch Transaction Cancelled Status Validation");
+        cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
+        cashInViaBranchEnterAmount("100");
+        verifyElementPresent(MLWalletCashInViaBranchPage.objWarningPopup,getTextVal(MLWalletCashInViaBranchPage.objWarningPopup, "Pop Up"));
+        click(MLWalletCashInViaBranchPage.objContinueButton, "Continue Button");
+        waitTime(2000);
+        enterOTP(prop.getproperty("Valid_OTP"));
+        waitTime(10000);
+        verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objCancelTransactionBtn,getTextVal(MLWalletCashInViaBranchPage.objCancelTransactionBtn,"Button"));
+        waitTime(2000);
+        verifyElementPresent(MLWalletCashInViaBranchPage.objCancelTransactionPopup,getTextVal(MLWalletCashInViaBranchPage.objCancelTransactionPopup,"PopUp"));
+        verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objPopUpCancelTransactionBtn,getTextVal(MLWalletCashInViaBranchPage.objPopUpCancelTransactionBtn,"Button"));
+        waitTime(2000);
+        verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objBackToHomeBtn, getTextVal(MLWalletCashInViaBranchPage.objBackToHomeBtn, "Button"));
+        waitTime(2000);
+        verifyRecentTransaction3(prop.getproperty("Branch_Verified"));
+        if(verifyElementPresent(MLWalletCashInBank.objCashInTransaction,getTextVal(MLWalletCashInBank.objCashInTransaction,"Transaction"))) {
+            verifyElementPresent(MLWalletCashInBank.objCancelStatus,getTextVal(MLWalletCashInBank.objCancelStatus,"Status"));
+            String sStatus = getText(MLWalletCashInBank.objCancelStatus);
+            String pendingStatus=sStatus.substring(2, 10);
+            String sExpectedStatus = "Cancelle";
+            System.out.println(sExpectedStatus);
+            assertionValidation(pendingStatus,sExpectedStatus);
+            logger.info("'CIBR_TC_26',Cash In Via Branch Transaction Cancelled Status Validated");
+            extentLoggerPass("'CIBR_TC_26","'CIBR_TC_26', Cash In Via Branch Transaction Cancelled Status Validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+    }
+
+    public void cashInViaBranchTransactionValidationAfterMinimizingApp_CIBR_TC_36() throws Exception {
+        HeaderChildNode("Cash In Via Branch Transaction Validation After Minimizing App");
+        cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
+        cashInViaBranchEnterAmount("100");
+        waitTime(2000);
+        verifyElementPresent(MLWalletCashInViaBranchPage.objWarningPopup,
+                getTextVal(MLWalletCashInViaBranchPage.objWarningPopup, "Pop Up"));
+        click(MLWalletCashInViaBranchPage.objContinueButton, "Continue Button");
+        enterOTP(prop.getproperty("Valid_OTP"));
+        getDriver().runAppInBackground(Duration.ofSeconds(5));
+        logger.info("Application relaunched after 5 Seconds");
+        waitTime(5000);
+        if(verifyElementPresent(MLWalletCashInViaBranchPage.objCashInToBranch,getTextVal(MLWalletCashInViaBranchPage.objCashInToBranch,"Bank Page"))){
+            logger.info("CIBR_TC_36, Cash In Via Branch Transaction Validation After Minimizing App Validated");
+            extentLoggerPass("CIBR_TC_36", "CIBR_TC_36, Cash In Via Branch Transaction Validation After Minimizing App Validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+    }
+
+    public void cashInViaBranchAmountFieldValidation_CIBR_TC_42() throws Exception {
+        HeaderChildNode("Cash In Via Branch, Amount Field with more than 2 decimals Validation");
+        cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
+        cancelPreviousTransactionAndContinue();
+        cashInViaBranchEnterAmount("100.123");
+        waitTime(2000);
+        if (verifyElementPresent(MLWalletCashInViaBranchPage.objDecimalAmountErrMsg, getTextVal(MLWalletCashInViaBranchPage.objDecimalAmountErrMsg, "Pop Message"))) {
+            String sMinimumTransactionPopupMsg = getText(MLWalletCashInViaBranchPage.objDecimalAmountErrMsg);
+            String sExpectedPopupMsg = "The amount must be limited to 2 decimal places";
+            assertionValidation(sMinimumTransactionPopupMsg, sExpectedPopupMsg);
+            logger.info("CIBR_TC_42, Cash In Via Branch, Amount Field with more than 2 decimals Error Msg validated");
+            extentLoggerPass("CIBR_TC_42", "CIBR_TC_42, Cash In Via Branch, Amount Field with more than 2 decimals Error Msg validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+    }
+
+
+    public void cashInViaBranchTransactionWithValidMLPin_CIBR_TC_43() throws Exception {
+        HeaderChildNode("Cash In Via Branch Transaction With Valid ML Pin");
+        cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
+        cancelPreviousTransactionAndContinue();
+        cashInViaBranchEnterAmount("100");
+        waitTime(2000);
+        verifyElementPresent(MLWalletCashInViaBranchPage.objWarningPopup,getTextVal(MLWalletCashInViaBranchPage.objWarningPopup, "Pop Up"));
+        click(MLWalletCashInViaBranchPage.objContinueButton, "Continue Button");
+        waitTime(2000);
+        enterOTP(prop.getproperty("Valid_OTP"));
+        waitTime(10000);
+        if(verifyElementPresent(MLWalletCashInViaBranchPage.objCashInToBranch,getTextVal(MLWalletCashInViaBranchPage.objCashInToBranch,"Header"))){
+            verifyElementPresent(MLWalletCashInViaBranchPage.objPHP,getTextVal(MLWalletCashInViaBranchPage.objPHP,"PHP"));
+            verifyElementPresent(MLWalletCashInViaBranchPage.objCreatedDate,getTextVal(MLWalletCashInViaBranchPage.objCreatedDate,"Date"));
+            verifyElementPresent(MLWalletCashInViaBranchPage.objStatus,getTextVal(MLWalletCashInViaBranchPage.objStatus,"Status"));
+            verifyElementPresent(MLWalletCashInViaBranchPage.objTransactionNo,getTextVal(MLWalletCashInViaBranchPage.objTransactionNo,"Transaction Number"));
+            verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objCrossBtn,"Cash In Branch Cross Button");
+            verifyRecentTransaction2(prop.getproperty("Branch_Verified"));
+            if(verifyElementPresent(MLWalletCashInBank.objCashInTransaction,getTextVal(MLWalletCashInBank.objCashInTransaction,"Transaction"))) {
+                verifyElementPresent(MLWalletCashInBank.objPendingStatus,getTextVal(MLWalletCashInBank.objPendingStatus,"Status"));
+                String sStatus = getText(MLWalletCashInBank.objPendingStatus);
+                String pendingStatus=sStatus.substring(2, 9);
+                String sExpectedStatus = "Pending";
+                assertionValidation(pendingStatus,sExpectedStatus);
+                logger.info("'CIBR_TC_43', Cash In Via Branch Transaction With Valid ML Pin validated");
+                extentLoggerPass("'CIBR_TC_43", "'CIBR_TC_43', Cash In Via Branch Transaction With Valid ML Pin validated");
+                System.out.println("-----------------------------------------------------------");
+            }
+        }
+    }
+
+
+    public void cashInViaBranchTransactionWithInValidMLPin_CIBR_TC_44() throws Exception {
+        HeaderChildNode("Cash In Via Branch Transaction With InValid ML Pin");
+        cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
+        cancelPreviousTransactionAndContinue();
+        cashInViaBranchEnterAmount("100");
+        waitTime(2000);
+        verifyElementPresent(MLWalletCashInViaBranchPage.objWarningPopup,
+                getTextVal(MLWalletCashInViaBranchPage.objWarningPopup, "Pop Up"));
+        click(MLWalletCashInViaBranchPage.objContinueButton, "Continue Button");
+        waitTime(5000);
+        handleMpin("1234", "Entered Invalid Mpin");
+        waitTime(2000);
+        if (verifyElementPresent(MLWalletCashInViaBranchPage.objInvalidPINMsg, getTextVal(MLWalletCashInViaBranchPage.objInvalidPINMsg, "Message"))) {
+            String sActualErrorMsg = getText(MLWalletCashInViaBranchPage.objInvalidPINMsg);
+            String sExceptedErrorMsg = "You have entered an invalid PIN. Please try again.";
+            assertionValidation(sActualErrorMsg,sExceptedErrorMsg);
+            logger.info("CIBR_TC_44, Cash In Via Branch Transaction With Invalid ML Pin validated");
+            extentLoggerPass("CIBR_TC_44", "CIBR_TC_44, Cash In Via Branch Transaction With Invalid ML Pin validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+    }
+
+
+    public void cashInViaBranchOTPPopupValidation_CIBR_TC_50() throws Exception {
+        HeaderChildNode("Cash In Via Branch OTP Popup validation");
+        cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
+        cancelPreviousTransactionAndContinue();
+        cashInViaBranchEnterAmount("100");
+        waitTime(2000);
+        verifyElementPresent(MLWalletCashInViaBranchPage.objWarningPopup,
+                getTextVal(MLWalletCashInViaBranchPage.objWarningPopup, "Pop Up"));
+        click(MLWalletCashInViaBranchPage.objContinueButton, "Continue Button");
+        waitTime(8000);
+        if (verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"))) {
+            verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"));
+            logger.info("CIBR_TC_50, Cash In Via Branch, InApp OTP popup validated");
+            extentLoggerPass("CIBR_TC_50", "CIBR_TC_50, Cash In Via Branch, InApp OTP popup validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+    }
+
+    public void cashInViaBranchTransactionInAppOTPPopupUIValidation_CIBR_TC_51() throws Exception {
+        HeaderChildNode("Cash In Via Branch Transaction InApp OTP Popup validation");
+        cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
+        cancelPreviousTransactionAndContinue();
+        cashInViaBranchEnterAmount("100");
+        waitTime(2000);
+        verifyElementPresent(MLWalletCashInViaBranchPage.objWarningPopup,
+                getTextVal(MLWalletCashInViaBranchPage.objWarningPopup, "Pop Up"));
+        click(MLWalletCashInViaBranchPage.objContinueButton, "Continue Button");
+        waitTime(5000);
+        if (verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"))) {
+            verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"));
+            verifyElementPresent(MLWalletLoginPage.objOtpContineBtn,getTextVal(MLWalletLoginPage.objOtpContineBtn,"Button"));
+            verifyElementPresent(MLWalletLoginPage.objCancelBtn,getTextVal(MLWalletLoginPage.objCancelBtn,"Button"));
+            logger.info("CIBR_TC_51, Cash In Via Branch Transaction InApp OTP Popup validated");
+            extentLoggerPass("CIBR_TC_51", "CIBR_TC_51, Cash In Via Branch Transaction InApp OTP Popup validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+    }
+
+
+    public void cashInViaBranchTransactionNewOTPAfterSixtySecondsValidation_CIBR_TC_52() throws Exception {
+        HeaderChildNode("Cash In Via Branch Transaction New OTP got generated After Sixty Seconds validation");
+        cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
+        cancelPreviousTransactionAndContinue();
+        cashInViaBranchEnterAmount("100");
+        waitTime(2000);
+        verifyElementPresent(MLWalletCashInViaBranchPage.objWarningPopup,
+                getTextVal(MLWalletCashInViaBranchPage.objWarningPopup, "Pop Up"));
+        click(MLWalletCashInViaBranchPage.objContinueButton, "Continue Button");
+        waitTime(5000);
+        verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
+        waitTime(2000);
+        if(verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"))){
+            String sGeneratedOTP = getText(MLWalletLoginPage.objOTP);
+            waitTime(70000);
+            String sNewlyGeneratedOTPAfterSixtySeconds = getText(MLWalletLoginPage.objOTP);
+            assertNotEquals(sGeneratedOTP,sNewlyGeneratedOTPAfterSixtySeconds);
+            logger.info("CIBR_TC_52, Cash In Via Branch Transaction New OTP got generated After Sixty Seconds is validated");
+            extentLoggerPass("CIBR_TC_52", "CIBR_TC_52, Cash In Via Branch Transaction New OTP got generated After Sixty Seconds is validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+    }
+
+
+    public void cashInViaBranchTransactionOTPCancelBtnFunctionality_CIBR_TC_53() throws Exception {
+        HeaderChildNode("Cash In Via Branch Transaction OTP Cancel Button Functionality");
+        cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
+        cancelPreviousTransactionAndContinue();
+        cashInViaBranchEnterAmount("100");
+        waitTime(2000);
+        verifyElementPresent(MLWalletCashInViaBranchPage.objWarningPopup,
+                getTextVal(MLWalletCashInViaBranchPage.objWarningPopup, "Pop Up"));
+        click(MLWalletCashInViaBranchPage.objContinueButton, "Continue Button");
+        waitTime(5000);
+        verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
+        verifyElementPresentAndClick(MLWalletLoginPage.objCancelBtn,getTextVal(MLWalletLoginPage.objCancelBtn,"Button"));
+        waitTime(2000);
+        if(verifyElementPresent(MLWalletCashInViaBranchPage.objBranchCashIn,getTextVal(MLWalletCashInViaBranchPage.objBranchCashIn,"Page"))){
+            logger.info("CIBR_TC_53, Cash In Via Branch Transaction, After clicking on Cancel in One time pin popup App navigates back to Branch cash In Page is validated");
+            extentLoggerPass("CIBR_TC_53", "CIBR_TC_53, Cash In Via Branch Transaction, After clicking on Cancel in One time pin popup App navigates back to Branch cash In Page is validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+    }
+
+    public void cashInViaBranchOTPContinueBtnFunctionality_CIBR_TC_54() throws Exception {
+        HeaderChildNode("Cash In Via Branch Transaction OTP Continue Button Functionality");
+        cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
+        cancelPreviousTransactionAndContinue();
+        cashInViaBranchEnterAmount("100");
+        waitTime(2000);
+        verifyElementPresent(MLWalletCashInViaBranchPage.objWarningPopup,
+                getTextVal(MLWalletCashInViaBranchPage.objWarningPopup, "Pop Up"));
+        click(MLWalletCashInViaBranchPage.objContinueButton, "Continue Button");
+        waitTime(5000);
+        verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
+        verifyElementPresentAndClick(MLWalletLoginPage.objOtpContineBtn, getTextVal(MLWalletLoginPage.objOtpContineBtn, "Button"));
+        waitTime(2000);
+        if (verifyElementPresent(MLWalletCashInViaBranchPage.objCashInToBranch, getTextVal(MLWalletCashInViaBranchPage.objCashInToBranch,"Page"))) {
+            logger.info("CIBR_TC_54, Cash In Via Branch Transaction, After clicking on Continue in One time pin popup App navigates to Cash In To Branch Page is validated");
+            extentLoggerPass("CIBR_TC_54", "CIBR_TC_54, Cash In Via Branch Transaction, After clicking on Continue in One time pin popup App navigates to Cash In To Branch page is validated");
+            System.out.println("-----------------------------------------------------------");
         }
     }
 

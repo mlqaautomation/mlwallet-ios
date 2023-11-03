@@ -109,7 +109,7 @@ public class MLWalletCashInBank {
     public static By objCashInTransaction = By.xpath("(//*[@name='Recent Transactions']/parent::XCUIElementTypeOther/descendant::XCUIElementTypeOther)[5]");
    
     public static By objInvalidPINMsg = By.xpath("//*[@name='You have entered an invalid PIN. Please try again.']");
-    
 
+    public static By objSuccessTransaction = By.xpath("//*[@name='OSJVNX']/XCUIElementTypeScrollView/child::XCUIElementTypeOther/child::XCUIElementTypeOther/child::XCUIElementTypeOther");
 
 }

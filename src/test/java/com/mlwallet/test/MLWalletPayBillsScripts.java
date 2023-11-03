@@ -1,5 +1,7 @@
 package com.mlwallet.test;
 
+import com.driverInstance.DriverManager;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 public class MLWalletPayBillsScripts extends BaseTest{
@@ -186,6 +188,22 @@ public class MLWalletPayBillsScripts extends BaseTest{
     @Test(priority = 35)
     public void payBillsTransactionOTPContinueBtnFunctionality_PB_TC_60() throws Exception {
         mlWalletPayBills.payBillsTransactionOTPContinueBtnFunctionality_PB_TC_60();
-     }
+    }
+
+    @Test(priority = 36)
+    public void payBillsAddBillerWithInvalidInputsValidation_PB_TC_13() throws Exception {
+        mlWalletPayBills.payBillsAddBillerWithInvalidInputsValidation_PB_TC_13();
+    }
+    @Test(priority = 37)
+    public void payBillsBillerPayInformationPageUIValidation_PB_TC_17() throws Exception {
+        mlWalletPayBills.payBillsBillerPayInformationPageUIValidation_PB_TC_17();
+    }
+
+    @AfterMethod()
+    public void afterMethod(){
+        System.out.println("Reset");
+        DriverManager.getAppiumDriver().resetApp();
+        System.out.println("Reset complete");
+    }
 
 }

@@ -84,10 +84,10 @@ public class MLWalletCashInViaBankScripts extends BaseTest{
         mlWalletCashInViaBank.cashInViaBankPendingTransaction_CIBA_TC_17();
     }
 
-   // @Test(priority = 16) //Pending bcz of horizontal scroll
-//    public void cashInViaBankWithExistingPendingTransaction_CIBA_TC_20() throws Exception {
-//        MLWalletBusinessLogic.cashInViaBankWithExistingPendingTransaction_CIBA_TC_20();
-//    }
+    @Test(priority = 16)
+    public void cashInViaBankWithExistingPendingTransaction_CIBA_TC_20() throws Exception {
+        mlWalletCashInViaBank.cashInViaBankWithExistingPendingTransaction_CIBA_TC_20();
+    }
 
     @Test(priority = 17)
     public void cancelButtonValidationInDragonPayPopUp_CIBA_TC_21() throws Exception {
@@ -166,6 +166,21 @@ public class MLWalletCashInViaBankScripts extends BaseTest{
     @Test(priority = 32)
     public void cashInViaBankOTPContinueBtnFunctionality_CIBA_TC_61() throws Exception {
         mlWalletCashInViaBank.cashInViaBankOTPContinueBtnFunctionality_CIBA_TC_61();
+    }
+
+    @Test(priority = 33)
+    public void cashInViaBankStatusTransaction_CIBA_TC_16() throws Exception {
+        mlWalletCashInViaBank.cashInViaBankStatusTransaction_CIBA_TC_16();
+    }
+
+    @Test(priority = 34)
+    public void cashInViaBankSemiVerifiedTierStatusTransaction_CIBA_TC_25() throws Exception {
+        mlWalletCashInViaBank.cashInViaBankSemiVerifiedTierStatusTransaction_CIBA_TC_25();
+    }
+
+    @Test(priority = 35)
+    public void cashInViaBankFullyVerifiedTierStatusTransaction_CIBA_TC_26() throws Exception {
+        mlWalletCashInViaBank.cashInViaBankFullyVerifiedTierStatusTransaction_CIBA_TC_26();
     }
 
 

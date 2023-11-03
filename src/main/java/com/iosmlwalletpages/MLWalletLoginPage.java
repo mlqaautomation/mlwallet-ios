@@ -91,4 +91,50 @@ public class MLWalletLoginPage {
 	public static By objSeconds = By.xpath("((//XCUIElementTypeStaticText[@name='One Time Pin'])[3]/ancestor::XCUIElementTypeOther/descendant::XCUIElementTypeOther/child::XCUIElementTypeStaticText)[3]");
 	public static By objContinueBtn = By.xpath("//*[@label='Continue']");
 	public static By obj24HoursBlockedMsg = By.xpath("//XCUIElementTypeStaticText[@name='You are blocked from using ML PIN. Please try again later after 24 hrs.']");
+
+	public static By objUnregisteredNumberMsg = By.xpath("//XCUIElementTypeOther[@name=\"Register\"]/preceding-sibling::XCUIElementTypeStaticText");
+	public static By objRegisterBtn = By.xpath("//XCUIElementTypeOther[@name=\"Register\"]");
+
+
+
+//	=================================================//
+
+	public static By objSendBtn = By.xpath("//XCUIElementTypeOther[@name='AY6EU5']");
+
+	public static By objSendMoneyPage = By.xpath("//XCUIElementTypeStaticText[@name='Send Money']");
+	public static By objToAnyMLBranchOption = By.xpath("(//XCUIElementTypeOther[@name=\"Kwarta Padala To any ML Branch \uE5CC\"])[2]");
+	public static By objFirstNameInputField = By.xpath("//XCUIElementTypeOther[@name=\"First Name\"]/child::XCUIElementTypeTextField");
+
+	public static By objMiddleNameInputField = By.xpath("//XCUIElementTypeOther[@name=\"Middle Name\"]/child::XCUIElementTypeTextField");
+
+	public static By objLastNameInputField = By.xpath("//XCUIElementTypeOther[@name=\"Last Name\"]/child::XCUIElementTypeTextField");
+
+	public static By objMobileNumberInputField = By.xpath("//XCUIElementTypeOther[@name=\"Mobile Number\"]/child::XCUIElementTypeTextField");
+
+	public static By objKwartaPadalaNextBtn = By.xpath("//XCUIElementTypeOther[@name=\"V65U0U\"]");
+
+	public static By objKwartaPadala = By.xpath("//XCUIElementTypeStaticText[@name=\"Kwarta Padala\"]");
+
+	public static By objAmountInputField = By.xpath("//*[@type='XCUIElementTypeTextField']");
+
+	public static By objAmountNextButton = By.xpath("//XCUIElementTypeOther[@name=\"62HFFQ\"]");
+
+	public static By objMLWalletBalanceBtn = By.xpath("//XCUIElementTypeOther[@name=\"391CJJ\"]");
+
+	public static By objConfirmDetailsPage = By.xpath("//XCUIElementTypeStaticText[@name=\"Confirm Details\"]");
+
+	public static By objConfirmBtn = By.xpath("//XCUIElementTypeOther[@name=\"8LQQF7\"]");
+
+	public static By objSendMoneySuccessfulPage = By.xpath("//XCUIElementTypeStaticText[@name=\"Send Money Successful\"]");
+
+	public static By objRefNoInTransactionSuccessPage  = By.xpath("//XCUIElementTypeStaticText[@name=\"56FWEC\"]");
+
+	public static By objBackToHomeBtn = By.xpath("//XCUIElementTypeOther[@name=\"T77C1L\"]");
+
+	public static By objRecentTransaction = By.xpath("(//XCUIElementTypeOther[@name=\"OSJVNX\"])[2]");
+
+	public static By objTransactionDetailsPage = By.xpath("(//XCUIElementTypeStaticText[@name=\"Transaction Details\"])[1]");
+
+	public static By objRefNoInTransactionDetails = By.xpath("(//XCUIElementTypeStaticText[@name=\"Reference Number\"])[2]");
+
 }

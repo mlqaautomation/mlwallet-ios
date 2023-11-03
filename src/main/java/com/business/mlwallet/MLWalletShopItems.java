@@ -4170,4 +4170,83 @@ public class MLWalletShopItems extends BaseClass{
         }
     }
 
+    public void shopItemsReviewingItemDetailsAndFeeBeforePlacingTheOrder_SI_TC_69() throws Exception {
+        HeaderChildNode("Shop items, Reviewing item details and fee Before Placing the order");
+        waitTime(2000);
+        changeNumberPage();
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
+        shopItemsNavigation();
+        deleteItemsInCart();
+        hamburgerMenuNavigation();
+        verifyElementPresentAndClick(MLWalletShopItemsPage.objShop,getTextVal(MLWalletShopItemsPage.objShop,"Link"));
+        selectItemAndAddToCart("Rings");
+        navigationToCart();
+        verifyElementPresentAndClick(MLWalletShopItemsPage.objCheckOutBtn, getTextVal(MLWalletShopItemsPage.objCheckOutBtn,"Button"));
+        Swipe("UP", 3);
+        verifyElementPresentAndClick(MLWalletShopItemsPage.objSelectBranch,getTextVal(MLWalletShopItemsPage.objSelectBranch,"DropDown"));
+        verifyElementPresentAndClick(MLWalletShopItemsPage.objBranch,getTextVal(MLWalletShopItemsPage.objBranch,"Option"));
+        Swipe("UP",1);
+        verifyElementPresentAndClick(MLWalletShopItemsPage.objSelectPaymentMethod("ML WALLET"),getTextVal(MLWalletShopItemsPage.objSelectPaymentMethod("ML WALLET"),"Payment method"));
+        Swipe("UP",1);
+        String sMerchandiseTotal = getText(MLWalletShopItemsPage.getAmountValue("Merchandise Total"));
+        sMerchandiseTotal = sMerchandiseTotal.substring(1,sMerchandiseTotal.length());
+        if(sMerchandiseTotal.contains(",")){
+            sMerchandiseTotal = sMerchandiseTotal.replace(",","");
+        }
+        float fMerchandiseTotal = Float.parseFloat(sMerchandiseTotal);
+        String sServiceTotal = getText(MLWalletShopItemsPage.getAmountValue("Service Total"));
+        sServiceTotal = sServiceTotal.substring(1,sServiceTotal.length());
+        if(sServiceTotal.contains(",")){
+            sServiceTotal = sServiceTotal.replace(",","");
+        }
+        float fServiceTotal = Float.parseFloat(sServiceTotal);
+        String sShippingTotal = getText(MLWalletShopItemsPage.getAmountValue("Shipping Total"));
+        sShippingTotal = sShippingTotal.substring(1,sShippingTotal.length());
+        if(sShippingTotal.contains(",")){
+            sShippingTotal = sShippingTotal.replace(",","");
+        }
+        float fShippingTotal = Float.parseFloat(sShippingTotal);
+        String sTotalPayment = getText(MLWalletShopItemsPage.getAmountValue("Total Payment"));
+        sTotalPayment = sTotalPayment.substring(1,sTotalPayment.length());
+        if(sTotalPayment.contains(",")){
+            sTotalPayment = sTotalPayment.replace(",","");
+        }
+        float fTotalPayment = Float.parseFloat(sTotalPayment);
+        logger.info("Merchandise Total : "+fMerchandiseTotal);
+        extentLogger("","Merchandise Total : "+fMerchandiseTotal);
+        logger.info("Service Total : "+fServiceTotal);
+        extentLogger("","Service Total : "+fServiceTotal);
+        logger.info("Shipping Total : "+sShippingTotal);
+        extentLogger("","Shipping Total : "+sShippingTotal);
+        logger.info("Total Payment : "+sTotalPayment);
+        extentLogger("","Total Payment : "+sTotalPayment);
+
+        float fTotalExceptedPayment = fMerchandiseTotal+fServiceTotal+fShippingTotal;
+        logger.info("Total Payment By calculating Merchandise Total, Service Total and Shipping Total : "+fTotalExceptedPayment);
+        extentLogger("","Total Payment By calculating Merchandise Total, Service Total and Shipping Total : "+fTotalExceptedPayment);
+        assertionValidation(fTotalPayment,fTotalExceptedPayment);
+        if(fTotalPayment==fTotalExceptedPayment){
+            logger.info("SI_TC_69, Shop items, Reviewed item details and fee Before Placing the order");
+            extentLoggerPass("SI_TC_69", "SI_TC_69,Shop items, Reviewed item details and fee Before Placing the order");
+            System.out.println("-----------------------------------------------------------");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
