@@ -306,7 +306,7 @@
 					<groups>${groups}</groups>
 					<suiteXmlFiles>
 <!--						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>-->
-						<!--						     <suiteXmlFile>mlwalletios.xml</suiteXmlFile>-->
+												     <suiteXmlFile>mlwalletios.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>

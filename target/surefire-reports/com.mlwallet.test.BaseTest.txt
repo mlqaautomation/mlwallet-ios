@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.mlwallet.test.BaseTest
+-------------------------------------------------------------------------------
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.336 s - in com.mlwallet.test.BaseTest
