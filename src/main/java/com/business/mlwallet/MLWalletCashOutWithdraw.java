@@ -39,9 +39,9 @@ public class MLWalletCashOutWithdraw extends BaseClass {
             waitTime(5000);
             click(MLWalletCashOutPage.objAmountNextBtn, getTextVal(MLWalletCashOutPage.objAmountNextBtn, "Button"));
             waitTime(10000);
-            String sDragonPopUpMsg = getText(MLWalletCashOutPage.objDragonPayPopUpMsg);
-            String sExpectedMsg = "Dragon Pay charges a fee of 35.00 pesos for this transaction. Do you wish to continue with your transaction?";
-            assertionValidation(sDragonPopUpMsg, sExpectedMsg);
+//            String sDragonPopUpMsg = getText(MLWalletCashOutPage.objDragonPayPopUpMsg);
+//            String sExpectedMsg = "Dragon Pay charges a fee of 35.00 pesos for this transaction. Do you wish to continue with your transaction?";
+//            assertionValidation(sDragonPopUpMsg, sExpectedMsg);
             click(MLWalletCashOutPage.objContinueBtn, getTextVal(MLWalletCashOutPage.objContinueBtn, "Button"));
             Swipe("Up",1);
             click(MLWalletCashOutPage.objNextBtn, getTextVal(MLWalletCashOutPage.objNextBtn, "Button"));

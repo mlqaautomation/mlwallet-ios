@@ -16,7 +16,7 @@ public class MLWalletLogin extends BaseClass {
     }
 
     public static void mlWalletLogin(String sTier) throws Exception {
-        waitTime(2000);
+        waitTime(5000);
         type(MLWalletLoginPage.objMobileNumberTextField, sTier, "Mobile Number Text Field");
         waitTime(5000);
         click(MLWalletLoginPage.objLoginBtn, "Login Button");
@@ -59,6 +59,12 @@ public class MLWalletLogin extends BaseClass {
             verifyElementPresent(MLWalletLoginPage.objOtpTextField, "OTP text Field");
             waitTime(2000);
             type(MLWalletLoginPage.objOtpTextField, OTP, "OTP Text Field");
+            for (int i = 0; i <= 6; i++) {
+                char ch = OTP.charAt(i);
+                String ch1 = String.valueOf(ch);
+                click(MLWalletSettingsPage.objEnterMpinVal(ch1),
+                        getTextVal(MLWalletSettingsPage.objEnterMpinVal(ch1), "OTP"));
+            }
             waitTime(3000);
         } else {
             handleMpin("1111", "Entered");
@@ -295,14 +301,13 @@ public class MLWalletLogin extends BaseClass {
         type(MLWalletLoginPage.objMobileNumberTextField, prop.getproperty("Branch_Verified"), "Mobile Number Text Field");
         click(MLWalletLoginPage.objLoginBtn, "Login Button");
         waitTime(3000);
-        if (verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"))) {
-            verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"));
-            verifyElementPresent(MLWalletLoginPage.objOtpContineBtn,getTextVal(MLWalletLoginPage.objOtpContineBtn,"Button"));
-            verifyElementPresent(MLWalletLoginPage.objCancelBtn,getTextVal(MLWalletLoginPage.objCancelBtn,"Button"));
-            logger.info("Lgn_TC_23, LogIn In App OTP Navigation validated");
-            extentLoggerPass("Lgn_TC_23", "Lgn_TC_23, LogIn In App OTP Navigation validated");
-            System.out.println("-----------------------------------------------------------");
-        }
+        verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Page"));
+        verifyElementPresent(MLWalletLoginPage.objOTP, getTextVal(MLWalletLoginPage.objOTP, "One Time Pin"));
+        verifyElementPresent(MLWalletLoginPage.objOtpContineBtn, getTextVal(MLWalletLoginPage.objOtpContineBtn, "Button"));
+        verifyElementPresent(MLWalletLoginPage.objCancelBtn, getTextVal(MLWalletLoginPage.objCancelBtn, "Button"));
+        logger.info("Lgn_TC_23, LogIn In App OTP Navigation validated");
+        extentLoggerPass("Lgn_TC_23", "Lgn_TC_23, LogIn In App OTP Navigation validated");
+        System.out.println("-----------------------------------------------------------");
     }
 
     public void loginNewOTPAfterSixtySecondsValidation_Lgn_TC_24() throws Exception {
@@ -312,17 +317,19 @@ public class MLWalletLogin extends BaseClass {
         type(MLWalletLoginPage.objMobileNumberTextField, prop.getproperty("Branch_Verified"), "Mobile Number Text Field");
         click(MLWalletLoginPage.objLoginBtn, "Login Button");
         waitTime(2000);
-        verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
+        verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Page"));
         if(verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"))){
             String sGeneratedOTP = getText(MLWalletLoginPage.objOTP);
-            waitTime(70000);
+            for(int i=1;i<=60;i++){
+                click1(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"));
+            }
+            verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"));
             String sNewlyGeneratedOTPAfterSixtySeconds = getText(MLWalletLoginPage.objOTP);
             assertNotEquals(sGeneratedOTP,sNewlyGeneratedOTPAfterSixtySeconds);
             logger.info("Lgn_TC_24, LogIn, After Sixty Seconds New OTP got generated is validated");
             extentLoggerPass("Lgn_TC_24", "Lgn_TC_24, LogIn, After Sixty Seconds New OTP got generated is validated");
             System.out.println("-----------------------------------------------------------");
         }
-        getDriver().resetApp();
     }
 
     public void loginOTPCancelBtnFunctionality_Lgn_TC_25() throws Exception {
@@ -331,8 +338,7 @@ public class MLWalletLogin extends BaseClass {
         click(MLWalletLoginPage.objMobileNumberTextField, "Mobile Number Text Field");
         type(MLWalletLoginPage.objMobileNumberTextField, prop.getproperty("Branch_Verified"), "Mobile Number Text Field");
         click(MLWalletLoginPage.objLoginBtn, "Login Button");
-        explicitWaitVisible(MLWalletLoginPage.objOneTimePin, 5);
-        verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
+        verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Page"));
         verifyElementPresentAndClick(MLWalletLoginPage.objCancelBtn,getTextVal(MLWalletLoginPage.objCancelBtn,"Button"));
         waitTime(2000);
         if(verifyElementPresent(MLWalletLoginPage.objLoginBtn,getTextVal(MLWalletLoginPage.objLoginBtn,"Button"))){
@@ -340,7 +346,6 @@ public class MLWalletLogin extends BaseClass {
             extentLoggerPass("Lgn_TC_25", "Lgn_TC_25, LogIn, After clicking on Cancel in One time pin popup App navigates to login Page validated");
             System.out.println("-----------------------------------------------------------");
         }
-        getDriver().resetApp();
     }
 
 
@@ -351,7 +356,7 @@ public class MLWalletLogin extends BaseClass {
         type(MLWalletLoginPage.objMobileNumberTextField, prop.getproperty("Branch_Verified"), "Mobile Number Text Field");
         click(MLWalletLoginPage.objLoginBtn, "Login Button");
         waitTime(5000);
-        verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
+        verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Page"));
         verifyElementPresentAndClick(MLWalletLoginPage.objOtpContineBtn,getTextVal(MLWalletLoginPage.objOtpContineBtn,"Button"));
         waitTime(2000);
         if(verifyElementPresent(MLWalletLoginPage.objAvailableBalance,getTextVal(MLWalletLoginPage.objAvailableBalance,"Button"))){
@@ -384,7 +389,6 @@ public class MLWalletLogin extends BaseClass {
             click(MLWalletLoginPage.objOtpContineBtn, "OTP Continue Button");
         }else
         {
-            explicitWaitVisible(MLWalletLoginPage.objOneTimePin, 20);
             waitTime(2000);
             verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
             verifyElementPresent(MLWalletLoginPage.objOtpTextField, "OTP text Field");

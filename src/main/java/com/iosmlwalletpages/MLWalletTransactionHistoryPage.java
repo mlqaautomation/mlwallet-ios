@@ -68,7 +68,7 @@ public class MLWalletTransactionHistoryPage {
 	public static By objDate = By.xpath("(//*[XCUIElementTypeOther]/descendant::XCUIElementTypeStaticText)[5]");
 	
 	public static By objBank = By.xpath("(//XCUIElementTypeStaticText[@name='Bank'])[2]");
-	public static By objAmountReceived = By.xpath("(//*[@name='Amount Received'])[2]");
+	public static By objAmountReceived = By.xpath("(//XCUIElementTypeStaticText[@name='Amount Received'])[2]");
 	public static By objRedeemCode = By.xpath("(//*[@name='Redeem Code'])[3]");
 	public static By objCashInFirstTransaction = By.xpath("(//*[@name=\"All\"]/ancestor::XCUIElementTypeOther/descendant::XCUIElementTypeOther/child::XCUIElementTypeScrollView/descendant::XCUIElementTypeOther/descendant::XCUIElementTypeOther/child::XCUIElementTypeOther[contains(@name,'Cash In')])[2]");
 	public static By objCashoutFirstTransaction = By.xpath("(//*[@name=\"All\"]/ancestor::XCUIElementTypeOther/descendant::XCUIElementTypeOther/child::XCUIElementTypeScrollView/descendant::XCUIElementTypeOther/descendant::XCUIElementTypeOther/child::XCUIElementTypeOther[contains(@name,'Cash Out')])[2]");

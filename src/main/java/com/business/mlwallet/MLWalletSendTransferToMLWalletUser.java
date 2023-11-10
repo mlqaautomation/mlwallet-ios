@@ -218,7 +218,7 @@ public class MLWalletSendTransferToMLWalletUser extends BaseClass{
             String sFirstNameErrorMsg = getText(MLWalletSendTransferPage.objUnRegisteredMobNumber);
             String sExpectedMsg = "Receiver not Found!";
             assertionValidation(sFirstNameErrorMsg, sExpectedMsg);
-            click(MLWalletSendTransferPage.objOkBtn, "Ok Button");
+            verifyElementPresent(MLWalletSendTransferPage.objOkBtn, "Ok Button");
             logger.info("STW_TC_04, Receiver not Found - Error Message is validated");
             extentLoggerPass("STW_TC_04", "STW_TC_04, Receiver not Found - Error Message is validated");
             System.out.println("-----------------------------------------------------------");
@@ -252,13 +252,13 @@ public class MLWalletSendTransferToMLWalletUser extends BaseClass{
         HeaderChildNode("Send Money to any ML Branch");
         waitTime(2000);
         changeNumberPage();
-        sendMoneyMLWallet("9999999999");
+        sendMoneyMLWallet("9999999998");
         enterMobileNumberMLWallet(prop.getproperty("ios_BranchVerifiedTier"));
         enterAmountAndSendToMLWallet("35000");
         waitTime(4000);
         if (verifyElementPresent(MLWalletSendTransferPage.objInsufficientAmountMsg, getTextVal(MLWalletSendTransferPage.objInsufficientAmountMsg, "Error Message"))) {
             String sInsufficientBalanceErrorMsg = getText(MLWalletSendTransferPage.objInsufficientAmountMsg);
-            String sExpectedErrorMsg = "There is insufficient balance to proceed with this transaction. Please try again.";
+            String sExpectedErrorMsg = "There is insufficient balance on your account to proceed with this transaction. Please try again.";
             assertionValidation(sInsufficientBalanceErrorMsg, sExpectedErrorMsg);
             click(MLWalletSendTransferPage.objOkBtn, "OK Button");
             logger.info("STW_TC_06, Insufficient Balance - Error Message is validated");
@@ -300,7 +300,7 @@ public class MLWalletSendTransferToMLWalletUser extends BaseClass{
         click(MLWalletSendTransferPage.objDeleteBtn, getTextVal(MLWalletSendTransferPage.objDeleteBtn, "Button"));
         waitTime(2000);
         click(MLWalletSendTransferPage.objConfirmBtn1, getTextVal(MLWalletSendTransferPage.objConfirmBtn1, "Button"));
-        explicitWaitVisible(MLWalletSendTransferPage.objFavRemovedMsg, 10);
+        waitTime(5000);
         if(verifyElementPresent(MLWalletSendTransferPage.objFavRemovedMsg, getTextVal(MLWalletSendTransferPage.objFavRemovedMsg, "Pop up Message"))) {
             String sRemovedSuccessfulMsg = getText(MLWalletSendTransferPage.objFavRemovedMsg);
             String sExpectedMsg = "Successfully Removed";
@@ -573,7 +573,7 @@ public class MLWalletSendTransferToMLWalletUser extends BaseClass{
             String sMaximumLimitErrorMsg = getText(MLWalletSendTransferPage.objErrorMsg);
             String sExpectedErrorMsg = "Send Money is not allowed for customers at this verification level. Please upgrade your account to use this service.";
             assertionValidation(sMaximumLimitErrorMsg, sExpectedErrorMsg);
-            verifyElementPresentAndClick(MLWalletSendTransferPage.objUpgradeNowBtn, getTextVal(MLWalletSendTransferPage.objUpgradeNowBtn, "Button"));
+            verifyElementPresent(MLWalletSendTransferPage.objUpgradeNowBtn, getTextVal(MLWalletSendTransferPage.objUpgradeNowBtn, "Button"));
             logger.info("STW_TC_22, Send Money is not allowed for customers at this Buyer tier - Error Message is validated");
             extentLoggerPass("STW_TC_22", "STW_TC_22, Send Money is not allowed for customers at this Buyer tier  - Error Message is validated");
             System.out.println("-----------------------------------------------------------");
@@ -640,7 +640,7 @@ public class MLWalletSendTransferToMLWalletUser extends BaseClass{
         HeaderChildNode("Send Money To ML Wallet Semi-Verified Account Maximum Limit Validation");
         waitTime(2000);
         changeNumberPage();
-        sendMoneyMLWallet(prop.getproperty("Semi_Verified"));
+        sendMoneyMLWallet(prop.getproperty("Semi_Verified_One"));
         enterMobileNumberMLWallet(prop.getproperty("Branch_Verified"));
         enterAmountAndSendToMLWallet("60000");
         waitTime(3000);
@@ -852,8 +852,6 @@ public class MLWalletSendTransferToMLWalletUser extends BaseClass{
         DriverManager.getAppiumDriver().runAppInBackground(Duration.ofSeconds(5));
         waitTime(5000);
         logger.info("Application relaunched after 5 Seconds");
-        click(MLWalletSendTransferPage.objOkBtn, "OK Button");
-        enterOTP(prop.getproperty("Valid_OTP"));
         waitTime(5000);
         if (verifyElementPresent(MLWalletSendTransferPage.objSendMoneyMLWallet, getTextVal(MLWalletSendTransferPage.objSendMoneyMLWallet, "Message"))) {
             Swipe("UP",1);
@@ -966,7 +964,9 @@ public class MLWalletSendTransferToMLWalletUser extends BaseClass{
         verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Page"));
         if(verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"))){
             String sGeneratedOTP = getText(MLWalletLoginPage.objOTP);
-            waitTime(70000);
+            for(int i=1;i<=60;i++){
+                click1(MLWalletLoginPage.objOneTimePinPopup,"One time pin popup");
+            }
             String sNewlyGeneratedOTPAfterSixtySeconds = getText(MLWalletLoginPage.objOTP);
             assertNotEquals(sGeneratedOTP,sNewlyGeneratedOTPAfterSixtySeconds);
             logger.info("STW_TC_65, Send Money To ML Wallet Transaction New OTP got generated After Sixty Seconds is validated");

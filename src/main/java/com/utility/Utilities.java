@@ -489,6 +489,28 @@ public class Utilities extends ExtentReporter {
             throw new AssertionError("Unable to click element " + byLocator, e);
         }
     }
+    public static void click1(By byLocator, String validationtext) throws Exception {
+        //String platform = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getSuite().getName();
+        try {
+            if (platform.equalsIgnoreCase("BrowserStack") || platform.equalsIgnoreCase("Android")) {
+                AndroidElement element = (AndroidElement) DriverManager.getAppiumDriver().findElement(byLocator);
+                element.click();
+            } else if (platform.equalsIgnoreCase("mpwa")) {
+                WebElement element = DriverManager.getAppiumDriver().findElement(byLocator);
+                element.click();
+            } else if (platform.equalsIgnoreCase("iOS") || platform.equalsIgnoreCase("IOSBrowserStack")) {
+                WebElement element = findElement(byLocator);
+                element.click();
+            } else if (platform.equalsIgnoreCase("web")) {
+                WebElement element = getWebDriver().findElement(byLocator);
+                element.click();
+            }
+        } catch (Exception e) {
+            screencapture();
+            throw new AssertionError("Unable to click element " + byLocator, e);
+        }
+    }
+
 
     public static void DoubleClick(By locator, String OptionName) {
         try {

@@ -82,7 +82,7 @@ public class MLWalletLoginPage {
 	
 	public static By objOtpContineBtn = By.xpath("//*[@name='modal-confirm-button']");
 	
-	public static By objCancelBtn = By.xpath("(//*[@name='CANCEL'])[3]");
+	public static By objCancelBtn = By.xpath("(//XCUIElementTypeOther[@name='CANCEL'])[3]");
 
 	public static By objCameraPopup = By.xpath("//XCUIElementTypeStaticText[@name='“ML Wallet” Would Like to Access the Camera']");
 

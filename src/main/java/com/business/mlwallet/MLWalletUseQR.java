@@ -1,5 +1,6 @@
 package com.business.mlwallet;
 
+import com.driverInstance.DriverManager;
 import com.iosmlwalletpages.*;
 
 import java.time.Duration;
@@ -45,6 +46,7 @@ public class MLWalletUseQR extends BaseClass{
             type(MLWalletSendTransferPage.objAmountTxtField, nAmount, "Amount Text Field");
             Swipe("DOWN", 1);
             waitTime(2000);
+            click(MLWalletSendTransferPage.objNextBtn1, getTextVal(MLWalletSendTransferPage.objNextBtn1, "Button"));
             click(MLWalletSendTransferPage.objNextBtn1, getTextVal(MLWalletSendTransferPage.objNextBtn1, "Button"));
             waitTime(2000);
             click(MLWalletSendTransferPage.objMLWalletBalance, getTextVal(MLWalletSendTransferPage.objMLWalletBalance, "Button"));
@@ -579,7 +581,7 @@ public class MLWalletUseQR extends BaseClass{
         scanQR(prop.getproperty("Valid_QR"));
         enterAmountAndSendToMLWallet("10");
         enterOTP(prop.getproperty("Valid_OTP"));
-        getDriver().runAppInBackground(Duration.ofSeconds(5));
+        DriverManager.getAppiumDriver().runAppInBackground(Duration.ofSeconds(5));
         logger.info("Application relaunched after 5 Seconds");
         waitTime(2000);
         if (verifyElementPresent(MLWalletSendTransferPage.objSendMoneyMLWallet, getTextVal(MLWalletSendTransferPage.objSendMoneyMLWallet, "Message"))) {
@@ -629,7 +631,7 @@ public class MLWalletUseQR extends BaseClass{
         scanQR(prop.getproperty("Valid_QR"));
         enterAmountAndSendToMLWallet("10");
         waitTime(5000);
-        if (verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"))) {
+        if (verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Page"))) {
             verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"));
             logger.info("QR_TC_40, Use QR, Send Money To ML Wallet InApp OTP popup validated");
             extentLoggerPass("QR_TC_40", "QR_TC_40, Use QR, Send Money To ML Wallet InApp OTP popup validated");
@@ -665,7 +667,9 @@ public class MLWalletUseQR extends BaseClass{
         verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
         if(verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"))){
             String sGeneratedOTP = getText(MLWalletLoginPage.objOTP);
-            waitTime(70000);
+            for(int i=1;i<=60;i++){
+                click1(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"));
+            }
             String sNewlyGeneratedOTPAfterSixtySeconds = getText(MLWalletLoginPage.objOTP);
             assertNotEquals(sGeneratedOTP,sNewlyGeneratedOTPAfterSixtySeconds);
             logger.info("QR_TC_42, Use QR, Send Money To ML Wallet Transaction New OTP got generated After Sixty Seconds is validated");

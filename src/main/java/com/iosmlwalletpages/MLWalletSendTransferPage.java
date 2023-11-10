@@ -162,7 +162,7 @@ public class MLWalletSendTransferPage {
 
     public static By objInvalidAmountMsg = By.xpath("//*[@label='The amount should not be less than 1' or @name='The amount should not be less than 1']");
 
-    public static By objInsufficientAmountMsg = By.xpath("//*[@name='There is insufficient balance to proceed with this transaction. Please try again.']");
+    public static By objInsufficientAmountMsg = By.xpath("//XCUIElementTypeOther[@name='Ok']/preceding-sibling::XCUIElementTypeStaticText");
 
     public static By objMaxLimitErrorMsg = By.xpath("//*[@name='The maximum Send Money per transaction set for your verification level is P50,000.00. Please try again.']");
 
@@ -190,7 +190,7 @@ public class MLWalletSendTransferPage {
 
     public static By objEllipsisBtn = By.xpath("(//XCUIElementTypeOther[@name=\"\"])[2]");
 
-    public static By objDeleteBtn = By.xpath("//XCUIElementTypeStaticText[@label='Delete']");
+    public static By objDeleteBtn = By.xpath("//XCUIElementTypeOther[@name='917BDF']");
 
     public static By objSaveToMyFavorite = By.xpath("//*[@name='K6F6FC']");
 
@@ -210,7 +210,7 @@ public class MLWalletSendTransferPage {
     
     public static By objMaxLimitPopUp = By.xpath("//*[@name='The maximum Send Money per transaction set for your verification level is P50,000.00. Please try again.']");
     
-    public static By objUpgradeNowBtn = By.xpath("(//*[@name='Upgrade Now'])[2]");
+    public static By objUpgradeNowBtn = By.xpath("//XCUIElementTypeOther[@name='modal-confirm-button']");
     
     public static By objInvalidPINMsg = By.xpath("//*[@name='You have entered an invalid PIN. Please try again.']");
 
