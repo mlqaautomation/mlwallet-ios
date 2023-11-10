@@ -89,10 +89,10 @@ public class BaseTest {
 //        DriverManager.getAppiumDriver().manage().deleteAllCookies();
     }
     //Stop Application
-    @AfterTest
-    public void afterTest() {
-        baseClass.tearDown();
-    }
+//    @AfterTest
+//    public void afterTest() {
+//        baseClass.tearDown();
+//    }
 
 
 }
