@@ -84,10 +84,10 @@ public class BaseTest {
         softAssert = new SoftAssert();
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void afterMethod() throws Exception {
-//        DriverManager.getAppiumDriver().manage().deleteAllCookies();
-    }
+//    @AfterMethod(alwaysRun = true)
+//    public void afterMethod() throws Exception {
+////        DriverManager.getAppiumDriver().manage().deleteAllCookies();
+//    }
     //Stop Application
 //    @AfterTest
 //    public void afterTest() {
