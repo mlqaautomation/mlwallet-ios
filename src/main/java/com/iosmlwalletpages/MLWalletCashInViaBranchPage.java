@@ -26,7 +26,7 @@ public class MLWalletCashInViaBranchPage {
 	
 	public static By objContinueButton=By.xpath("//*[@label='Continue']");
 	
-	public static By objPopUpContinueButton=By.xpath("//*[XCUIElementTypeOther]/child::XCUIElementTypeOther/descendant::XCUIElementTypeOther[@name='Continue']");
+	public static By objPopUpContinueButton=By.xpath("//XCUIElementTypeOther[@name=\"modal-confirm-button\"]");
 	
 	public static By objkptnId=By.xpath("//*[@resource-id='transaction-code']");
 	

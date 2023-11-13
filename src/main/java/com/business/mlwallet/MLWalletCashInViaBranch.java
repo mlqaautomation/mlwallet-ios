@@ -36,7 +36,6 @@ public class MLWalletCashInViaBranch extends BaseClass {
         waitTime(2000);
         click(MLWalletCashInViaBranchPage.objPopUpContinueButton, getTextVal(MLWalletCashInViaBranchPage.objPopUpContinueButton, "Button"));
         waitTime(2000);
-
     }
 
 
@@ -132,14 +131,15 @@ public class MLWalletCashInViaBranch extends BaseClass {
         enterOTP(prop.getproperty("Valid_OTP"));
         verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objCancelTransactionBtn, getTextVal(MLWalletCashInViaBranchPage.objCancelTransactionBtn, "Button"));
         verifyElementPresent(MLWalletCashInViaBranchPage.objCancelTransactionPopup, getTextVal(MLWalletCashInViaBranchPage.objCancelTransactionPopup, "PopUp"));
-        waitTime(50000);
-        verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objCancelTransactionBtn, getTextVal(MLWalletCashInViaBranchPage.objCancelTransactionBtn, "Button"));
+        waitTime(5000);
+        click(MLWalletCashInViaBranchPage.objPopUpCancelTransactionBtn, getTextVal(MLWalletCashInViaBranchPage.objPopUpCancelTransactionBtn, "button"));
         verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objBackToHomeBtn, getTextVal(MLWalletCashInViaBranchPage.objBackToHomeBtn, "Button"));
-         verifyRecentTransaction2(prop.getproperty("Branch_Verified"));
+        waitTime(3000);
+        Swipe("DOWN",2);
         if(verifyElementPresent(MLWalletCashInBank.objCashInTransaction,getTextVal(MLWalletCashInBank.objCashInTransaction,"Transaction"))) {
             verifyElementPresent(MLWalletCashInBank.objCancelStatus,getTextVal(MLWalletCashInBank.objCancelStatus,"Status"));
             String sStatus = getText(MLWalletCashInBank.objCancelStatus);
-            String pendingStatus=sStatus.substring(2, 10);
+            String pendingStatus=sStatus.substring(2, 11);
             String sExpectedStatus = "Cancelled";
             System.out.println(sExpectedStatus);
             assertionValidation(pendingStatus,sExpectedStatus);
@@ -162,6 +162,7 @@ public class MLWalletCashInViaBranch extends BaseClass {
             assertionValidation(sInvalidAmountErrorMsg, sExpectedErrorMsg);
             logger.info("'CIBR_TC_03', 'CIBR_TC_03' To validate Invalid Amount");
             extentLoggerPass("CIBR_TC_03", "'CIBR_TC_03', To validate Invalid Amount");
+            System.out.println("-----------------------------------------------------------");
         }
     }
 
@@ -178,6 +179,7 @@ public class MLWalletCashInViaBranch extends BaseClass {
             assertionValidation(sErrorMsg, sExpectedErrorMsg);
             logger.info("'CIBR_TC_04', ML Wallet Cash In via Branch Maximum Limit Amount Validated");
             extentLoggerPass("CIBR_TC_04", "'CIBR_TC_04', ML Wallet Cash In via Branch Maximum Limit Amount Validated");
+            System.out.println("-----------------------------------------------------------");
         }
     }
 
@@ -308,8 +310,14 @@ public class MLWalletCashInViaBranch extends BaseClass {
         changeNumberPage();
         cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
         cancelPreviousTransactionAndContinue();
-        verifyElementPresent(MLWalletCashInViaBranchPage.objCashInToBranch, getTextVal(MLWalletCashInViaBranchPage.objCashInToBranch, "Header"));
-        verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objCancelTransactionBtn,getTextVal(MLWalletCashInViaBranchPage.objCancelTransactionBtn,"Button"));
+        waitTime(2000);
+        cashInViaBranchEnterAmount("100");
+        verifyElementPresent(MLWalletCashInViaBranchPage.objWarningPopup,
+                getTextVal(MLWalletCashInViaBranchPage.objWarningPopup, "Pop Up"));
+        click(MLWalletCashInViaBranchPage.objContinueButton, "Continue Button");
+        enterOTP(prop.getproperty("Valid_OTP"));
+        verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objCancelTransactionBtn, getTextVal(MLWalletCashInViaBranchPage.objCancelTransactionBtn, "Button"));
+        verifyElementPresent(MLWalletCashInViaBranchPage.objCancelTransactionPopup, getTextVal(MLWalletCashInViaBranchPage.objCancelTransactionPopup, "PopUp"));
         waitTime(2000);
         verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objPopUpCancelTransactionBtn,getTextVal(MLWalletCashInViaBranchPage.objPopUpCancelTransactionBtn,"Button"));
         waitTime(2000);

@@ -17,34 +17,34 @@ public class MLWalletCashInViaBranchScripts extends BaseTest{
 
     //******************* Cash In Via Branch ====================================/
 
-//    @Test(priority = 1)// pass
-//    public void cashInviaBranch_ValidAmount_Scenario_CIBR_TC_01() throws Exception
+    @Test(priority = 1)// pass
+    public void cashInviaBranch_ValidAmount_Scenario_CIBR_TC_01() throws Exception
+    {
+        mlWalletCashInViaBranch.cashInViaBranch_ValidAmount_Scenario_CIBR_TC_01();
+    }
+
+//   @Test(priority = 2) //pass
+//    public void cashInViaBranchCancelTransactionScenario_CIBR_TC_02() throws Exception
 //    {
-//        mlWalletCashInViaBranch.cashInViaBranch_ValidAmount_Scenario_CIBR_TC_01();
+//        mlWalletCashInViaBranch.cashInViaBranchCancelTransactionScenario_CIBR_TC_02();
 //    }
 
-   @Test(priority = 2) //pass
-    public void cashInViaBranchCancelTransactionScenario_CIBR_TC_02() throws Exception
-    {
-        mlWalletCashInViaBranch.cashInViaBranchCancelTransactionScenario_CIBR_TC_02();
-    }
+//    @Test(priority = 3) //pass
+//    public void cashInviaBranch_Invalid_Amount_CIBR_TC_03() throws Exception
+//    {
+//        mlWalletCashInViaBranch.cashInviaBranch_Invalid_Amount_CIBR_TC_03();
+//    }
 
-    @Test(priority = 3) //pass
-    public void cashInviaBranch_Invalid_Amount_CIBR_TC_03() throws Exception
-    {
-        mlWalletCashInViaBranch.cashInviaBranch_Invalid_Amount_CIBR_TC_03();
-    }
-
-    @Test(priority = 4) //pass
-    public void cashInViaBranch_Maximum_Limit_Amount_CIBR_TC_04() throws Exception
-    {
-        mlWalletCashInViaBranch.cashInViaBranch_Maximum_Limit_Amount_CIBR_TC_04();
-    }
-
-
-//============================================================================================================//
-
-
+//    @Test(priority = 4) //pass
+//    public void cashInViaBranch_Maximum_Limit_Amount_CIBR_TC_04() throws Exception
+//    {
+//        mlWalletCashInViaBranch.cashInViaBranch_Maximum_Limit_Amount_CIBR_TC_04();
+//    }
+//
+//
+////============================================================================================================//
+//
+//
 //    @Test(priority = 5) //pass
 //    public void cashInViaBRanchInvalidAmount_CIBR_TC_05() throws Exception {
 //        mlWalletCashInViaBranch.cashInViaBRanchInvalidAmount_CIBR_TC_05();

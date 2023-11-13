@@ -16,7 +16,7 @@ public class MLWalletLogin extends BaseClass {
     }
 
     public static void mlWalletLogin(String sTier) throws Exception {
-        waitTime(5000);
+        waitTime(8000);
         type(MLWalletLoginPage.objMobileNumberTextField, sTier, "Mobile Number Text Field");
         waitTime(5000);
         click(MLWalletLoginPage.objLoginBtn, "Login Button");
