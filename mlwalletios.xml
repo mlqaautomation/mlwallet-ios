@@ -18,9 +18,9 @@
         <classes>
 
 <!--            <class name="com.mlwallet.test.MLWalletUseQRScripts"/>-->
-            <class name="com.mlwallet.test.MLWalletLoginScripts"/>
+<!--            <class name="com.mlwallet.test.MLWalletLoginScripts"/>-->
 <!--            <class name="com.mlwallet.test.MLWalletCashInViaBankScripts"/>-->
-<!--            <class name="com.mlwallet.test.MLWalletCashInViaBranchScripts"/>-->
+            <class name="com.mlwallet.test.MLWalletCashInViaBranchScripts"/>
 <!--            <class name="com.mlwallet.test.MLWalletCashOutWithdrawScripts"/>-->
 <!--            <class name="com.mlwallet.test.MLWalletSettingsScripts"/>-->
 <!--            <class name="com.mlwallet.test.MLWalletTransactionHistoryScripts"/>-->

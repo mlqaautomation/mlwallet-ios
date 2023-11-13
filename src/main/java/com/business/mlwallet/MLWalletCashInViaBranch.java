@@ -132,6 +132,7 @@ public class MLWalletCashInViaBranch extends BaseClass {
         enterOTP(prop.getproperty("Valid_OTP"));
         verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objCancelTransactionBtn, getTextVal(MLWalletCashInViaBranchPage.objCancelTransactionBtn, "Button"));
         verifyElementPresent(MLWalletCashInViaBranchPage.objCancelTransactionPopup, getTextVal(MLWalletCashInViaBranchPage.objCancelTransactionPopup, "PopUp"));
+        waitTime(50000);
         verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objCancelTransactionBtn, getTextVal(MLWalletCashInViaBranchPage.objCancelTransactionBtn, "Button"));
         verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objBackToHomeBtn, getTextVal(MLWalletCashInViaBranchPage.objBackToHomeBtn, "Button"));
          verifyRecentTransaction2(prop.getproperty("Branch_Verified"));

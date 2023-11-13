@@ -56,10 +56,10 @@ public class MLWalletLogin extends BaseClass {
             explicitWaitVisible(MLWalletLoginPage.objOneTimePin, 20);
             waitTime(2000);
             verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
-            verifyElementPresent(MLWalletLoginPage.objOtpTextField, "OTP text Field");
+            verifyElementPresentAndClick(MLWalletLoginPage.objOtpTextField, "OTP text Field");
             waitTime(2000);
-            type(MLWalletLoginPage.objOtpTextField, OTP, "OTP Text Field");
-            for (int i = 0; i <= 6; i++) {
+//            type(MLWalletLoginPage.objOtpTextField, OTP, "OTP Text Field");
+            for (int i = 0; i < 6; i++) {
                 char ch = OTP.charAt(i);
                 String ch1 = String.valueOf(ch);
                 click(MLWalletSettingsPage.objEnterMpinVal(ch1),
