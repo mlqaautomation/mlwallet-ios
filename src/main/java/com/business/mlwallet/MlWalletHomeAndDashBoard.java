@@ -74,7 +74,7 @@ public class MlWalletHomeAndDashBoard extends BaseClass{
         HeaderChildNode("ML Wallet Home Page UI Validation");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         if (verifyElementPresent(MLWalletHomePage.objAvailableBalanceHeader, getTextVal(MLWalletHomePage.objAvailableBalanceHeader, "Header"))) {
             verifyElementPresentAndClick(MLWalletHomePage.objEyeIcon,"Eye Icon");
             verifyElementPresent(MLWalletHomePage.objAvailableBalance,getTextVal(MLWalletHomePage.objAvailableBalance,"Available Balance"));
@@ -112,7 +112,7 @@ public class MlWalletHomeAndDashBoard extends BaseClass{
         HeaderChildNode("ML Wallet Logout from Home Page Validation");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         verifyElementPresentAndClick(MLWalletHomePage.objHamburgerMenu,"Hamburger Menu");
         verifyElementPresentAndClick(MLWalletLogOutPage.objLogoutBtn,getTextVal(MLWalletLogOutPage.objLogoutBtn,"Button"));
         waitTime(3000);
@@ -130,7 +130,7 @@ public class MlWalletHomeAndDashBoard extends BaseClass{
         HeaderChildNode("ML Wallet Settings Navigation from Hom Page");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         waitTime(2000);
         verifyElementPresentAndClick(MLWalletHomePage.objProfileIcon1,"Profile Icon");
         explicitWaitVisibility(MLWalletHomePage.objSettings, 10);
@@ -151,7 +151,7 @@ public class MlWalletHomeAndDashBoard extends BaseClass{
         HeaderChildNode("ML Wallet Home Page Eye Icon Validation");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         verifyElementPresentAndClick(MLWalletHomePage.objEyeIcon,"Eye Icon");
         verifyElementPresent(MLWalletHomePage.objAvailableBalance,getTextVal(MLWalletHomePage.objAvailableBalance,"Available Balance"));
         verifyElementPresentAndClick(MLWalletHomePage.objEyeIcon,"Eye Icon");
@@ -165,7 +165,7 @@ public class MlWalletHomeAndDashBoard extends BaseClass{
         HeaderChildNode("ML Wallet Account Tier Level Verification");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Buyer_Tier"));
+        mlWalletLogin(prop.getproperty("New_BuyerTier"));
         verifyElementPresentAndClick(MLWalletHomePage.objIIcon,"i Icon");
         waitTime(4000);
         if(verifyElementPresent(MLWalletHomePage.objVerificationTierPerks,getTextVal(MLWalletHomePage.objVerificationTierPerks,"Page"))){
@@ -180,7 +180,7 @@ public class MlWalletHomeAndDashBoard extends BaseClass{
         HeaderChildNode("ML Wallet Home Page Recent Transaction validation");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         verifyElementPresent(MLWalletHomePage.objRecentTransactions,getTextVal(MLWalletHomePage.objRecentTransactions,"Header"));
         Swipe("UP",1);
         List<WebElement> values = findElements(MLWalletHomePage.objTransactions);
@@ -206,7 +206,7 @@ public class MlWalletHomeAndDashBoard extends BaseClass{
         HeaderChildNode("ML Wallet Home Page WithDraw Cash");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         verifyElementPresentAndClick(MLWalletHomePage.objHamburgerMenu,"Hamburger Menu");
         explicitWaitVisibility(MLWalletHomePage.objTransaction, 10);
         verifyElementPresentAndClick(MLWalletHomePage.objTransaction,getTextVal(MLWalletHomePage.objTransaction,"Option"));
@@ -224,7 +224,7 @@ public class MlWalletHomeAndDashBoard extends BaseClass{
         HeaderChildNode("ML Wallet Home Page Top Up ML Wallet");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         verifyElementPresentAndClick(MLWalletHomePage.objHamburgerMenu,"Hamburger Menu");
         verifyElementPresentAndClick(MLWalletHomePage.objTransaction,getTextVal(MLWalletHomePage.objTransaction,"Option"));
         verifyElementPresentAndClick(MLWalletHomePage.objTopUpMLWallet,getTextVal(MLWalletHomePage.objTopUpMLWallet,"Option"));
@@ -240,7 +240,7 @@ public class MlWalletHomeAndDashBoard extends BaseClass{
         HeaderChildNode("ML Wallet Home Page Shop");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         verifyElementPresentAndClick(MLWalletHomePage.objHamburgerMenu,"Hamburger Menu");
         verifyElementPresentAndClick(MLWalletHomePage.objShop,getTextVal(MLWalletHomePage.objShop,"Option"));
         waitTime(10000);
@@ -256,7 +256,7 @@ public class MlWalletHomeAndDashBoard extends BaseClass{
         HeaderChildNode("ML Wallet Home Page Kwarta Padala Rates Validation");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         verifyElementPresentAndClick(MLWalletLogOutPage.objHamburgerMenu1,"Hamburger Menu");
         explicitWaitVisibility(MLWalletHomePage.objKwartaPadalaRatesBtn, 10);
         verifyElementPresentAndClick(MLWalletHomePage.objKwartaPadalaRatesBtn,"Kwarta Padala Rates");
@@ -285,7 +285,7 @@ public class MlWalletHomeAndDashBoard extends BaseClass{
         HeaderChildNode("ML Wallet Verification Tier Perks Navigation From Home Page Hamburger Menu");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         waitTime(2000);
         verifyElementPresentAndClick(MLWalletLogOutPage.objHamburgerMenu1,"Hamburger Menu");
         waitTime(2000);
@@ -303,7 +303,7 @@ public class MlWalletHomeAndDashBoard extends BaseClass{
         HeaderChildNode("ML Wallet Support page Navigation From Home Page Hamburger Menu");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         verifyElementPresentAndClick(MLWalletLogOutPage.objHamburgerMenu1,"Hamburger Menu");
         verifyElementPresentAndClick(MLWalletHomePage.objSupport,getTextVal(MLWalletHomePage.objSupport,"Option"));
         explicitWaitVisible(MLWalletHomePage.objTroubleSingingInPAge,20);
@@ -318,7 +318,7 @@ public class MlWalletHomeAndDashBoard extends BaseClass{
         HeaderChildNode("ML Wallet About page Navigation From Home Page Hamburger Menu");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         verifyElementPresentAndClick(MLWalletLogOutPage.objHamburgerMenu1,"Hamburger Menu");
         verifyElementPresentAndClick(MLWalletHomePage.objAbout,getTextVal(MLWalletHomePage.objAbout,"Option"));
         explicitWaitVisible(MLWalletHomePage.objAbout,20);
@@ -432,7 +432,7 @@ public class MlWalletHomeAndDashBoard extends BaseClass{
         HeaderChildNode("ML Wallet Verification Tier Perks Validation By logging as Buyer Tier User");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Buyer_Tier"));
+        mlWalletLogin(prop.getproperty("New_BuyerTier"));
         verifyElementPresentAndClick(MLWalletLogOutPage.objHamburgerMenu, "Hamburger Menu");
         waitTime(2000);
         verifyElementPresentAndClick(MLWalletHomePage.objViewTierBuyierTierVerified, getTextVal(MLWalletHomePage.objViewTierBuyierTierVerified, "Option"));
@@ -479,7 +479,7 @@ public class MlWalletHomeAndDashBoard extends BaseClass{
         changeNumberPage();
         mlWalletLogin(prop.getproperty("Branch_Verified"));
         waitTime(2000);
-        verifyElementNotPresent(MLWalletHomePage.objVerificationTierPerks,5);
+        verifyElementNotPresent(MLWalletHomePage.objVerificationTierPerks,"Verification tier perk",5);
         logger.info("HD_TC_20, ML Wallet Home Page I Icon not displayed For Branch-verified Tier user");
         extentLoggerPass("HD_TC_20", "HD_TC_20, ML Wallet Home Page I Icon not displayed For Fully-verified Tier user");
         System.out.println("-----------------------------------------------------------");
@@ -490,7 +490,7 @@ public class MlWalletHomeAndDashBoard extends BaseClass{
         HeaderChildNode("ML Wallet Home Page I Icon Validation as BuyerTier verified User");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Buyer_Tier"));
+        mlWalletLogin(prop.getproperty("New_BuyerTier"));
         verifyElementPresentAndClick(MLWalletHomePage.objIIcon, "i Icon");
         waitTime(3000);
         if (verifyElementPresent(MLWalletHomePage.objVerificationTierPerks, getTextVal(MLWalletHomePage.objVerificationTierPerks, "Page"))) {
@@ -544,7 +544,7 @@ public class MlWalletHomeAndDashBoard extends BaseClass{
         waitTime(2000);
         changeNumberPage();
         mlWalletLogin(prop.getproperty("Fully_verified"));
-        if(verifyElementNotPresent(MLWalletHomePage.objIIcon,5)){
+        if(verifyElementNotPresent(MLWalletHomePage.objIIcon,"i icon",5)){
             logger.info("HD_TC_23, ML Wallet Home Page I Icon not displayed For Fully-verified Tier user");
             extentLoggerPass("HD_TC_23", "HD_TC_23, ML Wallet Home Page I Icon not displayed For Fully-verified Tier user");
             System.out.println("-----------------------------------------------------------");

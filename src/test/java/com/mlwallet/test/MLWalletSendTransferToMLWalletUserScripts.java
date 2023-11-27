@@ -4,7 +4,7 @@ import com.driverInstance.DriverManager;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-public class MLWalletSendTransferToMLWalletUserScripts extends BaseTest{
+public class  MLWalletSendTransferToMLWalletUserScripts extends BaseTest{
 
 //    @Test(priority = 1)
 //    public void sendToMLWalletUser_STW_TC_01() throws Exception
@@ -31,11 +31,11 @@ public class MLWalletSendTransferToMLWalletUserScripts extends BaseTest{
 //    }
 //
 //
-//    @Test(priority = 5)
-//    public void sendToMLWalletUnRegisteredNumber_STW_TC_04() throws Exception
-//    {
-//        mlWalletSendTransferToMLWalletUser.sendToMLWalletUnRegisteredNumber_STW_TC_04();
-//    }
+    @Test(priority = 5)
+    public void sendToMLWalletUnRegisteredNumber_STW_TC_04() throws Exception
+    {
+        mlWalletSendTransferToMLWalletUser.sendToMLWalletUnRegisteredNumber_STW_TC_04();
+    }
 
 //    @Test(priority = 6)
 //    public void sendToMLWalletInvalidAmount_STW_TC_05() throws Exception
@@ -43,11 +43,11 @@ public class MLWalletSendTransferToMLWalletUserScripts extends BaseTest{
 //        mlWalletSendTransferToMLWalletUser.sendToMLWalletInvalidAmount_STW_TC_05("0");
 //    }
 
-//    @Test(priority = 7)
-//    public void sendToMLWalletInsufficientAmount_STW_TC_06() throws Exception
-//    {
-//        mlWalletSendTransferToMLWalletUser.sendToMLWalletInsufficientAmount_STW_TC_06();
-//    }
+    @Test(priority = 7)
+    public void sendToMLWalletInsufficientAmount_STW_TC_06() throws Exception
+    {
+        mlWalletSendTransferToMLWalletUser.sendToMLWalletInsufficientAmount_STW_TC_06();
+    }
 
 //    @Test(priority = 8)
 //    public void sendMoneyMLWalletMaximumAmount_STW_TC_07() throws Exception
@@ -59,11 +59,11 @@ public class MLWalletSendTransferToMLWalletUserScripts extends BaseTest{
 
 //================================================================================================//
 
-//    @Test(priority = 9)
-//    public void sendMoneyDeleteFromFavorites_STW_TC_09() throws Exception
-//    {
-//        mlWalletSendTransferToMLWalletUser.sendMoneyDeleteFromFavorites_STW_TC_09();
-//    }
+    @Test(priority = 9)
+    public void sendMoneyDeleteFromFavorites_STW_TC_09() throws Exception
+    {
+        mlWalletSendTransferToMLWalletUser.sendMoneyDeleteFromFavorites_STW_TC_09();
+    }
 //
 //    @Test(priority = 10)
 //    public void sendMoneyMLWalletUIValidation_STW_TC_10() throws Exception {
@@ -110,20 +110,20 @@ public class MLWalletSendTransferToMLWalletUserScripts extends BaseTest{
 //        mlWalletSendTransferToMLWalletUser.sendMoneyToMlWalletEnterAmountPageUIValidation_STW_TC_19();
 //    }
 
-//    @Test(priority = 19)
-//    public void sendMoneyToMLWalletPageUIValidation_STW_TC_20() throws Exception {
-//        mlWalletSendTransferToMLWalletUser.sendMoneyToMLWalletPageUIValidation_STW_TC_20();
-//    }
+    @Test(priority = 19)
+    public void sendMoneyToMLWalletPageUIValidation_STW_TC_20() throws Exception {
+        mlWalletSendTransferToMLWalletUser.sendMoneyToMLWalletPageUIValidation_STW_TC_20();
+    }
 
 //    @Test(priority = 20)
 //    public void sendMoneyMlWalletTransactionDetailsUIValidation_STW_TC_21() throws Exception {
 //        mlWalletSendTransferToMLWalletUser.sendMoneyMlWalletTransactionDetailsUIValidation_STW_TC_21();
 //    }
 
-//    @Test(priority = 21)
-//    public void sendMoneyMLWalletBuyerTierAccountUser_STW_TC_22() throws Exception {
-//        mlWalletSendTransferToMLWalletUser.sendMoneyMLWalletBuyerTierAccountUser_STW_TC_22();
-//    }
+    @Test(priority = 21)
+    public void sendMoneyMLWalletBuyerTierAccountUser_STW_TC_22() throws Exception {
+        mlWalletSendTransferToMLWalletUser.sendMoneyMLWalletBuyerTierAccountUser_STW_TC_22();
+    }
 //
 //    @Test(priority = 22)
 //    public void sendMoneyMLWalletSemiVerifiedAccountUser_STW_TC_23() throws Exception {
@@ -140,11 +140,11 @@ public class MLWalletSendTransferToMLWalletUserScripts extends BaseTest{
 //        mlWalletSendTransferToMLWalletUser.sendMoneyMLWalletFullyVerifiedAccountUser_STW_TC_25();
 //    }
 //
-    @Test(priority = 25)
-    public void sendMoneyMlWalletSemiVerifiedAccountMaxLimit_STW_TC_26() throws Exception {
-        mlWalletSendTransferToMLWalletUser.sendMoneyMLWalletSemiVerifiedAccountMaxLimit_STW_TC_26();
-    }
-
+//    @Test(priority = 25)
+//    public void sendMoneyMlWalletSemiVerifiedAccountMaxLimit_STW_TC_26() throws Exception {
+//        mlWalletSendTransferToMLWalletUser.sendMoneyMLWalletSemiVerifiedAccountMaxLimit_STW_TC_26();
+//    }
+//
 //    @Test(priority = 26)
 //    public void sendMoneyMlWalletBranchVerifiedAccountMaxLimit_STW_TC_29() throws Exception {
 //        mlWalletSendTransferToMLWalletUser.sendMoneyMLWalletBranchVerifiedAccountMaxLimit_STW_TC_29();
@@ -159,7 +159,7 @@ public class MLWalletSendTransferToMLWalletUserScripts extends BaseTest{
 //    public void sendMoneyToMLWalletSuccessMsgValidation_STW_TC_35() throws Exception {
 //        mlWalletSendTransferToMLWalletUser.sendMoneyToMLWalletSuccessMsgValidation_STW_TC_35();
 //    }
-
+//
 //    @Test(priority = 29)
 //    public void sendMoneyToMLWalletMaxTransactionReceivingLimitSemiVerifiedTier_STW_TC_36() throws Exception {
 //        mlWalletSendTransferToMLWalletUser.sendMoneyToMLWalletMaxTransactionReceivingLimitSemiVerifiedTier_STW_TC_36("50000");
@@ -174,13 +174,13 @@ public class MLWalletSendTransferToMLWalletUserScripts extends BaseTest{
 //    public void sendMoneyToMLWalletMaxTransactionReceivingLimitFullyVerifiedTier_STW_TC_40() throws Exception {
 //        mlWalletSendTransferToMLWalletUser.sendMoneyToMLWalletMaxTransactionReceivingLimitFullyVerifiedTier_STW_TC_40("50000");
 //    }
-
-
-    @Test(priority = 32)
-    public void sendMoneyToMLWalletTransactionValidationAfterMinimizingApp_STW_TC_51() throws Exception {
-        mlWalletSendTransferToMLWalletUser.sendMoneyToMLWalletTransactionValidationAfterMinimizingApp_STW_TC_51();
-    }
-
+//
+//
+//    @Test(priority = 32)
+//    public void sendMoneyToMLWalletTransactionValidationAfterMinimizingApp_STW_TC_51() throws Exception {
+//        mlWalletSendTransferToMLWalletUser.sendMoneyToMLWalletTransactionValidationAfterMinimizingApp_STW_TC_51();
+//    }
+//
 //    @Test(priority = 33)
 //    public void sendMoneyToMLWalletTransactionWithValidMLPin_STW_TC_57() throws Exception {
 //        mlWalletSendTransferToMLWalletUser.sendMoneyToMLWalletTransactionWithValidMLPin_STW_TC_57();
@@ -200,12 +200,12 @@ public class MLWalletSendTransferToMLWalletUserScripts extends BaseTest{
 //    public void sendMoneyToMLWalletTransactionInAppOTPPopupUIValidation_STW_TC_64() throws Exception {
 //        mlWalletSendTransferToMLWalletUser.sendMoneyToMLWalletTransactionInAppOTPPopupUIValidation_STW_TC_64();
 //    }
-
+//
     @Test(priority = 37)
     public void sendMoneyToMLWalletTransactionNewOTPAfterSixtySecondsValidation_STW_TC_65() throws Exception {
         mlWalletSendTransferToMLWalletUser.sendMoneyToMLWalletTransactionNewOTPAfterSixtySecondsValidation_STW_TC_65();
     }
-
+//
 //    @Test(priority = 38)
 //    public void sendMoneyToMLWalletTransactionOTPCancelBtnFunctionality_STW_TC_66() throws Exception {
 //        mlWalletSendTransferToMLWalletUser.sendMoneyToMLWalletTransactionOTPCancelBtnFunctionality_STW_TC_66();

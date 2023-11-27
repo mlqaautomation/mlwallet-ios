@@ -476,11 +476,11 @@ public class MLWalletCashInViaBank extends BaseClass {
         dragonPayChargesMsgValidation();
         reviewTransactionValidation();
         waitTime(2000);
-        if (verifyElementPresent(MLWalletCashInBank.objMaxLimitTxt, getTextVal(MLWalletCashInBank.objMaxLimitTxt, "Text Message"))) {
-            String sErrorMessage = getText(MLWalletCashInBank.objMaxLimitTxt);
+        if (verifyElementPresent(MLWalletCashInBank.objCashInNotAllowedMsg, getTextVal(MLWalletCashInBank.objCashInNotAllowedMsg, "Text Message"))) {
+            String sErrorMessage = getText(MLWalletCashInBank.objCashInNotAllowedMsg);
             String ExpectedTxt = "Bank Cash-in is not allowed for customers at this verification level. Please upgrade your account to use this service.";
             assertionValidation(sErrorMessage, ExpectedTxt);
-            verifyElementPresentAndClick(MLWalletCashInBank.objUpgradeNowBtn,getTextVal(MLWalletCashInBank.objUpgradeNowBtn,"Button"));
+            verifyElementPresent(MLWalletCashInBank.objUpgradeNowBtn,getTextVal(MLWalletCashInBank.objUpgradeNowBtn,"Button"));
             logger.info("CIBA_TC_24, Branch Cash-In is not allowed for customers at this verification level. Error Message is Validated");
             extentLoggerPass("CIBA_TC_24", "CIBA_TC_24, Branch Cash-In is not allowed for customers at this verification level. Error Message is Validated");
             System.out.println("-----------------------------------------------------------");
@@ -503,7 +503,7 @@ public class MLWalletCashInViaBank extends BaseClass {
             verifyElementPresentAndClick(MLWalletCashInBank.objUpgradeNowBtn,getTextVal(MLWalletCashInBank.objUpgradeNowBtn,"Button"));
             logger.info("CIBA_TC_27, To validate Maximum Limit of transaction");
             extentLoggerPass("CIBA_TC_27", "CIBA_TC_27, To validate Maximum Limit of transaction");
-            waitTime(3000);
+            System.out.println("-----------------------------------------------------------");
         }
     }
 
@@ -522,6 +522,7 @@ public class MLWalletCashInViaBank extends BaseClass {
             assertionValidation(sErrorMsg, sExpectedErrorMsg);
             logger.info("CIBA_TC_28, To validate Maximum Limit of transaction");
             extentLoggerPass("CIBA_TC_28", "CIBA_TC_28, To validate Maximum Limit of transaction");
+            System.out.println("-----------------------------------------------------------");
         }
     }
 
@@ -529,7 +530,8 @@ public class MLWalletCashInViaBank extends BaseClass {
         HeaderChildNode("Cash In Via Bank Transaction Details Page UI Validation");
         cashInViaBank_CIBA_TC_01();
 //						verifyElementPresentAndClick(MLWalletCashInBank.objCompleteTransactionBtn,getTextVal(MLWalletCashInBank.objCompleteTransactionBtn,"Button"));
-        verifyRecentTransaction3(prop.getproperty("Branch_Verified"));
+        waitTime(3000);
+        Swipe("DOWN",2);
         verifyElementPresent(MLWalletHomePage.objRecentTransactions, getTextVal(MLWalletHomePage.objRecentTransactions, "Text"));
         click(MLWalletCashInBank.objCashInTransaction, getTextVal(MLWalletCashInBank.objCashInTransaction, "Transaction"));
         explicitWaitVisibility(MLWalletCashOutPage.objTransactionDetails, 10);
@@ -640,7 +642,7 @@ public class MLWalletCashInViaBank extends BaseClass {
         dragonPayChargesMsgValidation();
         reviewTransactionValidation();
         waitTime(3000);
-        if (verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"))) {
+        if (verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "popup"))) {
             verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"));
             logger.info("CIBA_TC_57, Cash In Via Bank, OTP popup validated");
             extentLoggerPass("CIBA_TC_57", "CIBA_TC_57, Cash In Via Bank, OTP popup validated");
@@ -658,7 +660,7 @@ public class MLWalletCashInViaBank extends BaseClass {
         dragonPayChargesMsgValidation();
         reviewTransactionValidation();
         waitTime(5000);
-        if (verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"))) {
+        if (verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Popup"))) {
             verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"));
             verifyElementPresent(MLWalletLoginPage.objOtpContineBtn,getTextVal(MLWalletLoginPage.objOtpContineBtn,"Button"));
             verifyElementPresent(MLWalletLoginPage.objCancelBtn,getTextVal(MLWalletLoginPage.objCancelBtn,"Button"));
@@ -678,11 +680,13 @@ public class MLWalletCashInViaBank extends BaseClass {
         dragonPayChargesMsgValidation();
         reviewTransactionValidation();
         waitTime(5000);
-        verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
+        verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Popup"));
         waitTime(3000);
         if(verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"))){
             String sGeneratedOTP = getText(MLWalletLoginPage.objOTP);
-            waitTime(70000);
+            for(int i=1;i<=80;i++){
+                click1(MLWalletLoginPage.objOneTimePinPopup,"One time pin popup");
+            }
             String sNewlyGeneratedOTPAfterSixtySeconds = getText(MLWalletLoginPage.objOTP);
             assertNotEquals(sGeneratedOTP,sNewlyGeneratedOTPAfterSixtySeconds);
             logger.info("CIBA_TC_59, Cash In Via Bank Transaction New OTP got generated After Sixty Seconds is validated");
@@ -700,7 +704,7 @@ public class MLWalletCashInViaBank extends BaseClass {
         dragonPayChargesMsgValidation();
         reviewTransactionValidation();
         waitTime(5000);
-        verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
+        verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Popup"));
         verifyElementPresentAndClick(MLWalletLoginPage.objCancelBtn,getTextVal(MLWalletLoginPage.objCancelBtn,"Button"));
         if(verifyElementPresent(MLWalletCashInBank.objReviewTransaction,getTextVal(MLWalletCashInBank.objReviewTransaction,"Page"))){
             logger.info("CIBA_TC_60, Cash In Via Bank Transaction, After clicking on Cancel in One time pin popup App navigates back to review transaction Page is validated");
@@ -718,7 +722,7 @@ public class MLWalletCashInViaBank extends BaseClass {
         dragonPayChargesMsgValidation();
         reviewTransactionValidation();
         waitTime(5000);
-        verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
+        verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Popup"));
         verifyElementPresentAndClick(MLWalletLoginPage.objOtpContineBtn, getTextVal(MLWalletLoginPage.objOtpContineBtn, "Button"));
         waitTime(2000);
         if (verifyElementPresent(MLWalletCashInBank.objReferenceNumberMsg, "Dragon Pay bank Page")) {

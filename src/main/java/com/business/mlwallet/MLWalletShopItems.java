@@ -1633,7 +1633,7 @@ public class MLWalletShopItems extends BaseClass{
         verifyElementPresentAndClick(MLWalletShopItemsPage.objDeleteItemAdded(sProductNameDisplayedInCart),"Delete Button");
         verifyElementPresent(MLWalletShopItemsPage.objDeleteConfirmationPopup,getTextVal(MLWalletShopItemsPage.objDeleteConfirmationPopup,"Popup"));
         verifyElementPresentAndClick(MLWalletShopItemsPage.objYesBtn,getTextVal(MLWalletShopItemsPage.objYesBtn,"Button"));
-        verifyElementNotPresent(MLWalletShopItemsPage.objMatchingItem(sProductName),5);
+        verifyElementNotPresent(MLWalletShopItemsPage.objMatchingItem(sProductName),"Matching items",5);
         logger.info("Previously added item is deleted");
         extentLogger("","Previously added item is deleted");
         logger.info("SI_TC_59, Shop Items, Add item to cart and Delete item from cart validated");
@@ -1869,7 +1869,7 @@ public class MLWalletShopItems extends BaseClass{
         waitTime(3000);
         verifyElementDisplayed(MLWalletShopItemsPage.objItemConfirmationPopup,getTextVal(MLWalletShopItemsPage.objItemConfirmationPopup,"popup"));
         verifyElementPresentAndClick(MLWalletShopItemsPage.objConfirmBtn,getTextVal(MLWalletShopItemsPage.objConfirmBtn,"Button"));
-        verifyElementNotPresent(MLWalletShopItemsPage.objConfirmBtn,5);
+        verifyElementNotPresent(MLWalletShopItemsPage.objConfirmBtn,"Confirm button",5);
         logger.info("SI_TC_68, Shop Items, After clicking on Confirm button on add to cart popup, Popup disappears validated");
         extentLoggerPass("SI_TC_68", "SI_TC_68, Shop Items, After clicking on Confirm button on add to cart popup, Popup disappears validated");
         System.out.println("-----------------------------------------------------------");
@@ -2079,7 +2079,7 @@ public class MLWalletShopItems extends BaseClass{
         verifyElementPresentAndClick(MLWalletShopItemsPage.objCheckOutBtn,getTextVal(MLWalletShopItemsPage.objCheckOutBtn,"Button"));
 //        verifyElementPresent(MLWalletShopItemsPage.objItemNotSelectedMsg,getTextVal(MLWalletShopItemsPage.objItemNotSelectedMsg,"error message"));
         verifyElementPresentAndClick(MLWalletShopItemsPage.objConfirmBtn,getTextVal(MLWalletShopItemsPage.objConfirmBtn,"Button"));
-        verifyElementNotPresent(MLWalletShopItemsPage.objConfirmBtn,5);
+        verifyElementNotPresent(MLWalletShopItemsPage.objConfirmBtn,"Confirm button",5);
         logger.info("SI_TC_77, Shop items, After clicking on confirm button on No items selected popup, popup got dismissed is validated");
         extentLoggerPass("SI_TC_77", "SI_TC_77, Shop items, After clicking on confirm button on No items selected popup, popup got dismissed is validated");
         System.out.println("-----------------------------------------------------------");
@@ -2449,7 +2449,7 @@ public class MLWalletShopItems extends BaseClass{
         verifyElementPresentAndClick(MLWalletShopItemsPage.objOkayBtn, getTextVal(MLWalletShopItemsPage.objOkayBtn, "Btn"));
         hamburgerMenuNavigation();
         verifyElementPresentAndClick(MLWalletShopItemsPage.objCartLink,getTextVal(MLWalletShopItemsPage.objCartLink,"Link"));
-        verifyElementNotPresent(MLWalletShopItemsPage.objProductNameInCartPage,5);
+        verifyElementNotPresent(MLWalletShopItemsPage.objProductNameInCartPage,"Added item",5);
         logger.info("Added item is not displayed");
         extentLogger("","Added item is not displayed");
         if(verifyElementPresent(MLWalletShopItemsPage.objEmptyCartMsg,getTextVal(MLWalletShopItemsPage.objEmptyCartMsg,"Message"))) {
@@ -3025,7 +3025,7 @@ public class MLWalletShopItems extends BaseClass{
         shopItemsNavigation();
         hamburgerMenuNavigation();
         verifyElementPresentAndClick(MLWalletShopItemsPage.objCartLink,getTextVal(MLWalletShopItemsPage.objCartLink,"Link"));
-        verifyElementNotPresent(MLWalletShopItemsPage.objProductNameInCartPage,5);
+        verifyElementNotPresent(MLWalletShopItemsPage.objProductNameInCartPage,"Added item",5);
         logger.info("Added item is not displayed");
         extentLogger("","Added item is not displayed");
         if(verifyElementPresent(MLWalletShopItemsPage.objEmptyCartMsg,getTextVal(MLWalletShopItemsPage.objEmptyCartMsg,"Message"))) {
@@ -3300,7 +3300,7 @@ public class MLWalletShopItems extends BaseClass{
         verifyElementPresentAndClick(MLWalletShopItemsPage.objPlaceOrderBtn, getTextVal(MLWalletShopItemsPage.objPlaceOrderBtn,"Place Order Button"));
         verifyElementPresent(MLWalletShopItemsPage.objPaymentMethodErrorMsg,getTextVal(MLWalletShopItemsPage.objPaymentMethodErrorMsg,"Error Msg"));
         verifyElementPresentAndClick(MLWalletShopItemsPage.objConfirmBtn,getTextVal(MLWalletShopItemsPage.objConfirmBtn,"Button"));
-        verifyElementNotPresent(MLWalletShopItemsPage.objPaymentMethodErrorMsg,5);
+        verifyElementNotPresent(MLWalletShopItemsPage.objPaymentMethodErrorMsg,"Payment error msg",5);
         logger.info("Please Select Method Payment popup is not displayed");
         extentLoggerPass("Popup","Please Select Method Payment popup is not displayed");
         logger.info("SI_TC_123, Shop Items, After clicking on Select payment method popup confirm button, popup disappears is validated");
@@ -3669,7 +3669,7 @@ public class MLWalletShopItems extends BaseClass{
         type(MLWalletShopItemsPage.objOTPInputField, prop.getproperty("Valid_OTP"), "OTP Input field");
         verifyElementPresent(MLWalletShopItemsPage.objInsufficientBalanceMsg, getTextVal(MLWalletShopItemsPage.objInsufficientBalanceMsg, "Error msg"));
         verifyElementPresentAndClick(MLWalletShopItemsPage.objClose,getTextVal(MLWalletShopItemsPage.objClose,"Button"));
-        verifyElementNotPresent(MLWalletShopItemsPage.objInsufficientBalanceMsg,5);
+        verifyElementNotPresent(MLWalletShopItemsPage.objInsufficientBalanceMsg,"Insufficient popup",5);
         logger.info("Insufficient popup dismissed");
         extentLoggerPass("", "Insufficient popup dismissed");
         if(verifyElementPresent(MLWalletShopItemsPage.objPlaceOrderBtn,getTextVal(MLWalletShopItemsPage.objPlaceOrderBtn,"Button"))){

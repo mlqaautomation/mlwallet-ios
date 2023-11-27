@@ -96,7 +96,7 @@ public class MLWalletCashOutPage {
     
     public static By objAccInvalidErrorMsg = By.xpath("(//*[XCUIElementTypeOther]/descendant::XCUIElementTypeOther/following-sibling::XCUIElementTypeStaticText)[5]");
     
-    public static By objOKBtnOne = By.xpath("(//*[@name='Ok'])[2]");
+    public static By objOKBtnOne = By.xpath("//XCUIElementTypeOther[@name=\"modal-confirm-button\"]");
 
     public static By objDragonPayPopUpMsg = By.xpath("//*[@name='Dragon Pay charges a fee of 35.00 pesos for this transaction. Do you wish to continue with your transaction?']");
 

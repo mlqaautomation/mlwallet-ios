@@ -2,6 +2,8 @@ package com.business.mlwallet;
 
 import static com.business.mlwallet.MLWalletLogin.*;
 import static com.utility.Utilities.*;
+
+import com.driverInstance.DriverManager;
 import com.iosmlwalletpages.*;
 
 import java.time.Duration;
@@ -32,6 +34,7 @@ public class MLWalletCashInViaBranch extends BaseClass {
 
     public void maxTransactionLimitValidation(String sTier) throws Exception {
         cashInViaBranchNavigation(sTier);
+        cancelPreviousTransactionAndContinue();
         cashInViaBranchEnterAmount("50001");
         waitTime(2000);
         click(MLWalletCashInViaBranchPage.objPopUpContinueButton, getTextVal(MLWalletCashInViaBranchPage.objPopUpContinueButton, "Button"));
@@ -103,6 +106,7 @@ public class MLWalletCashInViaBranch extends BaseClass {
             verifyElementPresent(MLWalletCashInViaBranchPage.objTransactionNo,getTextVal(MLWalletCashInViaBranchPage.objTransactionNo,"Transaction Number"));
             verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objCrossBtn,"Cash In Branch Cross Button");
             waitTime(5000);
+            Swipe("DOWN",2);
             if(verifyElementPresent(MLWalletCashInBank.objCashInTransaction,getTextVal(MLWalletCashInBank.objCashInTransaction,"Transaction"))) {
                 verifyElementPresent(MLWalletCashInBank.objPendingStatus,getTextVal(MLWalletCashInBank.objPendingStatus,"Status"));
                 String sStatus = getText(MLWalletCashInBank.objPendingStatus);
@@ -279,8 +283,18 @@ public class MLWalletCashInViaBranch extends BaseClass {
         HeaderChildNode("Cash In Via Branch, If pending transaction Exists, Application directly navigates to previous transaction QR Code");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Branch_Verified"));
+        cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
+        cancelPreviousTransactionAndContinue();
+        cashInViaBranchEnterAmount("100");
         waitTime(2000);
+        verifyElementPresent(MLWalletCashInViaBranchPage.objWarningPopup,getTextVal(MLWalletCashInViaBranchPage.objWarningPopup, "Pop Up"));
+        click(MLWalletCashInViaBranchPage.objContinueButton, "Continue Button");
+        enterOTP(prop.getproperty("Valid_OTP"));
+        waitTime(6000);
+        verifyElementPresent(MLWalletCashInViaBranchPage.objCashInToBranch,getTextVal(MLWalletCashInViaBranchPage.objCashInToBranch,"Header"));
+        verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objCrossBtn,"Cash In Branch Cross Button");
+        waitTime(2000);
+        Swipe("DOWN",2);
         if(verifyElementPresent(MLWalletCashInBank.objCashInTransaction,getTextVal(MLWalletCashInBank.objCashInTransaction,"Transaction"))) {
             verifyElementPresent(MLWalletCashInBank.objPendingStatus,getTextVal(MLWalletCashInBank.objPendingStatus,"Status"));
             String sStatus = getText(MLWalletCashInBank.objPendingStatus);
@@ -431,7 +445,7 @@ public class MLWalletCashInViaBranch extends BaseClass {
         cashInViaBranchNavigation(prop.getproperty("Semi_Verified"));
         cancelPreviousTransactionAndContinue();
         cashInViaBranchEnterAmount("100");
-        waitTime(2000);
+        waitTime(5000);
         verifyElementPresent(MLWalletCashInViaBranchPage.objWarningPopup,getTextVal(MLWalletCashInViaBranchPage.objWarningPopup, "Pop Up"));
         click(MLWalletCashInViaBranchPage.objContinueButton, "Continue Button");
         enterOTP(prop.getproperty("Valid_OTP"));
@@ -442,7 +456,8 @@ public class MLWalletCashInViaBranch extends BaseClass {
             verifyElementPresent(MLWalletCashInViaBranchPage.objStatus,getTextVal(MLWalletCashInViaBranchPage.objStatus,"Status"));
             verifyElementPresent(MLWalletCashInViaBranchPage.objTransactionNo,getTextVal(MLWalletCashInViaBranchPage.objTransactionNo,"Transaction Number"));
             verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objCrossBtn,"Cash In Branch Cross Button");
-            verifyRecentTransaction2(prop.getproperty("Semi_Verified"));
+            waitTime(3000);
+            Swipe("DOWN",2);
             if(verifyElementPresent(MLWalletCashInBank.objCashInTransaction,getTextVal(MLWalletCashInBank.objCashInTransaction,"Transaction"))) {
                 verifyElementPresent(MLWalletCashInBank.objPendingStatus,getTextVal(MLWalletCashInBank.objPendingStatus,"Status"));
                 String sStatus = getText(MLWalletCashInBank.objPendingStatus);
@@ -475,7 +490,8 @@ public class MLWalletCashInViaBranch extends BaseClass {
             verifyElementPresent(MLWalletCashInViaBranchPage.objStatus,getTextVal(MLWalletCashInViaBranchPage.objStatus,"Status"));
             verifyElementPresent(MLWalletCashInViaBranchPage.objTransactionNo,getTextVal(MLWalletCashInViaBranchPage.objTransactionNo,"Transaction Number"));
             verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objCrossBtn,"Cash In Branch Cross Button");
-            verifyRecentTransaction3(prop.getproperty("Fully_Verified"));
+            waitTime(3000);
+            Swipe("DOWN",2);
             if(verifyElementPresent(MLWalletCashInBank.objCashInTransaction,getTextVal(MLWalletCashInBank.objCashInTransaction,"Transaction"))) {
                 verifyElementPresent(MLWalletCashInBank.objPendingStatus,getTextVal(MLWalletCashInBank.objPendingStatus,"Status"));
                 String sStatus = getText(MLWalletCashInBank.objPendingStatus);
@@ -503,6 +519,7 @@ public class MLWalletCashInViaBranch extends BaseClass {
             assertionValidation(sErrorMsg, sExpectedErrorMsg);
             logger.info("CIBR_TC_19, Cash In Via Branch Max Transaction Buyer Tier User,Branch CashIn Not Allowed-Error message Validated");
             extentLoggerPass("CIBR_TC_19", "CIBR_TC_19, Cash In Via Branch Max Transaction Buyer Tier User,Branch CashIn Not Allowed-Error message Validated");
+            System.out.println("-----------------------------------------------------------");
         }
     }
 
@@ -512,17 +529,20 @@ public class MLWalletCashInViaBranch extends BaseClass {
         changeNumberPage();
         maxTransactionLimitValidation(prop.getproperty("Semi_Verified"));
         waitTime(5000);
-        if(verifyElementPresent(MLWalletCashInViaBranchPage.objBankMaxLimitTxt,getTextVal(MLWalletCashInViaBranchPage.objBankMaxLimitTxt,"Error Message"))) {
-            String sErrorMsg = getText(MLWalletCashInViaBranchPage.objBankMaxLimitTxt);
-            String sExpectedErrorMsg = "The maximum Branch Cash-in per transaction set for your verification level is P50,000.00. Please try again.";
+        if(verifyElementPresent(MLWalletCashInViaBranchPage.objBankMaxLimitTxt1,getTextVal(MLWalletCashInViaBranchPage.objBankMaxLimitTxt1,"Error Message"))) {
+            String sErrorMsg = getText(MLWalletCashInViaBranchPage.objBankMaxLimitTxt1);
+            String sExpectedErrorMsg = "The maximum Branch Cash-in per transaction set for your verification level is P20,000.00. Please try again.";
             assertionValidation(sErrorMsg, sExpectedErrorMsg);
             logger.info("CIBR_TC_20, Cash In Via Branch Max Transaction Limit Semi-verified Tier User Validated");
             extentLoggerPass("CIBR_TC_20", "CIBR_TC_20, Cash In Via Branch Max Transaction Limit Semi-verified Tier User Validated");
+            System.out.println("-----------------------------------------------------------");
         }
     }
 
     public void cashInViaBranchMaxTransactionFullyVerifiedTierUser_CIBR_TC_21() throws Exception {
         HeaderChildNode("Cash In Via Branch Max Transaction Limit Fully-verified Tier User");
+        waitTime(2000);
+        changeNumberPage();
         maxTransactionLimitValidation(prop.getproperty("Fully_verified"));
         waitTime(5000);
         if(verifyElementPresent(MLWalletCashInViaBranchPage.objBankMaxLimitTxt,getTextVal(MLWalletCashInViaBranchPage.objBankMaxLimitTxt,"Error Message"))) {
@@ -531,12 +551,16 @@ public class MLWalletCashInViaBranch extends BaseClass {
             assertionValidation(sErrorMsg, sExpectedErrorMsg);
             logger.info("CIBR_TC_21, Cash In Via Branch Max Transaction Limit Fully-verified Tier User Validated");
             extentLoggerPass("CIBR_TC_21", "CIBR_TC_21, Cash In Via Branch Max Transaction Limit Fully-verified Tier User Validated");
+            System.out.println("-----------------------------------------------------------");
         }
     }
 
     public void cashInViaBranchTransactionDetailsUIValidation_CIBR_TC_22() throws Exception {
         HeaderChildNode("Cash In Via Branch Transaction Details UI Validation");
+        waitTime(2000);
+        changeNumberPage();
         cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
+        cancelPreviousTransactionAndContinue();
         cashInViaBranchEnterAmount("100");
         waitTime(2000);
         verifyElementPresent(MLWalletCashInViaBranchPage.objWarningPopup,getTextVal(MLWalletCashInViaBranchPage.objWarningPopup, "Pop Up"));
@@ -550,7 +574,8 @@ public class MLWalletCashInViaBranch extends BaseClass {
         verifyElementPresent(MLWalletCashInViaBranchPage.objStatus, getTextVal(MLWalletCashInViaBranchPage.objStatus, "Status"));
         verifyElementPresent(MLWalletCashInViaBranchPage.objTransactionNo, getTextVal(MLWalletCashInViaBranchPage.objTransactionNo, "Transaction Number"));
         verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objCrossBtn, "Cash In Branch Cross Button");
-        verifyRecentTransaction3(prop.getproperty("Branch_Verified"));
+        waitTime(3000);
+        Swipe("DOWN",2);
         verifyElementPresentAndClick(MLWalletCashInBank.objCashInTransaction, getTextVal(MLWalletCashInBank.objCashInTransaction, "Transaction"));
         waitTime(2000);
         if (verifyElementPresent(MLWalletTransactionHistoryPage.objTransactionDetails, getTextVal(MLWalletTransactionHistoryPage.objTransactionDetails, "Page"))) {
@@ -570,6 +595,8 @@ public class MLWalletCashInViaBranch extends BaseClass {
 
     public void cashInViaBranchTransactionPendingStatusValidation_CIBR_TC_23() throws Exception {
         HeaderChildNode("Cash In Via Branch Transaction Pending status Validation");
+        waitTime(2000);
+        changeNumberPage();
         cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
         cashInViaBranchEnterAmount("100");
         waitTime(2000);
@@ -584,7 +611,8 @@ public class MLWalletCashInViaBranch extends BaseClass {
         verifyElementPresent(MLWalletCashInViaBranchPage.objStatus,getTextVal(MLWalletCashInViaBranchPage.objStatus,"Status"));
         verifyElementPresent(MLWalletCashInViaBranchPage.objTransactionNo,getTextVal(MLWalletCashInViaBranchPage.objTransactionNo,"Transaction Number"));
         verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objCrossBtn,"Cash In Branch Cross Button");
-        verifyRecentTransaction3(prop.getproperty("Branch_Verified"));
+        waitTime(3000);
+        Swipe("DOWN",2);
         if(verifyElementPresent(MLWalletCashInBank.objCashInTransaction,getTextVal(MLWalletCashInBank.objCashInTransaction,"Transaction"))) {
             verifyElementPresent(MLWalletCashInBank.objPendingStatus,getTextVal(MLWalletCashInBank.objPendingStatus,"Status"));
             String sStatus = getText(MLWalletCashInBank.objPendingStatus);
@@ -599,7 +627,10 @@ public class MLWalletCashInViaBranch extends BaseClass {
 
     public void cashInViaBranchTransactionCancelledStatusValidation_CIBR_TC_26() throws Exception {
         HeaderChildNode("Cash In Via Branch Transaction Cancelled Status Validation");
+        waitTime(2000);
+        changeNumberPage();
         cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
+        cancelPreviousTransactionAndContinue();
         cashInViaBranchEnterAmount("100");
         verifyElementPresent(MLWalletCashInViaBranchPage.objWarningPopup,getTextVal(MLWalletCashInViaBranchPage.objWarningPopup, "Pop Up"));
         click(MLWalletCashInViaBranchPage.objContinueButton, "Continue Button");
@@ -613,7 +644,7 @@ public class MLWalletCashInViaBranch extends BaseClass {
         waitTime(2000);
         verifyElementPresentAndClick(MLWalletCashInViaBranchPage.objBackToHomeBtn, getTextVal(MLWalletCashInViaBranchPage.objBackToHomeBtn, "Button"));
         waitTime(2000);
-        verifyRecentTransaction3(prop.getproperty("Branch_Verified"));
+        Swipe("DOWN",2);
         if(verifyElementPresent(MLWalletCashInBank.objCashInTransaction,getTextVal(MLWalletCashInBank.objCashInTransaction,"Transaction"))) {
             verifyElementPresent(MLWalletCashInBank.objCancelStatus,getTextVal(MLWalletCashInBank.objCancelStatus,"Status"));
             String sStatus = getText(MLWalletCashInBank.objCancelStatus);
@@ -629,14 +660,17 @@ public class MLWalletCashInViaBranch extends BaseClass {
 
     public void cashInViaBranchTransactionValidationAfterMinimizingApp_CIBR_TC_36() throws Exception {
         HeaderChildNode("Cash In Via Branch Transaction Validation After Minimizing App");
+        waitTime(2000);
+        changeNumberPage();
         cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
+        cancelPreviousTransactionAndContinue();
         cashInViaBranchEnterAmount("100");
         waitTime(2000);
         verifyElementPresent(MLWalletCashInViaBranchPage.objWarningPopup,
                 getTextVal(MLWalletCashInViaBranchPage.objWarningPopup, "Pop Up"));
         click(MLWalletCashInViaBranchPage.objContinueButton, "Continue Button");
         enterOTP(prop.getproperty("Valid_OTP"));
-        getDriver().runAppInBackground(Duration.ofSeconds(5));
+        DriverManager.getAppiumDriver().runAppInBackground(Duration.ofSeconds(5));
         logger.info("Application relaunched after 5 Seconds");
         waitTime(5000);
         if(verifyElementPresent(MLWalletCashInViaBranchPage.objCashInToBranch,getTextVal(MLWalletCashInViaBranchPage.objCashInToBranch,"Bank Page"))){
@@ -648,6 +682,8 @@ public class MLWalletCashInViaBranch extends BaseClass {
 
     public void cashInViaBranchAmountFieldValidation_CIBR_TC_42() throws Exception {
         HeaderChildNode("Cash In Via Branch, Amount Field with more than 2 decimals Validation");
+        waitTime(2000);
+        changeNumberPage();
         cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
         cancelPreviousTransactionAndContinue();
         cashInViaBranchEnterAmount("100.123");
@@ -665,6 +701,8 @@ public class MLWalletCashInViaBranch extends BaseClass {
 
     public void cashInViaBranchTransactionWithValidMLPin_CIBR_TC_43() throws Exception {
         HeaderChildNode("Cash In Via Branch Transaction With Valid ML Pin");
+        waitTime(2000);
+        changeNumberPage();
         cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
         cancelPreviousTransactionAndContinue();
         cashInViaBranchEnterAmount("100");
@@ -697,6 +735,8 @@ public class MLWalletCashInViaBranch extends BaseClass {
 
     public void cashInViaBranchTransactionWithInValidMLPin_CIBR_TC_44() throws Exception {
         HeaderChildNode("Cash In Via Branch Transaction With InValid ML Pin");
+        waitTime(2000);
+        changeNumberPage();
         cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
         cancelPreviousTransactionAndContinue();
         cashInViaBranchEnterAmount("100");
@@ -720,6 +760,8 @@ public class MLWalletCashInViaBranch extends BaseClass {
 
     public void cashInViaBranchOTPPopupValidation_CIBR_TC_50() throws Exception {
         HeaderChildNode("Cash In Via Branch OTP Popup validation");
+        waitTime(2000);
+        changeNumberPage();
         cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
         cancelPreviousTransactionAndContinue();
         cashInViaBranchEnterAmount("100");
@@ -738,6 +780,8 @@ public class MLWalletCashInViaBranch extends BaseClass {
 
     public void cashInViaBranchTransactionInAppOTPPopupUIValidation_CIBR_TC_51() throws Exception {
         HeaderChildNode("Cash In Via Branch Transaction InApp OTP Popup validation");
+        waitTime(2000);
+        changeNumberPage();
         cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
         cancelPreviousTransactionAndContinue();
         cashInViaBranchEnterAmount("100");
@@ -759,6 +803,8 @@ public class MLWalletCashInViaBranch extends BaseClass {
 
     public void cashInViaBranchTransactionNewOTPAfterSixtySecondsValidation_CIBR_TC_52() throws Exception {
         HeaderChildNode("Cash In Via Branch Transaction New OTP got generated After Sixty Seconds validation");
+        waitTime(2000);
+        changeNumberPage();
         cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
         cancelPreviousTransactionAndContinue();
         cashInViaBranchEnterAmount("100");
@@ -783,6 +829,8 @@ public class MLWalletCashInViaBranch extends BaseClass {
 
     public void cashInViaBranchTransactionOTPCancelBtnFunctionality_CIBR_TC_53() throws Exception {
         HeaderChildNode("Cash In Via Branch Transaction OTP Cancel Button Functionality");
+        waitTime(2000);
+        changeNumberPage();
         cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
         cancelPreviousTransactionAndContinue();
         cashInViaBranchEnterAmount("100");
@@ -803,6 +851,8 @@ public class MLWalletCashInViaBranch extends BaseClass {
 
     public void cashInViaBranchOTPContinueBtnFunctionality_CIBR_TC_54() throws Exception {
         HeaderChildNode("Cash In Via Branch Transaction OTP Continue Button Functionality");
+        waitTime(2000);
+        changeNumberPage();
         cashInViaBranchNavigation(prop.getproperty("Branch_Verified"));
         cancelPreviousTransactionAndContinue();
         cashInViaBranchEnterAmount("100");

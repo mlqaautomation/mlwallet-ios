@@ -103,7 +103,7 @@ public class MLWalletCashInBank {
     public static By objInvalidAmountMsg1 = By.xpath("//*[@name='Amount is required']");
     
     public static By objMaxLimitTxt = By.xpath("(//*[XCUIElementTypeOther]/descendant::XCUIElementTypeOther/following-sibling::XCUIElementTypeStaticText)[2]");
-    
+    public static By objCashInNotAllowedMsg = By.xpath("//*[@name='Bank Cash-in is not allowed for customers at this verification level. Please upgrade your account to use this service.']");
     public static By objBankMaxLimitTxt = By.xpath("//*[@name='The maximum Bank Cash-in per transaction set for your verification level is P50,000.00. Please try again.']");
    
     public static By objCashInTransaction = By.xpath("(//*[@name='Recent Transactions']/parent::XCUIElementTypeOther/descendant::XCUIElementTypeOther)[5]");

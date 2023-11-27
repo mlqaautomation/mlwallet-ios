@@ -160,7 +160,8 @@ public class MLWalletSendTransferToMLBranch extends BaseClass{
             System.out.println(sReferenceNumber);
             scroll_To_Text(MLWalletSendTransferPage.objBackToHomeBtn, "name", "Back To Home");
             click(MLWalletSendTransferPage.objBackToHomeBtn, getTextVal(MLWalletSendTransferPage.objBackToHomeBtn, "Button"));
-            verifyRecentTransaction3(prop.getproperty("Branch_Verified"));
+            waitTime(5000);
+            Swipe("DOWN",2);
             waitTime(5000);
             verifyElementPresent(MLWalletHomePage.objRecentTransactions, getTextVal(MLWalletHomePage.objRecentTransactions, "Text"));
             click(MLWalletHomePage.objKwartaPadala, getTextVal(MLWalletHomePage.objKwartaPadala, "Text"));
@@ -181,7 +182,7 @@ public class MLWalletSendTransferToMLBranch extends BaseClass{
         HeaderChildNode("Send Money to any ML Branch");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("New_Branch_Verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         click(MLWalletSendTransferPage.objSendTransferBtn, getTextVal(MLWalletSendTransferPage.objSendTransferBtn, "Button"));
         verifyElementPresent(MLWalletSendTransferPage.objSendMoney, getTextVal(MLWalletSendTransferPage.objSendMoney, "Page"));
         if (verifyElementPresent(MLWalletSendTransferPage.objToAnyMLBranch, getTextVal(MLWalletSendTransferPage.objToAnyMLBranch, "Button"))) {
@@ -204,7 +205,8 @@ public class MLWalletSendTransferToMLBranch extends BaseClass{
                 String sReferenceNumber = sReference.substring(9, 20);
                 Swipe("UP", 2);
                 click(MLWalletSendTransferPage.objBackToHomeBtn, getTextVal(MLWalletSendTransferPage.objBackToHomeBtn, "Button"));
-                verifyRecentTransaction3(prop.getproperty("New_Branch_Verified"));
+                waitTime(5000);
+                Swipe("DOWN",2);
                 verifyElementPresent(MLWalletHomePage.objRecentTransactions, getTextVal(MLWalletHomePage.objRecentTransactions, "Text"));
                 click(MLWalletHomePage.objKwartaPadala, getTextVal(MLWalletHomePage.objKwartaPadala, "Text"));
                 waitTime(2000);
@@ -224,7 +226,7 @@ public class MLWalletSendTransferToMLBranch extends BaseClass{
         HeaderChildNode("Send Money to any ML Branch");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("New_Branch_Verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         click(MLWalletSendTransferPage.objSendTransferBtn, getTextVal(MLWalletSendTransferPage.objSendTransferBtn, "Button"));
         explicitWaitVisibility(MLWalletSendTransferPage.objSendMoney, 10);
         verifyElementPresent(MLWalletSendTransferPage.objSendMoney, getTextVal(MLWalletSendTransferPage.objSendMoney, "Page"));
@@ -248,7 +250,7 @@ public class MLWalletSendTransferToMLBranch extends BaseClass{
         HeaderChildNode("Send Money Contact Duplicate");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("New_Branch_Verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         click(MLWalletSendTransferPage.objSendTransferBtn, getTextVal(MLWalletSendTransferPage.objSendTransferBtn, "Button"));
         explicitWaitVisibility(MLWalletSendTransferPage.objSendMoney, 10);
         verifyElementPresent(MLWalletSendTransferPage.objSendMoney, getTextVal(MLWalletSendTransferPage.objSendMoney, "Page"));
@@ -275,8 +277,10 @@ public class MLWalletSendTransferToMLBranch extends BaseClass{
     public void sendMoneyDeleteRecipient_STB_TC_05() throws Exception {
         HeaderChildNode("Send Money to any ML Branch");
         waitTime(2000);
+        verifyElementNotPresent(MLWalletLoginPage.objLoginBtn,"Login b utton",5);
+
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("New_Branch_Verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         click(MLWalletSendTransferPage.objSendTransferBtn, getTextVal(MLWalletSendTransferPage.objSendTransferBtn, "Button"));
         verifyElementPresent(MLWalletSendTransferPage.objSendMoney, getTextVal(MLWalletSendTransferPage.objSendMoney, "Page"));
         explicitWaitVisibility(MLWalletSendTransferPage.objSendMoney, 10);
@@ -290,8 +294,8 @@ public class MLWalletSendTransferToMLBranch extends BaseClass{
             String sExceptedMsg = "Are you sure you want to remove this saved recipient?";
             assertionValidation(sDeleteConfirmationPopup, sExceptedMsg);
             click(MLWalletSendTransferPage.objRemoveBtn, getTextVal(MLWalletSendTransferPage.objRemoveBtn, "Button"));
-            waitTime(5000);
-            verifyElementNotPresent(MLWalletSendTransferPage.objSelectLastName, 5);
+            waitTime(10000);
+            verifyElementNotPresent(MLWalletSendTransferPage.objSelectLastName, "Saved Recipient",3);
             logger.info("STB_TC_05, Saved Recipient from Saved Recipients page deleted Successfully");
             extentLoggerPass("STB_TC_05", "STB_TC_05, Saved Recipient from Saved Recipients page deleted Successfully");
             System.out.println("-----------------------------------------------------------");
@@ -303,11 +307,11 @@ public class MLWalletSendTransferToMLBranch extends BaseClass{
         HeaderChildNode("Send Money to any ML Branch");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("New_Branch_Verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         click(MLWalletSendTransferPage.objSendTransferBtn, getTextVal(MLWalletSendTransferPage.objSendTransferBtn, "Button"));
-        waitTime(3000);
+        waitTime(5000);
         verifyElementPresent(MLWalletSendTransferPage.objSendMoney, getTextVal(MLWalletSendTransferPage.objSendMoney, "Page"));
-        explicitWaitVisibility(MLWalletSendTransferPage.objToAnyMLBranch, 10);
+        waitTime(5000);
         if (verifyElementPresent(MLWalletSendTransferPage.objToAnyMLBranch, getTextVal(MLWalletSendTransferPage.objToAnyMLBranch, "Button"))) {
             click(MLWalletSendTransferPage.objToAnyMLBranch, getTextVal(MLWalletSendTransferPage.objToAnyMLBranch, "Button"));
             selectSavedRecipient();
@@ -317,6 +321,7 @@ public class MLWalletSendTransferToMLBranch extends BaseClass{
             click(MLWalletSendTransferPage.ObjSaveRecipient, getTextVal(MLWalletSendTransferPage.ObjSaveRecipient, "Button"));
             click(MLWalletSendTransferPage.ObjSaveRecipient, getTextVal(MLWalletSendTransferPage.ObjSaveRecipient, "Button"));
             waitTime(2000);
+            clearField(MLWalletSendTransferPage.objSearchRecipient,"Search field");
             type(MLWalletSendTransferPage.objSearchRecipient, prop.getproperty("Edited_Last_name"), "Search Recipient Text Field");
             if (verifyElementPresent(MLWalletSendTransferPage.objSelectLastName, getTextVal(MLWalletSendTransferPage.objSelectLastName, "Recipient"))) {
                 logger.info("STB_TC_06, Successfully edited the Saved Recipient");
@@ -332,7 +337,7 @@ public class MLWalletSendTransferToMLBranch extends BaseClass{
         HeaderChildNode("Send Money Invalid Bank Details");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("New_Branch_Verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         click(MLWalletSendTransferPage.objSendTransferBtn, getTextVal(MLWalletSendTransferPage.objSendTransferBtn, "Button"));
         verifyElementPresent(MLWalletSendTransferPage.objSendMoney, getTextVal(MLWalletSendTransferPage.objSendMoney, "Page"));
         if (verifyElementPresent(MLWalletSendTransferPage.objToAnyMLBranch, getTextVal(MLWalletSendTransferPage.objToAnyMLBranch, "Button"))) {
@@ -412,7 +417,7 @@ public class MLWalletSendTransferToMLBranch extends BaseClass{
         HeaderChildNode("Send Money Invalid Bank Details");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("New_Branch_Verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         click(MLWalletSendTransferPage.objSendTransferBtn, getTextVal(MLWalletSendTransferPage.objSendTransferBtn, "Button"));
         explicitWaitVisibility(MLWalletSendTransferPage.objSendMoney, 10);
         verifyElementPresent(MLWalletSendTransferPage.objSendMoney, getTextVal(MLWalletSendTransferPage.objSendMoney, "Page"));
@@ -472,7 +477,7 @@ public class MLWalletSendTransferToMLBranch extends BaseClass{
         HeaderChildNode("Send Money to any ML Branch");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("New_Branch_Verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         click(MLWalletSendTransferPage.objSendTransferBtn, getTextVal(MLWalletSendTransferPage.objSendTransferBtn, "Button"));
         explicitWaitVisibility(MLWalletSendTransferPage.objSendMoney, 10);
         verifyElementPresent(MLWalletSendTransferPage.objSendMoney, getTextVal(MLWalletSendTransferPage.objSendMoney, "Page"));
@@ -500,7 +505,7 @@ public class MLWalletSendTransferToMLBranch extends BaseClass{
         HeaderChildNode("Send Money to any ML Branch");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin("9999999999");
+        mlWalletLogin("9999999998");
         click(MLWalletSendTransferPage.objSendTransferBtn,
                 getTextVal(MLWalletSendTransferPage.objSendTransferBtn, "Button"));
         explicitWaitVisibility(MLWalletSendTransferPage.objSendMoney, 10);
@@ -516,7 +521,7 @@ public class MLWalletSendTransferToMLBranch extends BaseClass{
             if (verifyElementPresent(MLWalletSendTransferPage.objInsufficientAmountMsg,
                     getTextVal(MLWalletSendTransferPage.objInsufficientAmountMsg, "Error Message"))) {
                 String sInsufficientBalanceErrorMsg = getText(MLWalletSendTransferPage.objInsufficientAmountMsg);
-                String sExpectedErrorMsg = "There is insufficient balance to proceed with this transaction. Please try again.";
+                String sExpectedErrorMsg = "There is insufficient balance on your account to proceed with this transaction. Please try again.";
                 assertionValidation(sInsufficientBalanceErrorMsg, sExpectedErrorMsg);
                 logger.info("STB_TC_10, Insufficient Balance - Error Message is validated");
                 extentLoggerPass("STB_TC_10",
@@ -771,7 +776,7 @@ public class MLWalletSendTransferToMLBranch extends BaseClass{
 
     public void sendMoneyToMLBranchBuyerTierAccount_STB_TC_22() throws Exception {
         HeaderChildNode("Send Money To ML Branch, Buyer Tier Account");
-        sendMoneyToAnyMLBranch(prop.getproperty("Buyer_Tier"));
+        sendMoneyToAnyMLBranch(prop.getproperty("New_BuyerTier"));
         enterMLBranchDetails();
         enterAmountToKwartaPadala("100");
         waitTime(2000);
@@ -1209,7 +1214,9 @@ public class MLWalletSendTransferToMLBranch extends BaseClass{
         verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Popup"));
         if(verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup,getTextVal(MLWalletLoginPage.objOneTimePinPopup,"One Time Pin"))){
             String sGeneratedOTP = getText(MLWalletLoginPage.objOTP);
-            waitTime(70000);
+            for(int i=1;i<=80;i++){
+                click1(MLWalletLoginPage.objOneTimePinPopup,"One time pin popup");
+            }
             String sNewlyGeneratedOTPAfterSixtySeconds = getText(MLWalletLoginPage.objOTP);
             assertNotEquals(sGeneratedOTP,sNewlyGeneratedOTPAfterSixtySeconds);
             logger.info("STB_TC_73, Send Money To ML Branch Transaction New OTP got generated After Sixty Seconds is validated");

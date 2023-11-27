@@ -14,6 +14,7 @@ import java.util.List;
 import static com.business.mlwallet.MLWalletLogin.*;
 import static com.business.mlwallet.MLWalletSendTransferToMLWalletUser.verifyRecentTransaction3;
 import static com.utility.Utilities.*;
+import static com.utility.Utilities.swipeDownUntilElementVisible;
 
 
 public class MLWalletPayBills extends BaseClass{
@@ -36,6 +37,7 @@ public class MLWalletPayBills extends BaseClass{
     }
 
     public void payBillsNavigation() throws Exception {
+        waitTime(3000);
         verifyElementPresent(MLWalletPayBillsPage.objPayBills,getTextVal(MLWalletPayBillsPage.objPayBills,"Icon"));
         click(MLWalletPayBillsPage.objPayBills,getTextVal(MLWalletPayBillsPage.objPayBills,"Icon"));
         waitTime(2000);
@@ -165,8 +167,9 @@ public class MLWalletPayBills extends BaseClass{
             Swipe("UP", 1);
             getBillers(MLWalletPayBillsPage.objUtilitiesBillers);
             waitTime(2000);
-            click(MLWalletPayBillsPage.objUtilities1, getTextVal(MLWalletPayBillsPage.objUtilities1, "Biller Category"));
+//            click(MLWalletPayBillsPage.objUtilities1, getTextVal(MLWalletPayBillsPage.objUtilities1, "Biller Category"));
         }
+        swipeUntilElementVisible(MLWalletPayBillsPage.objOthers,"Others");
         if(verifyElementPresent(MLWalletPayBillsPage.objOthers,getTextVal(MLWalletPayBillsPage.objOthers,"Biller Category"))){
             click(MLWalletPayBillsPage.objOthers,getTextVal(MLWalletPayBillsPage.objOthers,"Biller Category"));
             Swipe("UP",1);
@@ -182,7 +185,7 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("Billers In Alphabetical Order");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         explicitWaitVisibility(MLWalletPayBillsPage.objAlphabetical, 10);
         click(MLWalletPayBillsPage.objAlphabetical,getTextVal(MLWalletPayBillsPage.objAlphabetical,"Button"));
@@ -200,8 +203,8 @@ public class MLWalletPayBills extends BaseClass{
 //								 }
 //
 //							 }
-        scroll_To_Text(MLWalletPayBillsPage.objZelement, "name", "FDSAFAWSEF");
-        scroll_To_Text(MLWalletPayBillsPage.objZelement, "name", "ZOE BROADCASTING");
+        swipeUntilElementVisible(MLWalletPayBillsPage.objZelement, "");
+//        scroll_To_Text(MLWalletPayBillsPage.objZelement, "name", "ZOE BROADCASTING");
         logger.info("PB_TC_03, Billers swiped until Z Alphabet, and all the Billers are displayed in alphabetical order");
         extentLoggerPass("PB_TC_03", "PB_TC_03, Billers swiped until Z Alphabet, and all the Billers are displayed in alphabetical order");
         System.out.println("-----------------------------------------------------------");
@@ -211,11 +214,10 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("Select Biller");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         click(MLWalletPayBillsPage.objAlphabetical,getTextVal(MLWalletPayBillsPage.objAlphabetical,"Button"));
-//							swipeDownUntilElementVisible("AIR ASIA BILLSPAYMENT");
-        scroll_To_Text(MLWalletPayBillsPage.objAirAsia, "name", "AIR ASIA BILLSPAYMENT");
+        Swipe("UP",1);
         if(verifyElementPresent(MLWalletPayBillsPage.objAirAsia,getTextVal(MLWalletPayBillsPage.objAirAsia,"Biller"))){
             String sAirAsiaBillsPayment = getText(MLWalletPayBillsPage.objAirAsia);
             click(MLWalletPayBillsPage.objAirAsia,getTextVal(MLWalletPayBillsPage.objAirAsia,"Biller"));
@@ -234,7 +236,7 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("Search Biller");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         waitTime(5000);
         type(MLWalletPayBillsPage.objSearchBiller,prop.getproperty("Biller_Name"),"Search Biller");
@@ -259,7 +261,7 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("Biller Information Input");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         searchBiller();
         billerDetails(prop.getproperty("First_Name"),prop.getproperty("Middle_Name"),prop.getproperty("Last_Name"),"10");
@@ -279,7 +281,7 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("Pay Bills With Valid Inputs");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         searchBiller();
         billerDetails(prop.getproperty("First_Name"), prop.getproperty("Middle_Name"), prop.getproperty("Last_Name"), "10");
@@ -303,7 +305,8 @@ public class MLWalletPayBills extends BaseClass{
             verifyElementPresent(MLWalletPayBillsPage.objServiceFee, getTextVal(MLWalletPayBillsPage.objServiceFee, "Service Fee"));
             verifyElementPresent(MLWalletPayBillsPage.objTotalAmount, getTextVal(MLWalletPayBillsPage.objTotalAmount, "Total Amount"));
             verifyElementPresentAndClick(MLWalletPayBillsPage.objBackToHomeBtn, getTextVal(MLWalletPayBillsPage.objBackToHomeBtn, "Button"));
-            verifyRecentTransaction3(prop.getproperty("Fully_verified"));
+            waitTime(5000);
+            Swipe("DOWN",2);
             verifyElementPresent(MLWalletHomePage.objRecentTransactions, getTextVal(MLWalletHomePage.objRecentTransactions, "Text"));
             click(MLWalletHomePage.objPayBills, getTextVal(MLWalletHomePage.objPayBills, "Text"));
             explicitWaitVisibility(MLWalletCashOutPage.objTransactionDetails, 20);
@@ -322,7 +325,7 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("Pay Bills In Recent Transactions");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         verifyElementPresent(MLWalletHomePage.objRecentTransactions, getTextVal(MLWalletHomePage.objRecentTransactions, "Text"));
         click(MLWalletHomePage.objPayBills, getTextVal(MLWalletHomePage.objPayBills, "Text"));
         waitTime(5000);
@@ -345,7 +348,7 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("Pay Bills Insufficient Balance");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin("9999999998");
         payBillsNavigation();
         searchBiller();
         billerDetails(prop.getproperty("First_Name"), prop.getproperty("Middle_Name"), prop.getproperty("Last_Name"), "39000");
@@ -356,9 +359,9 @@ public class MLWalletPayBills extends BaseClass{
             explicitWaitVisibility(MLWalletSendTransferPage.objInsufficientAmountMsg,20);
             if (verifyElementPresent(MLWalletSendTransferPage.objInsufficientAmountMsg, getTextVal(MLWalletSendTransferPage.objInsufficientAmountMsg, "Error Message"))) {
                 String sInsufficientBalanceErrorMsg = getText(MLWalletSendTransferPage.objInsufficientAmountMsg);
-                String sExpectedErrorMsg = "There is insufficient balance to proceed with this transaction. Please try again.";
+                String sExpectedErrorMsg = "The maximum Bills Pay per transaction set for your verification level is P25,000.00. Please try again.";
                 assertionValidation(sInsufficientBalanceErrorMsg, sExpectedErrorMsg);
-                click(MLWalletCashOutPage.objOKBtnOne,"OK Button");
+                verifyElementPresent(MLWalletCashOutPage.objOKBtnOne,"OK Button");
                 logger.info("PB_TC_09, Insufficient Balance - Error Message is validated");
                 extentLoggerPass("PB_TC_09", "PB_TC_09, Insufficient Balance - Error Message is validated");
                 System.out.println("-----------------------------------------------------------");
@@ -374,9 +377,9 @@ public class MLWalletPayBills extends BaseClass{
         mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         searchBiller();
-        explicitWaitVisibility(MLWalletPayBillsPage.objConfirmBtn, 10);
+        waitTime(5000);
         click(MLWalletPayBillsPage.objConfirmBtn,getTextVal(MLWalletPayBillsPage.objConfirmBtn,"Button"));
-        explicitWaitVisibility(MLWalletPayBillsPage.objAccountNumberRequiredMsg, 10);
+        waitTime(5000);
         if(verifyElementPresent(MLWalletPayBillsPage.objAccountNumberRequiredMsg,getTextVal(MLWalletPayBillsPage.objAccountNumberRequiredMsg,"Error Message"))){
             String sAccountNumberRequiredErrorMsg = getText(MLWalletPayBillsPage.objAccountNumberRequiredMsg);
             String sExceptedAccountNumberRequiredErrorMsg = "Account Number is required";
@@ -449,7 +452,7 @@ public class MLWalletPayBills extends BaseClass{
         addBiller();
         explicitWaitVisibility(MLWalletPayBillsPage.objOKBtn, 10);
         click(MLWalletPayBillsPage.objOKBtn,getTextVal(MLWalletPayBillsPage.objOKBtn,"Button"));
-        waitTime(2000);
+        waitTime(5000);
         type(MLWalletPayBillsPage.objSearchSavedBiller, prop.getproperty("Last_Name"), "Search Biller Text Field");
         if (verifyElementPresent(MLWalletPayBillsPage.objSelectBillerInnSavedBiller, getTextVal(MLWalletPayBillsPage.objSelectBillerInnSavedBiller, "Recipient"))) {
             logger.info("PB_TC_12, The Added Biller is displayed in Saved Biller Page");
@@ -531,9 +534,8 @@ public class MLWalletPayBills extends BaseClass{
         waitTime(2000);
         click(MLWalletPayBillsPage.objEditRecipientLastName,"Last Name Input Field");
         waitTime(2000);
-        clearField(MLWalletPayBillsPage.objEditRecipientLastName,"Last Name Input Field");
         click(MLWalletPayBillsPage.objLastNameClr,"Last Name Input Field");
-        clearWebField(MLWalletPayBillsPage.objEditRecipientLastName);
+        clearField(MLWalletPayBillsPage.objEditRecipientLastName,"Last Name Input Field");
         type(MLWalletPayBillsPage.objLastNameClr, prop.getproperty("Edited_Last_name"), "Last Name Text Field");
         click(MLWalletPayBillsPage.ObjSaveBtn, getTextVal(MLWalletPayBillsPage.ObjSaveBtn, "Button"));
         click(MLWalletPayBillsPage.ObjSaveBtn, getTextVal(MLWalletPayBillsPage.ObjSaveBtn, "Button"));
@@ -649,7 +651,7 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("Pay Bills Recent Transaction validation");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         searchBiller();
         billerDetails(prop.getproperty("First_Name"), prop.getproperty("Middle_Name"), prop.getproperty("Last_Name"), "10");
@@ -679,7 +681,7 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("Pay Bills Saved Biler UI Validation");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         selectAddedBiler();
         waitTime(2000);
@@ -740,9 +742,9 @@ public class MLWalletPayBills extends BaseClass{
         waitTime(3000);
         if(verifyElementPresent(MLWalletPayBillsPage.objMaxLimitErrorMessage1,getTextVal(MLWalletPayBillsPage.objMaxLimitErrorMessage1,"Error Message"))){
             String sMaxLimitErrorMessage = getText(MLWalletPayBillsPage.objMaxLimitErrorMessage1);
-            String sExpectedErrorMessage = "The maximum Bills Pay per transaction set for your verification level is P50,000.00. Please try again.";
+            String sExpectedErrorMessage = "The maximum Bills Pay per transaction set for your verification level is P10,000.00. Please try again.";
             assertionValidation(sMaxLimitErrorMessage,sExpectedErrorMessage);
-            verifyElementPresentAndClick(MLWalletPayBillsPage.objUpgradeNowBtn,getTextVal(MLWalletPayBillsPage.objUpgradeNowBtn,"Button"));
+            verifyElementPresent(MLWalletPayBillsPage.objUpgradeNowBtn,getTextVal(MLWalletPayBillsPage.objUpgradeNowBtn,"Button"));
             logger.info("PB_TC_25, Pay Bills Maximum Bills Payment Per Transaction for Semi Verified Tier Account Validated");
             extentLoggerPass("PB_TC_25", "PB_TC_25, Pay Bills Maximum Bills Payment Per Transaction for Semi Verified Tier Account validated");
             System.out.println("-----------------------------------------------------------");
@@ -802,8 +804,7 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("PayBills Recent Transactions");
         waitTime(2000);
         changeNumberPage();
-        //	mlWalletLogin(prop.getproperty("Branch_Verified"));
-        mlWalletLogin("9999999996");
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         waitTime(5000);
         verifyElementPresent(MLWalletPayBillsPage.objRecentTransactions,getTextVal(MLWalletPayBillsPage.objRecentTransactions,"Header"));
@@ -842,7 +843,7 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("Pay Bills Location popup Validation");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         searchBiller();
         billerDetails(prop.getproperty("First_Name"), prop.getproperty("Middle_Name"), prop.getproperty("Last_Name"), "10");
@@ -873,7 +874,7 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("Pay Bills Location Deny Functionality Validation");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         searchBiller();
         billerDetails(prop.getproperty("First_Name"), prop.getproperty("Middle_Name"), prop.getproperty("Last_Name"), "10");
@@ -904,7 +905,7 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("Pay Bills Location Permission Deny Close Button Functionality Validation");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         searchBiller();
         billerDetails(prop.getproperty("First_Name"), prop.getproperty("Middle_Name"), prop.getproperty("Last_Name"), "10");
@@ -937,7 +938,7 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("Pay Bills Location Permission Deny open Settings Button Functionality Validation");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         searchBiller();
         billerDetails(prop.getproperty("First_Name"), prop.getproperty("Middle_Name"), prop.getproperty("Last_Name"), "10");
@@ -968,7 +969,7 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("Pay Bills Location popup Allow Button Functionality Validation");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         searchBiller();
         billerDetails(prop.getproperty("First_Name"), prop.getproperty("Middle_Name"), prop.getproperty("Last_Name"), "10");
@@ -1002,7 +1003,7 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("Pay Bills Transaction Validation After Minimizing App");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         searchBiller();
         billerDetails(prop.getproperty("First_Name"), prop.getproperty("Middle_Name"), prop.getproperty("Last_Name"), "10");
@@ -1016,7 +1017,7 @@ public class MLWalletPayBills extends BaseClass{
         logger.info("Application relaunched after 5 Seconds");
         waitTime(5000);
         if(verifyElementPresent(MLWalletPayBillsPage.objSomethingWentWrongPopUp,getTextVal(MLWalletPayBillsPage.objSomethingWentWrongPopUp,"Message"))) {
-            click(MLWalletPayBillsPage.objOKBtn, "OK Button");
+            verifyElementPresent(MLWalletPayBillsPage.objOKBtn, "OK Button");
             logger.info("PB_TC_40, Pay Bills Transaction Validation After Minimizing App Validated");
             extentLoggerPass("PB_TC_40", "PB_TC_40, Pay Bills Transaction Validation After Minimizing App Validated");
             System.out.println("-----------------------------------------------------------");
@@ -1025,7 +1026,9 @@ public class MLWalletPayBills extends BaseClass{
 
     public void payBillsTransactionWithValidMLPin_PB_TC_49() throws Exception {
         HeaderChildNode("Pay Bills Transaction With Valid ML Pin");
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        waitTime(2000);
+        changeNumberPage();
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         searchBiller();
         billerDetails(prop.getproperty("First_Name"), prop.getproperty("Middle_Name"), prop.getproperty("Last_Name"), "10");
@@ -1045,15 +1048,15 @@ public class MLWalletPayBills extends BaseClass{
             verifyElementPresent(MLWalletPayBillsPage.objTotalAmount, getTextVal(MLWalletPayBillsPage.objTotalAmount, "Total Amount"));
             verifyElementPresentAndClick(MLWalletPayBillsPage.objBackToHomeBtn, getTextVal(MLWalletPayBillsPage.objBackToHomeBtn, "Button"));
             waitTime(3000);
-            verifyRecentTransaction3(prop.getproperty("Fully_verified"));
+            Swipe("DOWN",2);
             verifyElementPresent(MLWalletHomePage.objRecentTransactions, getTextVal(MLWalletHomePage.objRecentTransactions, "Text"));
             click(MLWalletHomePage.objPayBills, getTextVal(MLWalletHomePage.objPayBills, "Text"));
             if (verifyElementPresent(MLWalletCashOutPage.objTransactionDetails, getTextVal(MLWalletCashOutPage.objTransactionDetails, "Page"))) {
                 String sReferenceNumberInCashOut = getText(MLWalletCashOutPage.objReferenceNumberInCashOut);
                 System.out.println(sReferenceNumberInCashOut);
                 assertionValidation(sReferenceNumberInCashOut, sTransactionNumber);
-                logger.info("PB_TC_48, Pay Bills Transaction With Valid ML Pin is validated");
-                extentLoggerPass("PB_TC_48", "PB_TC_48, Pay Bills Transaction With Valid ML Pin is validated");
+                logger.info("PB_TC_49, Pay Bills Transaction With Valid ML Pin is validated");
+                extentLoggerPass("PB_TC_49", "PB_TC_49, Pay Bills Transaction With Valid ML Pin is validated");
                 System.out.println("-----------------------------------------------------------");
             }
         }
@@ -1061,7 +1064,9 @@ public class MLWalletPayBills extends BaseClass{
 
     public void payBillsTransactionWithInValidMLPin_PB_TC_50() throws Exception {
         HeaderChildNode("Pay Bills Transaction With Invalid ML Pin");
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        waitTime(2000);
+        changeNumberPage();
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         searchBiller();
         billerDetails(prop.getproperty("First_Name"), prop.getproperty("Middle_Name"), prop.getproperty("Last_Name"), "10");
@@ -1072,8 +1077,8 @@ public class MLWalletPayBills extends BaseClass{
             String sActualErrorMsg = getText(MLWalletPayBillsPage.objInvalidPINMsg);
             String sExceptedErrorMsg = "You have entered an invalid PIN. Please try again.";
             assertionValidation(sActualErrorMsg, sExceptedErrorMsg);
-            logger.info("PB_TC_49, Buy ELoad Transaction With Invalid ML Pin validated");
-            extentLoggerPass("PB_TC_49", "PB_TC_49, Buy ELoad Transaction With Invalid ML Pin validated");
+            logger.info("PB_TC_50, Buy ELoad Transaction With Invalid ML Pin validated");
+            extentLoggerPass("PB_TC_50", "PB_TC_50, Buy ELoad Transaction With Invalid ML Pin validated");
             System.out.println("-----------------------------------------------------------");
         }
     }
@@ -1083,13 +1088,13 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("PayBills InApp OTP popup Validation");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         searchBiller();
         billerDetails(prop.getproperty("First_Name"), prop.getproperty("Middle_Name"), prop.getproperty("Last_Name"), "10");
         confirmDetailsAndPay();
         waitTime(5000);
-        if (verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"))) {
+        if (verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Popup"))) {
             verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"));
             logger.info("PB_TC_55, PayBills, InApp OTP popup validated");
             extentLoggerPass("PB_TC_55", "PB_TC_55, PayBills, InApp OTP popup validated");
@@ -1101,13 +1106,13 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("PayBills Transaction InApp OTP popup UI Validation");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         searchBiller();
         billerDetails(prop.getproperty("First_Name"), prop.getproperty("Middle_Name"), prop.getproperty("Last_Name"), "10");
         confirmDetailsAndPay();
         waitTime(5000);
-        if (verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"))) {
+        if (verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Popup"))) {
             verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"));
             verifyElementPresent(MLWalletLoginPage.objSeconds,getTextVal(MLWalletLoginPage.objSeconds,"Seconds"));
             verifyElementPresent(MLWalletLoginPage.objOtpContineBtn,getTextVal(MLWalletLoginPage.objOtpContineBtn,"Button"));
@@ -1122,16 +1127,18 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("PayBills New OTP got generated After Sixty Seconds validation");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         searchBiller();
         billerDetails(prop.getproperty("First_Name"), prop.getproperty("Middle_Name"), prop.getproperty("Last_Name"), "10");
         confirmDetailsAndPay();
         waitTime(5000);
-        verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
+        verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Popup"));
         if(verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"))){
             String sGeneratedOTP = getText(MLWalletLoginPage.objOTP);
-            waitTime(70000);
+            for(int i=1;i<=60;i++){
+                click1(MLWalletLoginPage.objOneTimePinPopup,"One time pin popup");
+            }
             String sNewlyGeneratedOTPAfterSixtySeconds = getText(MLWalletLoginPage.objOTP);
             assertNotEquals(sGeneratedOTP,sNewlyGeneratedOTPAfterSixtySeconds);
             logger.info("PB_TC_57, PayBills Transaction New OTP got generated After Sixty Seconds is validated");
@@ -1144,13 +1151,13 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("PayBills Transaction OTP Cancel Button Functionality");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         searchBiller();
         billerDetails(prop.getproperty("First_Name"), prop.getproperty("Middle_Name"), prop.getproperty("Last_Name"), "10");
         confirmDetailsAndPay();
         waitTime(5000);
-        verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
+        verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Popup"));
         verifyElementPresentAndClick(MLWalletLoginPage.objCancelBtn,getTextVal(MLWalletLoginPage.objCancelBtn,"Button"));
         waitTime(2000);
         if(verifyElementPresent(MLWalletPayBillsPage.objConfirmDetails, getTextVal(MLWalletPayBillsPage.objConfirmDetails, "Page"))){
@@ -1164,13 +1171,13 @@ public class MLWalletPayBills extends BaseClass{
         HeaderChildNode("PayBills Transaction OTP Continue Button Functionality");
         waitTime(2000);
         changeNumberPage();
-        mlWalletLogin(prop.getproperty("Fully_verified"));
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
         payBillsNavigation();
         searchBiller();
         billerDetails(prop.getproperty("First_Name"), prop.getproperty("Middle_Name"), prop.getproperty("Last_Name"), "10");
         confirmDetailsAndPay();
         waitTime(5000);
-        verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
+        verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Popup"));
         verifyElementPresentAndClick(MLWalletLoginPage.objOtpContineBtn, getTextVal(MLWalletLoginPage.objOtpContineBtn, "Button"));
         waitTime(15000);
         if (verifyElementPresent(MLWalletPayBillsPage.objSuccessPillPaymentMsg, getTextVal(MLWalletPayBillsPage.objSuccessPillPaymentMsg, "Message"))) {

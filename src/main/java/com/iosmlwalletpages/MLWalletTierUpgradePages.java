@@ -56,7 +56,7 @@ public class MLWalletTierUpgradePages {
         return By.xpath("(//*[@name='" + sOptionText + "'])[2]");
     }
     //  Company/Employer Name
-    public static By objCompanyOrEmployerName = By.xpath("//*[@name='Company/Employer Name']/child::XCUIElementTypeOther/child::XCUIElementTypeTextField");
+    public static By objCompanyOrEmployerName = By.xpath("//*[@name='Company/Employer Name']/following-sibling::XCUIElementTypeOther/child::XCUIElementTypeTextField");
 //  Work Address
     public static By objWorkAddress = By.xpath("//*[@name='Work Address']/child::XCUIElementTypeOther/child::XCUIElementTypeTextField");
 //  Account Details
@@ -88,9 +88,9 @@ public class MLWalletTierUpgradePages {
 //  Scan Back of ID Info
     public static By objScanBackOfIDInfo = By.xpath("//*[@name='Scan Back of ID']/following-sibling::XCUIElementTypeStaticText");
 //  Capture Screen
-    public static By objCaptureScreen = By.xpath("(//*[@name='Scan Front of ID']/following-sibling::XCUIElementTypeOther)[1]");
+    public static By objCaptureScreen = By.xpath("(//XCUIElementTypeOther[@name=\"Please align your face inside the shape and take a snapshot\"])[3]/XCUIElementTypeOther[2]");
 //  Capture button
-    public static By objCaptureButton = By.xpath("(//*[@name='Scan Front of ID']/following-sibling::XCUIElementTypeOther)[2]");
+    public static By objCaptureButton = By.xpath("(//XCUIElementTypeOther[@name=\"Please align your face inside the shape and take a snapshot\"])[3]/XCUIElementTypeOther[3]/XCUIElementTypeOther");
     //  Capture Screen
     public static By objCaptureScreenBackID = By.xpath("(//*[@name='Scan Back of ID']/following-sibling::XCUIElementTypeOther)[1]");
     //  Capture button
@@ -177,7 +177,7 @@ public class MLWalletTierUpgradePages {
 //  School/university Input value
     public static By objSchoolUniversityInputValue = By.xpath("(//*[@name='School/University'])[3]/following-sibling::XCUIElementTypeOther/child::XCUIElementTypeTextField");
 //  School Address Input value
-    public static By objSchoolAddressInputValue = By.xpath("(//*[@name='School/University'])[3]/following-sibling::XCUIElementTypeOther/child::XCUIElementTypeTextField");
+    public static By objSchoolAddressInputValue = By.xpath("(//XCUIElementTypeOther[@name=\"School Address\"])[2]/XCUIElementTypeOther/XCUIElementTypeTextField");
 //  Grant/ProgramType Input value
     public static By objGrantProgramTypeInputValue = By.xpath("(//*[@name='Grant/Program Type'])[3]/following-sibling::XCUIElementTypeOther/child::XCUIElementTypeTextField");
 //  occupation Input value

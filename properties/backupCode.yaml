@@ -1,0 +1,10 @@
+Roles:
+- role: admin
+  email: ml-tg-qa-team@mlhuillier.com
+  password: Q@d3partm3nt2023
+  backupCodes: [3558 6167, 1066 1827, 1346 5256, 3408 0968]
+- role: teller
+  email: dominic.melgo@mlhuillier.com
+  password: Q@d3partm3nt2023
+  backupCodes: [5079 4304, 6222 8473, 0453 2327, 6458 7826, 5939 5205, 3738 7999,
+    3558 6167, 1066 1827, 1346 5256, 3408 0968]

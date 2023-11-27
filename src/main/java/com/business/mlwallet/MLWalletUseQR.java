@@ -2,6 +2,7 @@ package com.business.mlwallet;
 
 import com.driverInstance.DriverManager;
 import com.iosmlwalletpages.*;
+import com.utility.Utilities;
 
 import java.time.Duration;
 
@@ -25,7 +26,7 @@ public class MLWalletUseQR extends BaseClass{
     }
 
     public void scanQR(String url) throws InterruptedException{
-        switchPlatformToWeb(url);
+        Utilities.switchPlatformToWeb(url);
         waitTime(5000);
         closeWebBrowser();
         switchPlatformToAndroid();

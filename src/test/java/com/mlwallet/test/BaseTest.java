@@ -34,6 +34,7 @@ public class BaseTest {
     protected MLWalletBranchLocator mlWalletBranchLocator;
     protected MLWalletUseQR mlWalletUseQR;
     protected MLWalletTopUpGames mlWalletTopUpGames;
+    protected MLWalletTroubleSigningIn mlWalletTroubleSigningIn;
 
     public static ExtentTest testLogger;
     AppiumServer server = new AppiumServer();
@@ -76,6 +77,7 @@ public class BaseTest {
         mlWalletBranchLocator = new MLWalletBranchLocator();
         mlWalletUseQR = new MLWalletUseQR();
         mlWalletTopUpGames = new MLWalletTopUpGames();
+        mlWalletTroubleSigningIn = new MLWalletTroubleSigningIn();
         propertyFileReader();
     }
 

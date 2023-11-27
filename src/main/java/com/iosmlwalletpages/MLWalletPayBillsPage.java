@@ -24,9 +24,9 @@ public class MLWalletPayBillsPage {
 
      public static By objAlphabetical = By.xpath("//*[@label='Alphabetical']");
 
-     public static By objZelement = By.xpath("//*[@name='Categories Alphabetical']/following-sibling::XCUIElementTypeOther/descendant::XCUIElementTypeScrollView/child::XCUIElementTypeOther/child::XCUIElementTypeOther");
+//     public static By objZelement = By.xpath("//*[@name='Categories Alphabetical']/following-sibling::XCUIElementTypeOther/descendant::XCUIElementTypeScrollView/child::XCUIElementTypeOther/child::XCUIElementTypeOther");
 
-     // public static By objZelement = By.xpath("(//*[@name='ZOE BROADCASTING'])[3]");
+      public static By objZelement = By.xpath("//*[@name='Z']");
 
      public static By objBankingAndFinance = By.xpath("//*[@label=' Banking/Finance ']");
 
@@ -38,7 +38,7 @@ public class MLWalletPayBillsPage {
 
      public static By objUtilities = By.xpath("(//*[@name='Utilities '])[3]");
 
-     public static By objUtilities1 = By.xpath("(//*[@name='ANECO']/preceding-sibling::XCUIElementTypeOther)[2]");
+     public static By objUtilities1 = By.xpath("(//*[@name='ANECO']/preceding-sibling::XCUIElementTypeOther)[1]");
 
      public static By objUtilitiesBillers = By.xpath("//*[@name='Utilities ']/following-sibling::XCUIElementTypeOther");
 
@@ -52,7 +52,7 @@ public class MLWalletPayBillsPage {
 
      public static By objBillsPayInformation = By.xpath("//*[@label='Bills Pay Information']");
 
-     public static By objBillerNameInBillsPayInformation = By.xpath("//*[@name='B0384I']");
+     public static By objBillerNameInBillsPayInformation = By.xpath("//XCUIElementTypeTextField[@name=\"B0384I\"]");
 
      public static By objSearchBiller = By.xpath("//*[@name='Search biller ...']/XCUIElementTypeTextField");
 
@@ -60,7 +60,7 @@ public class MLWalletPayBillsPage {
 
      public static By objMisBillsPayBiller = By.xpath("(//*[@name='MIS BILLSPAY NEW TEST'])[2]");
 
-     public static By objMisBillsPayBiller1 = By.xpath("//*[@name='B0384I']");
+     public static By objMisBillsPayBiller1 = By.xpath("(//*[@name='B0384I'])[2]");
 
      public static By objEditBtn = By.xpath("(//*[@name='Edit'])[2]");
 
@@ -85,7 +85,7 @@ public class MLWalletPayBillsPage {
 
      public static By objConfirmBtn = By.xpath("(//*[@label='Confirm'])[2]");
 
-     public static By objModalConfirmBtn = By.xpath("//*[@name='Confirm']");
+     public static By objModalConfirmBtn = By.xpath("//XCUIElementTypeOther[@name=\"modal-confirm-button\"]");
 
      public static By objConfirmDetails = By.xpath("//*[@label='Confirm Details']");
 
@@ -177,7 +177,7 @@ public class MLWalletPayBillsPage {
 
      public static By objSearchSavedBiller = By.xpath("//*[@name='Search ...']/XCUIElementTypeTextField");
 
-     public static By objClearSearchBar = By.xpath("//*[@name='']/XCUIElementTypeOther/XCUIElementTypeTextField");
+     public static By objClearSearchBar = By.xpath("//*[@type='XCUIElementTypeTextField']");
 
      public static By objOKBtn = By.xpath("//*[@label='Ok']");
 
@@ -187,7 +187,7 @@ public class MLWalletPayBillsPage {
 
      public static By objEditRecipientLastName = By.xpath("((//XCUIElementTypeOther[@name='Save'])[2]/parent::XCUIElementTypeOther/preceding-sibling::XCUIElementTypeOther)[9]");
 
-     public static By objLastNameClr = By.xpath("//*[@name='Account Holder Last Name']/XCUIElementTypeTextField");
+     public static By objLastNameClr = By.xpath("(//*[@type='XCUIElementTypeTextField'])[4]");
 
      public static By ObjSaveBtn = By.xpath("(//*[@name='Save'])[2]");
 

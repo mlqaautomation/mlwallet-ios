@@ -1,5 +1,6 @@
 package com.business.mlwallet;
 
+import com.utility.yamlReader;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Reporter;
 import com.driverInstance.CommandBase;
@@ -17,6 +18,7 @@ public class BaseClass {
 	static String oSPlatformName = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getSuite().getName();
 	public static LoggingUtils logger = new LoggingUtils();
 	public static PropertyFileReader prop;
+	public static yamlReader yamlReader;
 	public static String os = System.getProperty("os.name").toLowerCase();
 	public static String osName=System.getProperty("os.name").toLowerCase();
 	
@@ -28,7 +30,14 @@ public class BaseClass {
 			prop = new PropertyFileReader(".\\properties\\testdata.properties");	
 		}
 	}
-	
+
+	public void yamlReader(){
+		if(osName.contains("mac") || osName.contains("linux")){
+			yamlReader = new yamlReader(".//properties//backupCode.yaml");
+		}else {
+			yamlReader = new yamlReader(".\\properties\\backupCode.yaml");
+		}
+	}
 	//0-Param Constructor
 	public BaseClass() {
 		
@@ -38,6 +47,7 @@ public class BaseClass {
 	public BaseClass(String Application, String deviceName, String portno) throws InterruptedException {
 		new CommandBase(Application, deviceName, portno);
 		propertyFileReader();
+		yamlReader();
 	}
 
 

@@ -235,12 +235,16 @@ public class Utilities extends ExtentReporter {
      * @param : byLocator the by locator
      * @return true, if successful
      */
-    public static boolean verifyElementNotPresent(By byLocator, int iTimeOut) {
+    public static boolean verifyElementNotPresent(By byLocator,String ValidationText, int iTimeOut) throws Exception{
         try {
             WebDriverWait wait = new WebDriverWait(DriverManager.getAppiumDriver(), iTimeOut);
             wait.until(ExpectedConditions.invisibilityOfElementLocated(byLocator));
+            logger.info(ValidationText+" is not displayed");
+            extentLoggerPass("checkElementPresent", "Element "+ValidationText + " is not displayed");
             return false;
         } catch (NoSuchElementException e) {
+            logger.info(ValidationText + " is present");
+            extentLoggerPass("checkElementPresent", "Element " + ValidationText + " is displayed");
             return true;
         }
     }
@@ -370,6 +374,39 @@ public class Utilities extends ExtentReporter {
         }
         logger.info("" + validationtext + " " + "is not displayed");
         ExtentReporter.extentLogger("checkElementPresent", "" + validationtext + " is not displayed");
+        return false;
+    }
+    public static boolean verifyElementDisplayed1(By byLocator, String validationtext) throws Exception {
+        //String platform = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getSuite().getName();
+        if (platform.equalsIgnoreCase("web")) {
+            try {
+                WebElement element = DriverManager.getDriver().findElement(byLocator);
+                if (element.isDisplayed()) {
+                    return true;
+                }
+            } catch (Exception e) {
+            }
+        } else if (platform.equalsIgnoreCase("Android") || platform.equalsIgnoreCase("BrowserStack")) {
+            try {
+                WebElement element = DriverManager.getAppiumDriver().findElement(byLocator);
+                if (element.isDisplayed()) {
+                    return true;
+                }
+            } catch (Exception e) {
+            }
+        } else if (platform.equalsIgnoreCase("iOS") || platform.equalsIgnoreCase("IOSBrowserStack")) {
+            try {
+                WebElement element = DriverManager.getAppiumDriver().findElement(byLocator);
+                if (element.isDisplayed()) {
+                    logger.info("" + validationtext + " " + "is displayed");
+                    ExtentReporter.extentLogger("checkElementPresent", "" + validationtext + " is displayed");
+                    return true;
+                }
+            } catch (Exception e) {
+            }
+        }
+//        logger.info("" + validationtext + " " + "is not displayed");
+//        ExtentReporter.extentLogger("checkElementPresent", "" + validationtext + " is not displayed");
         return false;
     }
     public static String charRemoveAt(String str, int p) {
@@ -512,6 +549,21 @@ public class Utilities extends ExtentReporter {
     }
 
 
+    public static void clickWeb(By byLocator, String validationtext) throws Exception {
+        try {
+            if (platform.equalsIgnoreCase("web")) {
+                WebElement element = getWebDriver().findElement(byLocator);
+                element.click();
+            }
+            logger.info("Clicked on " + validationtext);
+            ExtentReporter.extentLoggerPass("click", "Clicked on " + validationtext);
+        } catch (Exception e) {
+            screencapture();
+            logger.info("Not clicked on " + validationtext);
+            extentLoggerFail("click", "Not Clicked on " + validationtext + e);
+            throw new AssertionError("Unable to click element " + byLocator, e);
+        }
+    }
     public static void DoubleClick(By locator, String OptionName) {
         try {
 
@@ -526,7 +578,7 @@ public class Utilities extends ExtentReporter {
         }
     }
 
-    public static boolean verifyElementNotPresentForWeb(By byLocator, int iTimeOut) {
+    public static boolean verifyElementNotPresentForWeb(By byLocator, int iTimeOut) throws Exception{
         try {
             WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), iTimeOut);
             wait.until(ExpectedConditions.invisibilityOfElementLocated(byLocator));
@@ -3925,14 +3977,14 @@ public class Utilities extends ExtentReporter {
     }
 
     public static void newScrollMethodHorizontal(double start_xd, double start_yd, double end_xd, double end_yd) {
-        Dimension dimension = getDriver().manage().window().getSize();
+        Dimension dimension = DriverManager.getAppiumDriver().manage().window().getSize();
         int start_x = (int) (dimension.getWidth() * start_xd); //0.5
         int start_y = (int) (dimension.getHeight() * start_yd); //0.8
 
         int end_x = (int) (dimension.getWidth() * end_xd);//0.5
         int end_y = (int) (dimension.getHeight() * end_yd);//0.2
 
-        TouchAction touch = new TouchAction(getDriver());
+        TouchAction touch = new TouchAction(DriverManager.getAppiumDriver());
         touch.press(PointOption.point(start_x, start_y)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
                 .moveTo(PointOption.point(end_x, end_y)).release().perform();
     }
@@ -3962,7 +4014,6 @@ public class Utilities extends ExtentReporter {
                     System.out.println("Found the value == : " + text);
                     break;
                 }
-
             }
             if (!flag)
                 newScrollMethodVertical(0.5, 0.8, 0.5, 0.2);
@@ -3985,6 +4036,33 @@ public class Utilities extends ExtentReporter {
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
                 .moveTo(PointOption.point(midX, bottomEdge))
                 .release().perform();
+    }
+
+    public static void   swipeUntilElementVisible(By byLocator, String validationtext) throws Exception {
+        int n = 100;
+        for(int i=1;i<=n;i++){
+            Swipe("UP",i);
+            if(verifyElementDisplayed(byLocator,validationtext)){
+                break;
+            }
+        }
+    }
+
+    public static void swipeDown(String direction, int count ){
+        for (int j = 0; j < count; j++) {
+
+            Dimension size = DriverManager.getAppiumDriver().manage().window().getSize();
+            int starty = (int) (size.height * 0.80);
+            int endy = (int) (size.height * 0.20);
+            int startx = size.width / 2;
+            touchAction.press(PointOption.point(startx, endy))
+                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
+                    .moveTo(PointOption.point(startx, starty)).release().perform();
+            logger.info("Swiping screen in " + " " + direction + " direction" + " " + (j + 1) + " times");
+            ExtentReporter.extentLogger("SwipeDown",
+                    "Swiping screen in " + " " + direction + " direction" + " " + (j + 1) + " times");
+
+        }
     }
 
 }

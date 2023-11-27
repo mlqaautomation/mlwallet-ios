@@ -197,13 +197,13 @@ public class MLWalletBuyELoad extends BaseClass {
         HeaderChildNode("Transaction Details Validation after Buying eLoad");
         waitTime(2000);
         changeNumberPage();
-        eLoad_generic(sTier,prop.getproperty("sunMobileNumber"), "true", promotab);
-        explicitWaitVisibility(MLWalletEloadPage.objLoadSelectionPage, 10);
+        eLoad_generic(sTier,prop.getproperty("GLOBE"), "true", promotab);
+        waitTime(5000);
         verifyElementPresent(MLWalletEloadPage.objLoadSelectionPage, "Load Selection Page");
         click(MLWalletEloadPage.objPromoLoadTab, "Promo Load Tab");
         waitTime(5000);
         click(MLWalletEloadPage.objTransaction, getTextVal(MLWalletEloadPage.objTransaction, "Promo"));
-        explicitWaitVisibility(MLWalletEloadPage.objContinuePromoPopUp, 10);
+        waitTime(5000);
         verifyElementPresent(MLWalletEloadPage.objContinuePromoPopUp, getTextVal(MLWalletEloadPage.objContinuePromoPopUp, "Pop Up"));
         waitTime(5000);
         click(MLWalletEloadPage.objConfirmBtn, "Confirm Button");
@@ -232,7 +232,7 @@ public class MLWalletBuyELoad extends BaseClass {
         HeaderChildNode("Buying eLoad using invalid mobile number");
         waitTime(2000);
         changeNumberPage();
-        eLoad_generic(prop.getproperty("Branch_Verified"),prop.getproperty("inValidMobNumber"),"true", 4);
+        eLoad_generic(prop.getproperty("Branch_Verified"),prop.getproperty("inValidMobNumber"),"true", 3);
         waitTime(2000);
         if(verifyElementPresent(MLWalletEloadPage.objErrorMsg, getTextVal(MLWalletEloadPage.objErrorMsg, "Pop Up Message"))){
             String sActualErrorMsg = getText(MLWalletEloadPage.objErrorMsg);
@@ -249,7 +249,7 @@ public class MLWalletBuyELoad extends BaseClass {
         HeaderChildNode("Buying eLoad without mobile number input");
         waitTime(2000);
         changeNumberPage();
-        eLoad_generic(prop.getproperty("Branch_Verified"),"", "true", 4);
+        eLoad_generic(prop.getproperty("Branch_Verified"),"", "true", 3);
         waitTime(2000);
         if(verifyElementPresent(MLWalletEloadPage.objErrorMsgOne, getTextVal(MLWalletEloadPage.objErrorMsgOne, "Pop Up Message"))) {
             String sActualErrorMsg = getText(MLWalletEloadPage.objErrorMsgOne);
@@ -265,7 +265,7 @@ public class MLWalletBuyELoad extends BaseClass {
         HeaderChildNode("Buying eLoad without telecommunication selected");
         waitTime(2000);
         changeNumberPage();
-        eLoad_generic(prop.getproperty("Branch_Verified"),prop.getproperty("sunMobileNumber"),"false", 4);
+        eLoad_generic(prop.getproperty("Branch_Verified"),prop.getproperty("sunMobileNumber"),"false", 3);
         waitTime(2000);
         if(verifyElementPresent(MLWalletEloadPage.objErrorMsg, getTextVal(MLWalletEloadPage.objErrorMsg, "Pop Up Message"))) {
             String sActualErrorMsg = getText(MLWalletEloadPage.objErrorMsg);
@@ -273,6 +273,7 @@ public class MLWalletBuyELoad extends BaseClass {
             assertionValidation(sActualErrorMsg, sExceptedErrorMsg);
             logger.info("BE_TC_04, Buying eLoad without selecting telecommunication, Network and Mobile number does not match Error Msg Validated");
             extentLoggerPass("BE_TC_04", "BE_TC_04, Buying eLoad without selecting telecommunication, Network and Mobile number does not match Error Msg Validated");
+            System.out.println("-----------------------------------------------------------");
         }
     }
 

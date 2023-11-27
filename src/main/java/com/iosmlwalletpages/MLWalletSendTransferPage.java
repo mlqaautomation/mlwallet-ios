@@ -98,7 +98,7 @@ public class MLWalletSendTransferPage {
     
     public static By objSelectRecipient = By.xpath("//*[@label='Select Recipient']");
 
-    public static By objSearchRecipient = By.xpath("//*[@name='Search Recipient']/XCUIElementTypeTextField");
+    public static By objSearchRecipient = By.xpath("//XCUIElementTypeTextField[@name=\"SHT73T\"]");
     
     public static By objSavedRecipientsList = By.xpath("//XCUIElementTypeScrollView/descendant::XCUIElementTypeOther/descendant::XCUIElementTypeOther");
     
@@ -115,7 +115,7 @@ public class MLWalletSendTransferPage {
 //    public static By objSelectLastName(String sLastName,String sFirstName){
 //        return By.xpath("//*[contains(@text,'"+sLastName+", "+sFirstName+"')]");
 //    }
-    public static  By objSelectLastName = By.xpath("(//*[XCUIElementTypeScrollView]/descendant::XCUIElementTypeOther)[3]");
+    public static  By objSelectLastName = By.xpath("//XCUIElementTypeOther[@name=\"HQCZ6L\"]");
 	
 //(//XCUIElementTypeOther[@name=""])[4]
 ////XCUIElementTypeOther[@name=\"\"]

@@ -30,4 +30,16 @@ public final class DriverManager {
     public static AppiumDriver getAppiumDriver(){
         return appiumDriver.get();
     }
+
+//================================ Web ==============================//
+
+//    private static final ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
+//
+//    public static void setWebDriver (WebDriver webdriver) {
+//        webDriver.set(webdriver);
+//    }
+//
+//    public static WebDriver getWebDriver(){
+//        return webDriver.get();
+//    }
 }

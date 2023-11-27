@@ -7,7 +7,6 @@ import static com.utility.Utilities.getDriver;
 
 public class MLWalletLoginScripts  extends BaseTest{
 
-	
 	@Test(priority = 1)
 	public void LogInScenarioWithValidMobNumber() throws Exception { // MLWalletBusinessLogic.gmail();
 		mlWalletLogin.LogInScenarioWithValidMobNumber_Lgn_TC_01();
@@ -55,17 +54,14 @@ public class MLWalletLoginScripts  extends BaseTest{
 
 
 //====================================================================================================//
-
 	@Test(priority = 10)
 	public void loginWithExistingMobileNumber_Lgn_TC_17() throws Exception {
 		mlWalletLogin.loginWithExistingMobileNumber_Lgn_TC_17();
 	}
-
 	@Test(priority = 11)
 	public void loginMPinPageUIValidation_Lgn_TC_18() throws Exception {
 		mlWalletLogin.loginMPinPageUIValidation_Lgn_TC_18();
 	}
-
 	@Test(priority = 12)
 	public void loginInAppOTPNavigation_Lgn_TC_22() throws Exception {
 		mlWalletLogin.loginInAppOTPNavigation_Lgn_TC_22();
@@ -85,7 +81,6 @@ public class MLWalletLoginScripts  extends BaseTest{
 	public void loginOTPCancelBtnFunctionality_Lgn_TC_25() throws Exception {
 		mlWalletLogin.loginOTPCancelBtnFunctionality_Lgn_TC_25();
 	}
-
 	@Test(priority = 16)
 	public void loginOTPContinueBtnFunctionality_Lgn_TC_26() throws Exception {
 		mlWalletLogin.loginOTPContinueBtnFunctionality_Lgn_TC_26();

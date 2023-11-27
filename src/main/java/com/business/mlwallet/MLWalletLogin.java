@@ -217,7 +217,7 @@ public class MLWalletLogin extends BaseClass {
     public void loginOTPPageUIValidation_Lgn_TC_10() throws Exception {
         HeaderChildNode("LogIn OTP Page UI Validation");
         changeNumberPage();
-        type(MLWalletLoginPage.objMobileNumberTextField, prop.getproperty("Branch_Verified"), "Mobile Number Text Field");
+        type(MLWalletLoginPage.objMobileNumberTextField, prop.getproperty("Semi_Verified"), "Mobile Number Text Field");
         click(MLWalletLoginPage.objLoginBtn, "Login Button");
         waitTime(3000);
         if (verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"))) {
@@ -235,16 +235,16 @@ public class MLWalletLogin extends BaseClass {
         HeaderChildNode("Login With Existing Mobile Number");
         changeNumberPage();
         mlWalletLogin(prop.getproperty("Branch_Verified"));
-        verifyElementPresent(MLWalletLogOutPage.objHamburgerMenu, "Hamburger Menu");
-        click(MLWalletLogOutPage.objHamburgerMenu, "Hamburger Menu");
+        verifyElementPresent(MLWalletLogOutPage.objHamburgerMenu1, "Hamburger Menu");
+        click(MLWalletLogOutPage.objHamburgerMenu1, "Hamburger Menu");
         waitTime(3000);
         click(MLWalletLogOutPage.objLogoutBtn, "Logout Button");
         waitTime(4000);
         click(MLWalletLogOutPage.objPopUpLogoutBtn,  "Logout Button");
         waitTime(3000);
         verifyElementPresent(MLWalletLogOutPage.objChangeNumber,"Mpin Page");
-        handleMpin("1234", "Entered Mpin");
-        explicitWaitVisible(MLWalletLoginPage.objAvailableBalance, 10);
+        handleMpin("1111", "Entered Mpin");
+        waitTime(10000);
         if (verifyElementPresent(MLWalletLoginPage.objAvailableBalance, getTextVal(MLWalletLoginPage.objAvailableBalance, "Text"))) {
             logger.info("Lgn_TC_17, Application Logged In Successfully");
             extentLoggerPass("Lgn_TC_17", "Lgn_TC_17, Application Logged In Successfully");
@@ -258,8 +258,8 @@ public class MLWalletLogin extends BaseClass {
         HeaderChildNode("Login Mpin Page UI Validation");
         changeNumberPage();
         mlWalletLogin(prop.getproperty("Branch_Verified"));
-        verifyElementPresent(MLWalletLogOutPage.objHamburgerMenu, "Hamburger Menu");
-        click(MLWalletLogOutPage.objHamburgerMenu, "Hamburger Menu");
+        verifyElementPresent(MLWalletLogOutPage.objHamburgerMenu1, "Hamburger Menu");
+        click(MLWalletLogOutPage.objHamburgerMenu1, "Hamburger Menu");
         waitTime(3000);
         click(MLWalletLogOutPage.objLogoutBtn, "Logout Button");
         waitTime(4000);
@@ -282,11 +282,11 @@ public class MLWalletLogin extends BaseClass {
         HeaderChildNode("LogIn In App OTP Navigation");
         changeNumberPage();
         click(MLWalletLoginPage.objMobileNumberTextField, "Mobile Number Text Field");
-        type(MLWalletLoginPage.objMobileNumberTextField, prop.getproperty("Branch_Verified"), "Mobile Number Text Field");
+        type(MLWalletLoginPage.objMobileNumberTextField, prop.getproperty("Fully_Verified"), "Mobile Number Text Field");
         waitTime(3000);
         click(MLWalletLoginPage.objLoginBtn, "Login Button");
         waitTime(10000);
-        if (verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"))) {
+        if (verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Page"))) {
             verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"));
             logger.info("Lgn_TC_22, LogIn In App OTP Navigation validated");
             extentLoggerPass("Lgn_TC_22", "Lgn_TC_22, LogIn In App OTP Navigation validated");
@@ -321,7 +321,7 @@ public class MLWalletLogin extends BaseClass {
         if(verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"))){
             String sGeneratedOTP = getText(MLWalletLoginPage.objOTP);
             for(int i=1;i<=60;i++){
-                click1(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"));
+                click1(MLWalletLoginPage.objOneTimePinPopup,getTextVal(MLWalletLoginPage.objOneTimePinPopup,"One Time Pin"));
             }
             verifyElementPresent(MLWalletLoginPage.objOTP,getTextVal(MLWalletLoginPage.objOTP,"One Time Pin"));
             String sNewlyGeneratedOTPAfterSixtySeconds = getText(MLWalletLoginPage.objOTP);
@@ -359,7 +359,7 @@ public class MLWalletLogin extends BaseClass {
         verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Page"));
         verifyElementPresentAndClick(MLWalletLoginPage.objOtpContineBtn,getTextVal(MLWalletLoginPage.objOtpContineBtn,"Button"));
         waitTime(2000);
-        if(verifyElementPresent(MLWalletLoginPage.objAvailableBalance,getTextVal(MLWalletLoginPage.objAvailableBalance,"Button"))){
+        if(verifyElementPresent(MLWalletLoginPage.objChangeNumber,getTextVal(MLWalletLoginPage.objChangeNumber,"page"))){
             logger.info("Lgn_TC_26, LogIn, After clicking on Continue in One time pin popup App navigates to Home Page validated");
             extentLoggerPass("Lgn_TC_26", "Lgn_TC_26, LogIn, After clicking on Continue in One time pin popup App navigates to Home Page validated");
             System.out.println("-----------------------------------------------------------");
@@ -410,21 +410,22 @@ public class MLWalletLogin extends BaseClass {
     public void loginEnterInvalidMPinAndBlock_Lgn_TC_28() throws Exception {
         HeaderChildNode("Login Enter Invalid MPin and block");
         waitTime(2000);
-//        changeNumberPage();
-//        mlWalletLogin("9999999995");
-//        click(MLWalletLogOutPage.objHamburgerMenu, "Hamburger Menu");
-//        waitTime(3000);
-//        click(MLWalletLogOutPage.objLogoutBtn, "Logout Button");
-//        waitTime(4000);
-//        click(MLWalletLogOutPage.objPopUpLogoutBtn,  "Logout Button");
-//        waitTime(3000);
-//        verifyElementPresent(MLWalletLogOutPage.objChangeNumber, getTextVal(MLWalletLogOutPage.objChangeNumber, "Link"));
+        changeNumberPage();
+        mlWalletLogin("9999999995");
+        click(MLWalletLogOutPage.objHamburgerMenu, "Hamburger Menu");
+        waitTime(3000);
+        click(MLWalletLogOutPage.objLogoutBtn, "Logout Button");
+        waitTime(4000);
+        click(MLWalletLogOutPage.objPopUpLogoutBtn,  "Logout Button");
+        waitTime(3000);
+        verifyElementPresent(MLWalletLogOutPage.objChangeNumber, getTextVal(MLWalletLogOutPage.objChangeNumber, "Link"));
         for (int i = 0; i <= 6; i++) {
             handleMpin("1234", "MPin");
             waitTime(3000);
-            if (verifyElementPresent(MLWalletLoginPage.obj24HoursBlockedMsg, getTextVal(MLWalletLoginPage.obj24HoursBlockedMsg, "Error Msg"))) {
+            if (verifyElementDisplayed(MLWalletLoginPage.obj24HoursBlockedMsg, getTextVal(MLWalletLoginPage.obj24HoursBlockedMsg, "Error Msg"))) {
                 break;
-            }waitTime(3000);
+            }
+            waitTime(3000);
             click(MLWalletLoginPage.objOkBtn, getTextVal(MLWalletLoginPage.objOkBtn, "Button"));
         }
         if (verifyElementPresent(MLWalletLoginPage.obj24HoursBlockedMsg, getTextVal(MLWalletLoginPage.obj24HoursBlockedMsg, "Error Msg"))) {

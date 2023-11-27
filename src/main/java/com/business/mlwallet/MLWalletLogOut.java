@@ -63,7 +63,7 @@ public class MLWalletLogOut extends BaseClass {
             String sLogOutPopupMsg = getText(MLWalletLogOutPage.objLogoOutPopupMsg);
             String sExpectedErrorMsg = "Are you sure you would like to logout?";
             assertionValidation(sLogOutPopupMsg,sExpectedErrorMsg);
-            verifyElementPresent(MLWalletLogOutPage.objLogoutBtn,getTextVal(MLWalletLogOutPage.objLogoutBtn,"Button"));
+            verifyElementPresent(MLWalletLogOutPage.objPopUpLogoutBtn,getTextVal(MLWalletLogOutPage.objPopUpLogoutBtn,"Button"));
             verifyElementPresent(MLWalletLogOutPage.objCancelBtn,getTextVal(MLWalletLogOutPage.objCancelBtn,"Button"));
             logger.info("Lout_TC_05, LogOut Popup validated");
             extentLoggerPass("Lout_TC_05", "Lout_TC_05, LogOut Popup validated");

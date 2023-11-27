@@ -1,16 +1,22 @@
 package com.business.mlwallet;
-import com.iosmlwalletpages.MLWalletHomePage;
-import com.iosmlwalletpages.MLWalletLogOutPage;
-import com.iosmlwalletpages.MLWalletLoginPage;
-import com.iosmlwalletpages.MLWalletTierUpgradePages;
+import chromeTest.ChromeTest;
+import com.driverInstance.CommandBase;
+import com.driverInstance.DriverInstance;
+import com.driverInstance.DriverManager;
+import com.iosmlwalletpages.*;
 import com.utility.ExtentReporter;
+import com.utility.Utilities;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Reporter;
 
 import java.util.List;
+import java.util.Map;
 
 import static com.business.mlwallet.MLWalletLogin.changeNumberPage;
 import static com.business.mlwallet.MLWalletLogin.mlWalletLogin;
 import static com.business.mlwallet.MlWalletHomeAndDashBoard.*;
+import static com.driverInstance.Drivertools.setPlatform;
 import static com.utility.Utilities.*;
 
 public class MLWalletTierUpgrade extends BaseClass{
@@ -113,18 +119,90 @@ public class MLWalletTierUpgrade extends BaseClass{
     }
 
 
+    public void kpxLogin(String url) throws Exception {
+        Map<String, Object> roleData = yamlReader.getRoleData("admin");
+        if(!roleData.isEmpty()){
+            HeaderChildNode("KPX, Login via Gmail");
+//            setPlatform("Web");
+//            String s = Utilities.getPlatform();
+//            System.out.println(s);
+//            logger.info("Platform switched to Web Browser for QR Code");
+//            extentLogger("","Platform switched to Web Browser for QR Code");
+////            ChromeTest.LaunchBrowser("Chrome",url);
+//            new BaseClass();
+//            waitTime(5000);
+//            verifyElementPresent(KPXLogin.googleSign, "google sign in");
+
+            String browser = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browserType");
+            ChromeTest.LaunchBrowser(browser,url);
+            waitTime(5000);
+            new Utilities().setPlatform("Web");
+            System.out.println(getPlatform());
+            waitTime(10000);
+
+            clickWeb(KPXLogin.googleSign, "google sign in btn");
+            waitTime(2000);
+            WebDriver driver = getWebDriver();
+            driver.switchTo().window(driver.getWindowHandles().toArray(new String[0])[1]);
+            verifyElementPresent(KPXLogin.email_google, "email input");
+            waitTime(2000);
+            type(KPXLogin.email_google, yamlReader.getEmailForRole("admin"), "email inputted");
+            click(KPXLogin.nextBtn_google, "next btn");
+            verifyElementPresent(KPXLogin.password_google, "password input");
+            waitTime(2000);
+            type(KPXLogin.password_google, yamlReader.getPasswordForRole("admin"), "password inputted");
+            click(KPXLogin.nextBtn_google, "next btn");
+            waitTime(5000);
+            scrollToBottomOfPageWEB();
+            verifyElementPresentAndClick(KPXLogin.try_another_way_google, "another way option");
+            waitTime(5000);
+            scrollToBottomOfPageWEB();
+            waitTime(3000);
+            verifyElementPresentAndClick(KPXLogin.enter_back_up_codes_google, "8-digit backup codes");
+            verifyElementPresent(KPXLogin.input_back_up_codes_google, "backup code input text");
+            waitTime(2000);
+            type(KPXLogin.input_back_up_codes_google, yamlReader.getFirstBackupCode("admin"), "8-digit backup code");
+            click(KPXLogin.nextBtn_google, "next btn");
+            waitTime(10000);
+//            WebDriver driver1 = getWebDriver();
+            driver.switchTo().window(driver.getWindowHandles().toArray(new String[0])[0]);
+            verifyElementPresent(KPXLogin.LoginText, "Login Page Header");
+            logger.info("Navigated to Login Page");
+            extentLoggerPass("Login Page Redirection", "OK, ");
+        }
+    }
+
+
+    public void switchPlatformToWeb1(String url) throws InterruptedException {
+//        String browser = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browserType");
+//        new DriverInstance().LaunchBrowser(browser);
+//        waitTime(5000);
+//        getWebDriver().get(url);
+//        new Utilities().setPlatform("Web");
+//        System.out.println(getPlatform());
+        ChromeTest.LaunchBrowser("Chrome",url);
+        setPlatform("Web");
+        String s = Utilities.getPlatform();
+        System.out.println(s);
+        logger.info("Platform switched to Web Browser for QR Code");
+        extentLogger("","Platform switched to Web Browser for QR Code");
+    }
     public void tierUpgradeHomePageIIconValidationAsBuyerTierUser_TU_TC_01() throws Exception {
         HeaderChildNode("Tier Upgrade Home Page I Icon Validation as BuyerTier User");
         waitTime(2000);
         changeNumberPage();
         waitTime(2000);
         mlWalletLogin(prop.getproperty("Buyer_Tier"));
+//        kpxLogin("https://ml-kpx-qa.df.r.appspot.com/");
+//        closeWebBrowser();
+//        switchPlatformToAndroid();
         if (verifyElementPresent(MLWalletHomePage.objIIconLearnMoreTxt, getTextVal(MLWalletHomePage.objIIconLearnMoreTxt, "text"))) {
             logger.info("TU_TC_01, Tier Upgrade Home Page I Icon validated as BuyerTier User");
             extentLoggerPass("TU_TC_01", "TU_TC_01, Tier Upgrade Home Page I Icon validated as BuyerTier User");
             System.out.println("-----------------------------------------------------------");
         }
     }
+
 
 
     public void tierUpgradeHomePageIIconValidationAsSemiVerifiedTierUser_TU_TC_02() throws Exception {
@@ -145,7 +223,7 @@ public class MLWalletTierUpgrade extends BaseClass{
         waitTime(2000);
         changeNumberPage();
         mlWalletLogin(prop.getproperty("Fully_verified"));
-        verifyElementNotPresent(MLWalletHomePage.objIIcon, 5);
+        verifyElementNotPresent(MLWalletHomePage.objIIcon,"i icon", 5);
         logger.info("I Icon is not displayed");
         logger.info("TU_TC_03, Tier Upgrade Home Page I Icon not displayed For Fully-verified Tier user");
         extentLoggerPass("TU_TC_03", "TU_TC_03, Tier Upgrade Home Page I Icon not displayed For Fully-verified Tier user");
@@ -238,7 +316,7 @@ public class MLWalletTierUpgrade extends BaseClass{
         verifyElementPresentAndClick(MLWalletHomePage.objIIcon, "i Icon");
         verifyElementPresent(MLWalletHomePage.objVerificationTierPerks, getTextVal(MLWalletHomePage.objVerificationTierPerks, "Page"));
         verifyElementPresentAndClick(MLWalletTierUpgradePages.objBranchVerifiedTab, getTextVal(MLWalletTierUpgradePages.objBranchVerifiedTab, "Tab"));
-        verifyElementNotPresent(MLWalletTierUpgradePages.objUpgradeTierLevel, 5);
+        verifyElementNotPresent(MLWalletTierUpgradePages.objUpgradeTierLevel, "Upgrade Tier level button",5);
         logger.info("Upgrade Tier Level Button is not displayed");
         logger.info("TU_TC_09, Tier Upgrade Upgrade tier level Button validated, For Branch verified tab As Buyer tier User");
         extentLoggerPass("TU_TC_09", "TU_TC_09, Tier Upgrade Upgrade tier level Button validated, For Branch verified tab As Buyer tier User");
@@ -271,7 +349,7 @@ public class MLWalletTierUpgrade extends BaseClass{
         waitTime(2000);
         verifyElementPresent(MLWalletHomePage.objVerificationTierPerks, getTextVal(MLWalletHomePage.objVerificationTierPerks, "Page"));
         verifyElementPresentAndClick(MLWalletTierUpgradePages.objBranchVerifiedTab, getTextVal(MLWalletTierUpgradePages.objBranchVerifiedTab, "Tab"));
-        verifyElementNotPresent(MLWalletTierUpgradePages.objUpgradeTierLevel, 5);
+        verifyElementNotPresent(MLWalletTierUpgradePages.objUpgradeTierLevel, "Upgrade tier level button",5);
         logger.info("Upgrade Tier Level Button is not displayed");
         logger.info("TU_TC_11, Tier Upgrade Upgrade tier level Button validated, For Branch verified tab As Semi verified tier User");
         extentLoggerPass("TU_TC_11", "TU_TC_11, Tier Upgrade Upgrade tier level Button validated, For Branch verified tab As Semi verified tier User");
@@ -354,6 +432,7 @@ public class MLWalletTierUpgrade extends BaseClass{
         waitTime(2000);
         changeNumberPage();
         accountDetailsPageNavigation(prop.getproperty("Buyer_Tier"));
+        selectSourceOfIncome(prop.getproperty("SourceOfIncomeSalary"), "SALARY/PAY/WAGE/COMMISSION");
         verifyElementPresentAndClick(MLWalletTierUpgradePages.objProductServiceSelectionBtn, "Product/Services offered selection Button");
         type(MLWalletTierUpgradePages.objSearchFieldInput, "C", "Product/Services offered search field");
         if (verifyElementDisplayed(MLWalletTierUpgradePages.objMatchingElements, "Matching Elements")) {
@@ -379,6 +458,7 @@ public class MLWalletTierUpgrade extends BaseClass{
         waitTime(2000);
         changeNumberPage();
         accountDetailsPageNavigation(prop.getproperty("Buyer_Tier"));
+        selectSourceOfIncome(prop.getproperty("SourceOfIncomeSalary"), "SALARY/PAY/WAGE/COMMISSION");
         verifyElementPresentAndClick(MLWalletTierUpgradePages.objPositionAtWokSelectionBtn, "Position at Work selection Button");
         type(MLWalletTierUpgradePages.objSearchFieldInput, "A", "Position at Work search field");
         if (verifyElementDisplayed(MLWalletTierUpgradePages.objMatchingElements, "Matching Elements")) {
@@ -405,6 +485,7 @@ public class MLWalletTierUpgrade extends BaseClass{
         changeNumberPage();
         accountDetailsPageNavigation(prop.getproperty("Buyer_Tier"));
         Swipe("UP", 2);
+        selectSourceOfIncome(prop.getproperty("SourceOfIncomeSalary"), "SALARY/PAY/WAGE/COMMISSION");
         verifyElementPresentAndClick(MLWalletTierUpgradePages.objNatureOfWorkSelectionBtn, "Nature of Work selection Button");
         type(MLWalletTierUpgradePages.objSearchFieldInput, "U", "Nature of Work search field");
         if (verifyElementDisplayed(MLWalletTierUpgradePages.objMatchingElements, "Matching Elements")) {
@@ -443,8 +524,9 @@ public class MLWalletTierUpgrade extends BaseClass{
         HeaderChildNode("Tier upgrade page navigation");
         waitTime(2000);
         changeNumberPage();
-        accountDetailsPageNavigation(prop.getproperty("Buyer_Tier"));
+        accountDetailsPageNavigation("");
         Swipe("UP", 2);
+        selectSourceOfIncome(prop.getproperty("SourceOfIncomeSalary"), "SALARY/PAY/WAGE/COMMISSION");
         verifyElementPresentAndClick(MLWalletTierUpgradePages.objConfirmDetails, getTextVal(MLWalletTierUpgradePages.objConfirmDetails, "Button"));
         if (verifyElementPresent(MLWalletTierUpgradePages.objTierUpgrade, getTextVal(MLWalletTierUpgradePages.objTierUpgrade, "Page"))) {
             logger.info("TU_TC_20, Tier Upgrade page navigation validated");
