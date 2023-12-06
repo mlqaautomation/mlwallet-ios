@@ -17,12 +17,10 @@ public class MLWalletEloadPage {
 
 	public static By telcoOptions(int indexTab)
 	{
-		return By.xpath("(//*[@name='P1S3TL']/descendant::XCUIElementTypeOther/child::XCUIElementTypeOther/child::XCUIElementTypeOther/child::XCUIElementTypeOther/child::XCUIElementTypeImage)["+indexTab+"]");
+		return By.xpath("//XCUIElementTypeOther[@name='BPNJRD-"+indexTab+"']");
 	}
 
 	public static By objPromoLoads=By.xpath("(//*[XCUIElementTypeOther]/descendant::XCUIElementTypeScrollView/descendant::XCUIElementTypeOther)[11]");
-
-
 	//	public static By objTelecommunicationTab=By.xpath("//*[android.view.ViewGroup]/following-sibling::android.view.ViewGroup/(descendant::android.widget.ImageView)[4]");
 	public static By objMobileNoField=By.xpath("//*[@name='9** *** ****']/XCUIElementTypeTextField");
 
@@ -34,8 +32,8 @@ public class MLWalletEloadPage {
 
 	public static By objRegularLoadTab = By.xpath("//*[@label='Regular Load']");
 
+	public static By objP5SmartRegular = By.xpath("(//XCUIElementTypeStaticText[@name=\"P5 Smart Regular\"])[2]");
 	public static By objTransaction=By.xpath("(//*[XCUIElementTypeOther]/descendant::XCUIElementTypeScrollView/descendant::XCUIElementTypeOther)[11]");
-
 	public static By objContinuePromoPopUp=By.xpath("//*[@label='Would you like to continue with this promo?']");
 
 	public static By objPromoName=By.xpath("(//*[android.view.ViewGroup]/child::android.view.ViewGroup/child::android.widget.TextView)[5]");
@@ -104,7 +102,7 @@ public class MLWalletEloadPage {
 
 	public static By objAllowBtn = By.xpath("//*[@label='Allow']");
 
-	public static By objSearch = By.xpath("//*[@name='Search']/XCUIElementTypeTextField");
+	public static By objSearch = By.xpath("//*[@type='XCUIElementTypeTextField']");
 
 	public static By objSearchOne = By.xpath("//XCUIElementTypeTextField[@name='OO7ML4']");
 

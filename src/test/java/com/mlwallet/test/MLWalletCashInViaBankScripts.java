@@ -154,10 +154,10 @@ public class MLWalletCashInViaBankScripts extends BaseTest{
 //        mlWalletCashInViaBank.cashInViaBankTransactionInAppOTPPopupUIValidation_CIBA_TC_58();
 //    }
 //
-//    @Test(priority = 30)
-//    public void cashInViaBankTransactionNewOTPAfterSixtySecondsValidation_CIBA_TC_59() throws Exception {
-//        mlWalletCashInViaBank.cashInViaBankTransactionNewOTPAfterSixtySecondsValidation_CIBA_TC_59();
-//    }
+    @Test(priority = 30)
+    public void cashInViaBankTransactionNewOTPAfterSixtySecondsValidation_CIBA_TC_59() throws Exception {
+        mlWalletCashInViaBank.cashInViaBankTransactionNewOTPAfterSixtySecondsValidation_CIBA_TC_59();
+    }
 //
 //    @Test(priority = 31)
 //    public void cashInViaBankTransactionOTPCancelBtnFunctionality_CIBA_TC_60() throws Exception {

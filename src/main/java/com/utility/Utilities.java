@@ -4026,12 +4026,12 @@ public class Utilities extends ExtentReporter {
 
     public static void pullToRefresh1(){
 
-        int deviceWidth = getDriver().manage().window().getSize().getWidth();
-        int deviceHeight = getDriver().manage().window().getSize().getHeight();
+        int deviceWidth = DriverManager.getAppiumDriver().manage().window().getSize().getWidth();
+        int deviceHeight = DriverManager.getAppiumDriver().manage().window().getSize().getHeight();
         int midX = (deviceWidth / 2);
         int midY = (deviceHeight / 2);
         int bottomEdge = (int) (deviceHeight * 0.85f);
-        new TouchAction(getDriver())
+        new TouchAction(DriverManager.getAppiumDriver())
                 .press(PointOption.point(midX, midY))
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
                 .moveTo(PointOption.point(midX, bottomEdge))

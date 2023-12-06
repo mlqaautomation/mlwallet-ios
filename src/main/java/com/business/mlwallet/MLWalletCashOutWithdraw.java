@@ -1,5 +1,6 @@
 package com.business.mlwallet;
 
+import com.driverInstance.DriverManager;
 import com.iosmlwalletpages.*;
 
 import java.time.Duration;
@@ -181,6 +182,8 @@ public class MLWalletCashOutWithdraw extends BaseClass {
         enterBankDetails(prop.getproperty("AccountNumber"));
         waitTime(5000);
         type(MLWalletCashOutPage.objAmountField, Amount, "Amount to Send");
+        click(MLWalletCashOutPage.objNextBtn, getTextVal(MLWalletCashOutPage.objNextBtn, "Button"));
+        waitTime(5000);
         click(MLWalletCashOutPage.objNextBtn, getTextVal(MLWalletCashOutPage.objNextBtn, "Button"));
         Thread.sleep(5000);
         if (verifyElementPresent(MLWalletCashOutPage.objMinimumTransactionErrorMsg, getTextVal(MLWalletCashOutPage.objMinimumTransactionErrorMsg, "Error message"))) {
@@ -699,8 +702,10 @@ public class MLWalletCashOutWithdraw extends BaseClass {
         cashOutSelectBank(prop.getproperty("Valid_BankName"));
         enterBankDetails(prop.getproperty("AccountNumber"));
         type(MLWalletCashOutPage.objAmountField, sAmount, "Amount to Send");
+        waitTime(5000);
         click(MLWalletCashOutPage.objAmountNextBtn, getTextVal(MLWalletCashOutPage.objAmountNextBtn, "Button"));
         waitTime(5000);
+        Swipe("UP",1);
         click(MLWalletCashOutPage.objAmountNextBtn, getTextVal(MLWalletCashOutPage.objAmountNextBtn, "Button"));
         waitTime(10000);
         click(MLWalletCashOutPage.objContinueBtn, getTextVal(MLWalletCashOutPage.objContinueBtn, "Button"));
@@ -997,7 +1002,7 @@ public class MLWalletCashOutWithdraw extends BaseClass {
         Thread.sleep(3000);
         enterAmountBank(sAmount);
         enterOTP(prop.getproperty("Valid_OTP"));
-        getDriver().runAppInBackground(Duration.ofSeconds(5));
+        DriverManager.getAppiumDriver().runAppInBackground(Duration.ofSeconds(5));
         logger.info("Application relaunched after 5 Seconds");
         waitTime(3000);
         if (verifyElementPresent(MLWalletCashOutPage.objTransactionSuccessMessage, getTextVal(MLWalletCashOutPage.objTransactionSuccessMessage, "Message"))) {
@@ -1097,7 +1102,7 @@ public class MLWalletCashOutWithdraw extends BaseClass {
         Thread.sleep(3000);
         enterAmountBank(sAmount);
         waitTime(5000);
-        if (verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"))) {
+        if (verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Popup"))) {
             verifyElementPresent(MLWalletLoginPage.objOTP, getTextVal(MLWalletLoginPage.objOTP, "One Time Pin"));
             logger.info("WM_TC_119, CashOut Bank InApp OTP Popup validated");
             extentLoggerPass("WM_TC_119", "WM_TC_119, CashOut Bank InApp OTP Popup validated");
@@ -1115,7 +1120,7 @@ public class MLWalletCashOutWithdraw extends BaseClass {
         Thread.sleep(3000);
         enterAmountBank(sAmount);
         waitTime(5000);
-        if (verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"))) {
+        if (verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Popup"))) {
             verifyElementPresent(MLWalletLoginPage.objOTP, getTextVal(MLWalletLoginPage.objOTP, "One Time Pin"));
             verifyElementPresent(MLWalletLoginPage.objSeconds, getTextVal(MLWalletLoginPage.objSeconds, "Seconds"));
             verifyElementPresent(MLWalletLoginPage.objOtpContineBtn, getTextVal(MLWalletLoginPage.objOtpContineBtn, "Button"));
@@ -1136,7 +1141,7 @@ public class MLWalletCashOutWithdraw extends BaseClass {
         Thread.sleep(3000);
         enterAmountBank(sAmount);
         waitTime(5000);
-        verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
+        verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Popup"));
         if (verifyElementPresent(MLWalletLoginPage.objOTP, getTextVal(MLWalletLoginPage.objOTP, "One Time Pin"))) {
             String sGeneratedOTP = getText(MLWalletLoginPage.objOTP);
             waitTime(70000);
@@ -1158,7 +1163,7 @@ public class MLWalletCashOutWithdraw extends BaseClass {
         Thread.sleep(3000);
         enterAmountBank(sAmount);
         waitTime(5000);
-        verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
+        verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Popup"));
         verifyElementPresentAndClick(MLWalletLoginPage.objCancelBtn, getTextVal(MLWalletLoginPage.objCancelBtn, "Button"));
         if (verifyElementPresent(MLWalletCashOutPage.objReviewTransaction, getTextVal(MLWalletCashOutPage.objReviewTransaction, "Page"))) {
             logger.info("WM_TC_122, CashOut Bank Transaction, After clicking on Cancel in One time pin popup App navigates back to Review Transaction Page is validated");
@@ -1177,7 +1182,7 @@ public class MLWalletCashOutWithdraw extends BaseClass {
         Thread.sleep(3000);
         enterAmountBank(sAmount);
         waitTime(5000);
-        verifyElementPresent(MLWalletLoginPage.objOneTimePin, getTextVal(MLWalletLoginPage.objOneTimePin, "Page"));
+        verifyElementPresent(MLWalletLoginPage.objOneTimePinPopup, getTextVal(MLWalletLoginPage.objOneTimePinPopup, "Popup"));
         verifyElementPresentAndClick(MLWalletLoginPage.objOtpContineBtn, getTextVal(MLWalletLoginPage.objOtpContineBtn, "Button"));
         if (verifyElementPresent(MLWalletCashOutPage.objTransactionSuccessMessage, getTextVal(MLWalletCashOutPage.objTransactionSuccessMessage, "Message"))) {
             logger.info("WM_TC_123, CashOut Bank Transaction, After clicking on Continue in One time pin popup App navigates to Transaction Success Page is validated");
