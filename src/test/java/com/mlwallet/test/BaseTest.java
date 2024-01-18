@@ -3,7 +3,6 @@ package com.mlwallet.test;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.business.mlwallet.*;
-import com.driverInstance.DriverManager;
 import org.testng.annotations.*;
 import com.driverInstance.AppiumServer;
 import com.propertyfilereader.PropertyFileReader;
@@ -12,7 +11,7 @@ import org.testng.asserts.SoftAssert;
 
 import java.io.IOException;
 import static com.utility.Utilities.softAssert;
-import static com.utility.Utilities.*;
+
 
 public class BaseTest {
 
@@ -45,9 +44,10 @@ public class BaseTest {
     //To Read Properties File Based On Current OS Of Laptop
     public void propertyFileReader() {
         if (osName.contains("mac") || osName.contains("linux")) {
-            System.out.println(osName);
+            logger.info(osName);
             prop = new PropertyFileReader(".//properties//testdata.properties");
         } else {
+            logger.info(osName);
             prop = new PropertyFileReader(".\\properties\\testdata.properties");
         }
 
