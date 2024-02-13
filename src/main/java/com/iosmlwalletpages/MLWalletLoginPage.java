@@ -5,6 +5,11 @@ import org.openqa.selenium.By;
 public class MLWalletLoginPage {
 	
 	public static By objMobileNumberTextField=By.xpath("//*[@name='9XX XXX XXXX']/XCUIElementTypeTextField");
+	public static By objExittestingPage=By.xpath("//XCUIElementTypeOther[@name=\"×\"]");
+	public static By objAllowNoftifBtn=By.xpath("//XCUIElementTypeButton[@name=\"Allow\"]");
+	public static By objConfirmWentWrongBtn=By.xpath("//XCUIElementTypeOther[@name=\"modal-confirm-button\"]");
+
+	public static By objAllowNotifLabel=By.xpath("//XCUIElementTypeStaticText[@name=\"“ML Wallet” Would Like to Send You Notifications\"]");
 
 	public static By objMobileNumberTextField1=By.xpath( "//*[@name='+63']/XCUIElementTypeOther/XCUIElementTypeTextField");
 
@@ -19,6 +24,7 @@ public class MLWalletLoginPage {
 	public static By objInvalidMobNumberTxt = By.xpath("//*[@name='Mobile number is invalid']");
 
 	public static By objOneTimePin = By.xpath("//*[@name='One Time Pin']");
+
 	public static By objOneTimePinPopup = By.xpath("(//XCUIElementTypeStaticText[@name='One Time Pin'])[3]");
 	
 	public static By objOTP = By.xpath("(//XCUIElementTypeStaticText[@name='One Time Pin'])[3]/following-sibling::XCUIElementTypeOther/child::XCUIElementTypeStaticText");

@@ -24,6 +24,7 @@ public class BaseTest {
     protected MLWalletTransactionHistory mlWalletTransactionHistory;
     protected MLWalletLogOut mlWalletLogOut;
     protected MlWalletHomeAndDashBoard mlWalletHomeAndDashBoard;
+    protected MLWalletGCash mlWalletGCash;
     protected MLWalletTierUpgrade mlWalletTierUpgrade;
     protected MLWalletSendTransferToMLBranch mlWalletSendTransferToMLBranch;
     protected MLWalletSendTransferToMLWalletUser mlWalletSendTransferToMLWalletUser;
@@ -73,6 +74,7 @@ public class BaseTest {
         mlWalletSendTransferToMLWalletUser = new MLWalletSendTransferToMLWalletUser();
         mlWalletPayBills = new MLWalletPayBills();
         mlWalletBuyELoad = new MLWalletBuyELoad();
+        mlWalletGCash = new MLWalletGCash();
         mlWalletShopItems = new MLWalletShopItems();
         mlWalletBranchLocator = new MLWalletBranchLocator();
         mlWalletUseQR = new MLWalletUseQR();

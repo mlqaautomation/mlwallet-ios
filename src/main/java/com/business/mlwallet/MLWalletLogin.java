@@ -16,14 +16,25 @@ public class MLWalletLogin extends BaseClass {
     }
 
     public static void mlWalletLogin(String sTier) throws Exception {
+        if(verifyElementDisplayed(MLWalletLoginPage.objAllowNotifLabel, getText(MLWalletLoginPage.objAllowNotifLabel))){
+            click(MLWalletLoginPage.objAllowNoftifBtn, "Allow Notif Button");
+        }
+        else{
+            logger.info("No Allow notif Pop- Up!");
+        }
         waitTime(8000);
         type(MLWalletLoginPage.objMobileNumberTextField, sTier, "Mobile Number Text Field");
         waitTime(5000);
         click(MLWalletLoginPage.objLoginBtn, "Login Button");
         enterOTP("111111");
         waitTime(20000);
+        if(verifyElementDisplayed(MLWalletLoginPage.objExittestingPage,"Exit Testing Page")){
+            click(MLWalletLoginPage.objExittestingPage,"Exit Testing Page");
+            logger.info("Exit Testing Page");
+        }
         handleMpin("1111", "MPin");
         waitTime(15000);
+        click(MLWalletLoginPage.objConfirmWentWrongBtn,"Confirm Something Went Wrong!");
         if (verifyElementPresent(MLWalletLoginPage.objAvailableBalance, getTextVal(MLWalletLoginPage.objAvailableBalance, "Text"))) {
             logger.info("Application Logged In Successfully");
         } else {
@@ -86,6 +97,10 @@ public class MLWalletLogin extends BaseClass {
     public static void changeNumberPage() throws Exception {
         try {
             waitTime(10000);
+            if(verifyElementDisplayed(MLWalletLoginPage.objExittestingPage,"Exit Testing Page")){
+                click(MLWalletLoginPage.objExittestingPage,"Exit Testing Page");
+                logger.info("Exit Testing Page");
+            }
             if (verifyElementDisplayed(MLWalletLoginPage.objChangeNumber, getTextVal(MLWalletLoginPage.objChangeNumber, "Page"))) {
                 waitTime(2000);
                 click(MLWalletLoginPage.objChangeNumber, "Change Number Field");

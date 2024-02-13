@@ -18,6 +18,7 @@ public class BaseClass {
 	static String oSPlatformName = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getSuite().getName();
 	public static LoggingUtils logger = new LoggingUtils();
 	public static PropertyFileReader prop;
+	public static PropertyFileReader gcashprop;
 	public static yamlReader yamlReader;
 	public static String os = System.getProperty("os.name").toLowerCase();
 	public static String osName=System.getProperty("os.name").toLowerCase();
@@ -26,8 +27,10 @@ public class BaseClass {
 	public void propertyFileReader() {
 		if(osName.contains("mac") || osName.contains("linux")){
 			prop = new PropertyFileReader(".//properties//testdata.properties");
+			gcashprop = new PropertyFileReader(".//properties//gcash.properties");
 		}else {
-			prop = new PropertyFileReader(".\\properties\\testdata.properties");	
+			prop = new PropertyFileReader(".\\properties\\testdata.properties");
+			gcashprop = new PropertyFileReader(".\\properties\\gcash.properties");
 		}
 	}
 

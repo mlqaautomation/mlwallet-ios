@@ -6,6 +6,7 @@ public class MLWalletTierUpgradePages {
 
 
     //  Verification Tier perk page back button
+    public static By objVerificationTierPerksLabel =By.xpath("//XCUIElementTypeStaticText[@name=\"Verification Tier Perks\"]");
     public static By objVerificationTierPerksBackBtn = By.xpath("//*[@name='Verification Tier Perks']/following-sibling::XCUIElementTypeOther");
     //  Semi verified Tab
     public static By objSemiVerifiedTab = By.xpath("//*[@name='Semi Verified']");
