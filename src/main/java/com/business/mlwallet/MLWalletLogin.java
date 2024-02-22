@@ -34,7 +34,9 @@ public class MLWalletLogin extends BaseClass {
         }
         handleMpin("1111", "MPin");
         waitTime(15000);
-        click(MLWalletLoginPage.objConfirmWentWrongBtn,"Confirm Something Went Wrong!");
+        if(verifyElementDisplayed(MLWalletLoginPage.objConfirmWentWrongBtn,"Something Went Wrong Occured")){
+            click(MLWalletLoginPage.objConfirmWentWrongBtn,"Confirm Something Went Wrong!");
+        }
         if (verifyElementPresent(MLWalletLoginPage.objAvailableBalance, getTextVal(MLWalletLoginPage.objAvailableBalance, "Text"))) {
             logger.info("Application Logged In Successfully");
         } else {

@@ -588,6 +588,10 @@ public class MLWalletGCash extends BaseClass {
             verifyElementPresent(MLWalletGCashPage.objSendViaMLWalletlabel, "Send Via ML Wallet");
             verifyElementPresent(MLWalletGCashPage.objSendViaMLWalletBtn, "Send Via ML Wallet Button");
             verifyElementPresent(MLWalletGCashPage.objCloseBtn, "Close Button");
+            if(verifyElementDisplayed(MLWalletGCashPage.objSendViaMLWalletBtn, "Send Via ML Wallet Button Viewed")){
+                click(MLWalletGCashPage.objSendViaMLWalletBtn, "Send Via ML Wallet Button");
+                verifyElementPresent(MLWalletSendTransferPage.objSendMoney,"Send Wallet Label");
+            }
         }
     }
     public void GC_RM_TC_181_SendMoney_NoGCash_thru_KwartaPadala()throws Exception{
@@ -599,6 +603,10 @@ public class MLWalletGCash extends BaseClass {
             verifyElementPresent(MLWalletGCashPage.objSendViaMLKwartaWallelabel, "Send Via Kwarta Padala");
             verifyElementPresent(MLWalletGCashPage.objSendViaMLKwartaPadalaBtn, "Send Via Kwarta Padala Button");
             verifyElementPresent(MLWalletGCashPage.objCloseBtn, "Close Button");
+            if(verifyElementDisplayed(MLWalletGCashPage.objSendViaMLKwartaPadalaBtn, "Send Via Kwarta Padala Button Viewed")){
+                click(MLWalletGCashPage.objSendViaMLKwartaPadalaBtn, "Send Via Kwarta Padala Button");
+                verifyElementPresent(MLWalletSendTransferPage.objKwartaPadala,"Kwarta Padala Label");
+            }
         }
     }
 
