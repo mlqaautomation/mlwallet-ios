@@ -6,43 +6,43 @@ import org.testng.annotations.Test;
 public class MLWalletGCashScripts extends BaseTest{
 
 //    @Test(priority = 1)
-//    public void GC_Land_TC_01() throws Exception {
-//        mlWalletGCash.GC_Land_TC_01();
+//    public void GC_Land_TC_01_Verify_user_able_see_Gcash_icon_Dashborad() throws Exception {
+//        mlWalletGCash.GC_Land_TC_01_Verify_user_able_see_Gcash_icon_Dashborad();
 //    }
 //
 //    @Test(priority = 2)
-//    public void GC_Land_TC_02() throws Exception {
-//        mlWalletGCash.GC_Land_TC_02();
+//    public void GC_Land_TC_02_Verify_user_able_navigate_Gcash_services_page_tapping_Gcash_icon() throws Exception {
+//        mlWalletGCash.GC_Land_TC_02_Verify_user_able_navigate_Gcash_services_page_tapping_Gcash_icon();
 //    }
 //
 //    @Test(priority = 3)
-//    public void GC_Land_TC_03() throws Exception {
-//        mlWalletGCash.GC_Land_TC_03();
+//    public void GC_Land_TC_03_Verify_UI_Gcash_Services_page() throws Exception {
+//        mlWalletGCash.GC_Land_TC_03_Verify_UI_Gcash_Services_page();
 //    }
 //
 //    @Test(priority = 4)
-//    public void GC_Land_TC_04() throws Exception {
-//        mlWalletGCash.GC_Land_TC_04();
+//    public void GC_Land_TC_04_Verify_user_redirected_back_Dashboard_tapping_back_arrow_btn() throws Exception {
+//        mlWalletGCash.GC_Land_TC_04_Verify_user_redirected_back_Dashboard_tapping_back_arrow_btn();
 //    }
 //
 //    @Test(priority = 5)
-//    public void GC_Land_TC_43() throws Exception {
-//        mlWalletGCash.GC_Land_TC_43();
+//    public void GC_Land_TC_43_Verify_UI_Send_Money_Gcash_page() throws Exception {
+//        mlWalletGCash.GC_Land_TC_43_Verify_UI_Send_Money_Gcash_page();
 //    }
 //
 //    @Test(priority = 6)
-//    public void GC_Land_TC_49() throws Exception {
-//        mlWalletGCash.GC_Land_TC_49();
+//    public void GC_Land_TC_49_Verify_user_error_input_empty_Receiver_MobileNo_Send_Money_Gcash_page() throws Exception {
+//        mlWalletGCash.GC_Land_TC_49_Verify_user_error_input_empty_Receiver_MobileNo_Send_Money_Gcash_page();
 //    }
 //
 //    @Test(priority = 7)
-//    public void GC_Land_TC_50() throws Exception {
-//        mlWalletGCash.GC_Land_TC_50();
+//    public void GC_Land_TC_50_Verify_user_error_input_SymbolorSpecialChar_Receiver_MobileNo_Send_Money_Gcash_page() throws Exception {
+//        mlWalletGCash.GC_Land_TC_50_Verify_user_error_input_SymbolorSpecialChar_Receiver_MobileNo_Send_Money_Gcash_page();
 //    }
 //
 //    @Test(priority = 7)
-//    public void GC_Land_TC_54() throws Exception {
-//        mlWalletGCash.GC_Land_TC_54();
+//    public void GC_Land_TC_54_Verify_user_error_input_2Decimal_amount_Send_Money_Gcash_page() throws Exception {
+//        mlWalletGCash.GC_Land_TC_54_Verify_user_error_input_2Decimal_amount_Send_Money_Gcash_page();
 //    }
 //
 //    @Test(priority = 8)
@@ -51,8 +51,8 @@ public class MLWalletGCashScripts extends BaseTest{
 //    }
 //
 //    @Test(priority = 9)
-//    public void GC_Land_TC_58() throws Exception {
-//        mlWalletGCash.GC_Land_TC_58();
+//    public void GC_Land_TC_58_Validate_user_able_see_NextBtn_Send_money_Gcash_page() throws Exception {
+//        mlWalletGCash.GC_Land_TC_58_Validate_user_able_see_NextBtn_Send_money_Gcash_page();
 //    }
 //
 //    @Test(priority = 10)

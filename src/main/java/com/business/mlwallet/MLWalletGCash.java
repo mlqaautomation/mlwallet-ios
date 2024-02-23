@@ -29,7 +29,7 @@ public class MLWalletGCash extends BaseClass {
         verifyElementPresent(MLWalletGCashPage.objTotalValue, getTextVal(MLWalletGCashPage.objTotalValue, "Total Amount"));
     }
 
-    public void GC_Land_TC_01() throws Exception {
+    public void GC_Land_TC_01_Verify_user_able_see_Gcash_icon_Dashborad() throws Exception {
         ExtentReporter.HeaderChildNode("To verify user is able to see Gcash icon in Dashborad on sucessfull login to the application");
         changeNumberPage();
         mlWalletLogin(prop.getproperty("Branch_Verified"));
@@ -39,7 +39,7 @@ public class MLWalletGCash extends BaseClass {
         ExtentReporter.extentLoggerPass("GC_Land_TC_01", "To verify user is able to see Gcash icon in Dashborad on sucessfull login to the application");
     }
 
-    public void GC_Land_TC_02() throws Exception {
+    public void GC_Land_TC_02_Verify_user_able_navigate_Gcash_services_page_tapping_Gcash_icon() throws Exception {
         ExtentReporter.HeaderChildNode("To verify user is able to navigate to Gcash services page on tapping Gcash icon from the Dashboard");
         changeNumberPage();
         mlWalletLogin(prop.getproperty("Branch_Verified"));
@@ -60,7 +60,7 @@ public class MLWalletGCash extends BaseClass {
         }
     }
 
-    public void GC_Land_TC_03() throws Exception {
+    public void GC_Land_TC_03_Verify_UI_Gcash_Services_page() throws Exception {
         ExtentReporter.HeaderChildNode("To verify the UI of Gcash Services page");
         changeNumberPage();
         mlWalletLogin(prop.getproperty("Branch_Verified"));
@@ -72,7 +72,7 @@ public class MLWalletGCash extends BaseClass {
         ExtentReporter.extentLoggerPass("GC_Land_TC_03", "To verify the UI of Gcash Services page");
     }
 
-    public void GC_Land_TC_04() throws Exception {
+    public void GC_Land_TC_04_Verify_user_redirected_back_Dashboard_tapping_back_arrow_btn()throws Exception {
         ExtentReporter.HeaderChildNode("To verify user is redirected  back to Dashboard on tapping <(back arrow) from the Gcash Services page");
         changeNumberPage();
         mlWalletLogin(prop.getproperty("Branch_Verified"));
@@ -83,7 +83,7 @@ public class MLWalletGCash extends BaseClass {
         ExtentReporter.extentLoggerPass("GC_Land_TC_04", "To verify user is redirected  back to Dashboard on tapping <(back arrow) from the Gcash Services page");
     }
 
-    public void GC_Land_TC_43() throws Exception {
+    public void GC_Land_TC_43_Verify_UI_Send_Money_Gcash_page() throws Exception {
         ExtentReporter.HeaderChildNode("To verify UI of  Send Money to Gcash page ");
         changeNumberPage();
         mlWalletLogin(prop.getproperty("Branch_Verified"));
@@ -105,7 +105,7 @@ public class MLWalletGCash extends BaseClass {
         }
     }
 
-    public void GC_Land_TC_49() throws Exception {
+    public void GC_Land_TC_49_Verify_user_error_input_empty_Receiver_MobileNo_Send_Money_Gcash_page() throws Exception {
         ExtentReporter.HeaderChildNode("To verify user gets an appropriate error on entering empty spaces in  Receiver Mobile number field in Send Money to Gcash page ");
         changeNumberPage();
         mlWalletLogin(prop.getproperty("Branch_Verified"));
@@ -118,7 +118,7 @@ public class MLWalletGCash extends BaseClass {
         ExtentReporter.extentLoggerPass("GC_Land_TC_49", "To verify user gets an appropriate error on entering empty spaces in  Receiver Mobile number field in Send Money to Gcash page");
     }
 
-    public void GC_Land_TC_50() throws Exception {
+    public void GC_Land_TC_50_Verify_user_error_input_SymbolorSpecialChar_Receiver_MobileNo_Send_Money_Gcash_page() throws Exception {
         ExtentReporter.HeaderChildNode("To verify user gets an appropriate error on entering Symbols and special characters in  Receiver Mobile number field in Send Money to Gcash page");
         changeNumberPage();
         mlWalletLogin(prop.getproperty("Branch_Verified"));
@@ -137,7 +137,7 @@ public class MLWalletGCash extends BaseClass {
         }
     }
 
-    public void GC_Land_TC_54() throws Exception {
+    public void GC_Land_TC_54_Verify_user_error_input_2Decimal_amount_Send_Money_Gcash_page() throws Exception {
         ExtentReporter.HeaderChildNode("To verify user gets appropriate error on inputting an amount with  more than two decimal places in Send money to Gcash- amount to send page");
         changeNumberPage();
         mlWalletLogin(prop.getproperty("Branch_Verified"));
@@ -198,7 +198,7 @@ public class MLWalletGCash extends BaseClass {
         waitTime(5000);
     }
 
-    public void GC_Land_TC_58() throws Exception {
+    public void GC_Land_TC_58_Validate_user_able_see_NextBtn_Send_money_Gcash_page() throws Exception {
         ExtentReporter.HeaderChildNode("To validate user is able to see Next button Send money to Gcash page");
         changeNumberPage();
         mlWalletLogin(prop.getproperty("Branch_Verified"));
