@@ -22,7 +22,7 @@
 <!--            <class name="com.mlwallet.test.MLWalletLoginScripts"/>-->
 <!--            <class name="com.mlwallet.test.MLWalletCashInViaBankScripts"/>-->
 <!--            <class name="com.mlwallet.test.MLWalletCashInViaBranchScripts"/>-->
-                <class name="com.mlwallet.test.MLWalletCashOutWithdrawScripts"/>
+<!--            <class name="com.mlwallet.test.MLWalletCashOutWithdrawScripts"/>-->
 <!--            <class name="com.mlwallet.test.MLWalletSettingsScripts"/>-->
 <!--            <class name="com.mlwallet.test.MLWalletTransactionHistoryScripts"/>-->
 <!--            <class name="com.mlwallet.test.MLWallletLogOutScripts"/>-->
@@ -36,6 +36,7 @@
 <!--            <class name="com.mlwallet.test.MLWalletBranchLocatorScripts"/>-->
 <!--            <class name="com.mlwallet.test.MLWalletTopUpGamesScripts"/>-->
 <!--            <class name="com.mlwallet.test.MLWalletTroubleSigningInScripts"/>-->
+                <class name="com.mlwallet.test.MLWalletGCashScripts"/>
 
 
 
