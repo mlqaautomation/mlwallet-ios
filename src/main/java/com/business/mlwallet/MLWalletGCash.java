@@ -295,7 +295,6 @@ public class MLWalletGCash extends BaseClass {
         }
     }
 
-
     //GC_RM_TC_72
     public void GC_SM_TC_72_ValidateSMSOTP_InApp_GCash_Send_Money() throws Exception {
         ExtentReporter.HeaderChildNode("To Validate to SMS OTP screen Mpin GCash Send Money");
@@ -628,5 +627,4 @@ public class MLWalletGCash extends BaseClass {
             verifyElementPresent(MLWalletGCashPage.objSelectContactsBtn, "Select Contacts");
         }
     }
-
 }
