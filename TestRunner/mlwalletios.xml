@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="iOS" parallel="false" thread-count="1">
+
+<parameter name="browserType" value="chrome"/>
+<parameter name="url" value="https://www.google.com/"></parameter>
+
+	<listeners>
+		<listener class-name="com.utility.ExtentReporter" />
+	</listeners>
+<!--    00008120-000668E63AC0C01E-->
+<!--    00008101-0013245C2600801E-->
+<!--    00008030-000635C61EFA402E-->
+<!--    iPhone 15 Pro Max-->
+    <test name="MLWALLET">
+        <parameter name="portno" value="4723"></parameter>
+        <parameter name="deviceName" value="iPhone 15 Pro Max"></parameter>
+        <parameter name="browserType" value="Chrome"/>
+        <classes>
+
+<!--            <class name="com.mlwallet.test.MLWalletUseQRScripts"/>-->
+<!--            <class name="com.mlwallet.test.MLWalletLoginScripts"/>-->
+<!--            <class name="com.mlwallet.test.MLWalletCashInViaBankScripts"/>-->
+<!--            <class name="com.mlwallet.test.MLWalletCashInViaBranchScripts"/>-->
+<!--            <class name="com.mlwallet.test.MLWalletCashOutWithdrawScripts"/>-->
+<!--            <class name="com.mlwallet.test.MLWalletSettingsScripts"/>-->
+<!--            <class name="com.mlwallet.test.MLWalletTransactionHistoryScripts"/>-->
+<!--            <class name="com.mlwallet.test.MLWallletLogOutScripts"/>-->
+<!--            <class name="com.mlwallet.test.MLWalletHomeAndDashBoardScripts"/>-->
+<!--            <class name="com.mlwallet.test.MLWalletTierUpgradeScripts"/>-->
+<!--            <class name="com.mlwallet.test.MLWalletSendTransferToMLBranchScripts"/>-->
+<!--            <class name="com.mlwallet.test.MLWalletSendTransferToMLWalletUserScripts"/>-->
+<!--            <class name="com.mlwallet.test.MLWalletPayBillsScripts"/>-->
+<!--            <class name="com.mlwallet.test.MLWalletBuyELoadScripts"/>-->
+<!--            <class name="com.mlwallet.test.MLWalletShopItemsScripts"/>-->
+<!--            <class name="com.mlwallet.test.MLWalletBranchLocatorScripts"/>-->
+<!--            <class name="com.mlwallet.test.MLWalletTopUpGamesScripts"/>-->
+<!--            <class name="com.mlwallet.test.MLWalletTroubleSigningInScripts"/>-->
+                <class name="com.mlwallet.test.MLWalletGCashScripts"/>
+
+
+
+
+
+
+
+
+
+        </classes>
+    </test>
+</suite>
