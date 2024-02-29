@@ -308,7 +308,6 @@
 					<groups>${groups}</groups>
 					<suiteXmlFiles>
 						<suiteXmlFile>TestRunner/${filename}</suiteXmlFile>
-						<suiteXmlFile>TestRunner/${filename}</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
