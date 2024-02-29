@@ -344,23 +344,33 @@ public class MLWalletGCash extends BaseClass {
         ExtentReporter.HeaderChildNode("To Validate Back Home Button In GCash View Recent Transaction Dashboard Page");
         changeNumberPage();
         mlWalletLogin(prop.getproperty("Branch_Verified"));
+        verifyElementPresentAndClick(MLWalletHomePage.objEyeIcon,"Eye Icon");
+        String currentBalance = getText(MLWalletHomePage.objAvailableBalance);
         confirmGcashTransaction();
         waitTime(1000);
         verifyElementPresent(MLWalletGCashPage.objTransactionDetailsHeader, "Transaction Details");
         String amount = getText(MLWalletGCashPage.objAmountTransactValue);
         verifyElementPresentAndClick(MLWalletGCashPage.objBackToHomePage, "Back to Home Page");
         if (verifyElementPresent(MLWalletLoginPage.objAvailableBalance, getTextVal(MLWalletLoginPage.objAvailableBalance, "Text"))) {
+            verifyElementPresentAndClick(MLWalletHomePage.objEyeIcon,"Eye Icon");
+            String NewBalance = getText(MLWalletHomePage.objAvailableBalance);
             Swipe("DOWN", 1);
             Swipe("UP", 1);
             verifyElementPresent(MLWalletHomePage.objRecentTransactions, getTextVal(MLWalletHomePage.objRecentTransactions, "Header"));
             Swipe("UP", 1);
+            //-----------Formula----------------------
+            int cBalance = Integer.parseInt(currentBalance);
+            int cAmount = Integer.parseInt(amount);
+            int deduction = cBalance- cAmount;
+            String Sdeduction = String.valueOf(deduction);
+            //----------------------------------------
             click(MLWalletTransactionHistoryPage.objSeeMoreBtn, "See More Button");
             waitTime(10000);
             verifyElementPresent(MLWalletTransactionHistoryPage.objTransactionHistory, getTextVal(MLWalletTransactionHistoryPage.objTransactionHistory, "Page"));
             verifyElementPresentAndClick(MLWalletTransactionHistoryPage.objSendMoneyTab, getTextVal(MLWalletTransactionHistoryPage.objSendMoneyTab, "Tab"));
             verifyElementPresentAndClick(MLWalletTransactionHistoryPage.objFirstTransactionInTab, getTextVal(MLWalletTransactionHistoryPage.objFirstTransactionInTab,"First Transaction"));
             String amountHistory = getText(MLWalletTransactionHistoryPage.objTotalAmount);
-            if(amount == amountHistory){
+            if(amount == amountHistory && currentBalance != NewBalance && Sdeduction == NewBalance){
                 logger.info("GC_SM_TC_76, Same amount in transaction history Validated");
             }
             else
