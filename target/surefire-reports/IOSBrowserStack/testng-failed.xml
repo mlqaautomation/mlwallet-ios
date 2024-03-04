@@ -10,14 +10,14 @@
     <parameter name="portno" value="4723"/>
     <parameter name="deviceName" value="iPhone 13 Pro Max"/>
     <classes>
-      <class name="com.mlwallet.test.MLWalletGCashScripts">
+      <class name="com.mlwallet.test.HappyPathScripts">
         <methods>
           <include name="afterMethod"/>
-          <include name="GC_SM_TC_76_Validate_Back_Home_Btn_In_GCash_View_Recent_Transaction_Dashboard_Page"/>
           <include name="beforeMethod"/>
           <include name="before"/>
+          <include name="GC_SM_TC_76_Validate_Back_Home_Btn_In_GCash_View_Recent_Transaction_Dashboard_Page"/>
         </methods>
-      </class> <!-- com.mlwallet.test.MLWalletGCashScripts -->
+      </class> <!-- com.mlwallet.test.HappyPathScripts -->
     </classes>
   </test> <!-- BrowserStack_Demo2(failed) -->
 </suite> <!-- Failed suite [IOSBrowserStack] -->

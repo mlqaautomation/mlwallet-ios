@@ -16,5 +16,6 @@ com\mlwallet\test\MLWalletTopUpGamesScripts.class
 com\mlwallet\test\MLWalletSendTransferToMLBranchScripts.class
 com\mlwallet\test\MLWalletGCashScripts.class
 com\mlwallet\test\MLWallletLogOutScripts.class
+com\mlwallet\test\HappyPathScripts.class
 com\mlwallet\test\MLWalletBranchLocatorScripts.class
 com\mlwallet\test\MLWalletBuyELoadScripts.class

@@ -34,7 +34,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<m2e.disableTestClasspathFlag>true</m2e.disableTestClasspathFlag>
-		<filename>BrowserStack.xml</filename>
+<!--		<filename>BrowserStack.xml</filename>-->
 		<filename>HappyPath.xml</filename>
 	</properties>
 
@@ -308,6 +308,7 @@
 					<groups>${groups}</groups>
 					<suiteXmlFiles>
 						<suiteXmlFile>TestRunner/${filename}</suiteXmlFile>
+
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
