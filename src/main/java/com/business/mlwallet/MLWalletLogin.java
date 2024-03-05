@@ -27,13 +27,13 @@ public class MLWalletLogin extends BaseClass {
         waitTime(1000);
         click(MLWalletLoginPage.objLoginBtn, "Login Button");
         enterOTP("111111");
-        waitTime(3000);
+        waitTime(2000);
 //        if(verifyElementDisplayed(MLWalletLoginPage.objExittestingPage,"Exit Testing Page")){
 //            click(MLWalletLoginPage.objExittestingPage,"Exit Testing Page");
 //            logger.info("Exit Testing Page");
 //        }
         handleMpin("11111", "MPin");
-        waitTime(3000);
+        waitTime(2000);
         if(verifyElementDisplayed(MLWalletLoginPage.objConfirmWentWrongBtn,"Something Went Wrong Occured")){
             click(MLWalletLoginPage.objConfirmWentWrongBtn,"Confirm Something Went Wrong!");
         }
@@ -98,7 +98,7 @@ public class MLWalletLogin extends BaseClass {
 
     public static void changeNumberPage() throws Exception {
         try {
-            waitTime(3000);
+            waitTime(2000);
 //            if(verifyElementDisplayed(MLWalletLoginPage.objExittestingPage,"Exit Testing Page")){
 //                click(MLWalletLoginPage.objExittestingPage,"Exit Testing Page");
 //                logger.info("Exit Testing Page");
@@ -260,7 +260,7 @@ public class MLWalletLogin extends BaseClass {
         click(MLWalletLogOutPage.objPopUpLogoutBtn,  "Logout Button");
         waitTime(1000);
         verifyElementPresent(MLWalletLogOutPage.objChangeNumber,"Mpin Page");
-        handleMpin("11111", "Entered Mpin");
+        handleMpin("1111", "Entered Mpin");
         waitTime(1000);
         if (verifyElementPresent(MLWalletLoginPage.objAvailableBalance, getTextVal(MLWalletLoginPage.objAvailableBalance, "Text"))) {
             logger.info("Lgn_TC_17, Application Logged In Successfully");

@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-03-04T15:12:34 PST" name="IOSBrowserStack" finished-at="2024-03-04T15:23:26 PST" duration-ms="652020">
+  <suite started-at="2024-03-05T08:18:27 PST" name="IOSBrowserStack" finished-at="2024-03-05T08:28:24 PST" duration-ms="596773">
     <groups>
     </groups>
-    <test started-at="2024-03-04T15:12:34 PST" name="BrowserStack_Demo2" finished-at="2024-03-04T15:23:26 PST" duration-ms="652020">
+    <test started-at="2024-03-05T08:18:27 PST" name="BrowserStack_Demo2" finished-at="2024-03-05T08:28:24 PST" duration-ms="596773">
       <class name="com.mlwallet.test.HappyPathScripts">
-        <test-method is-config="true" signature="before(java.lang.String, java.lang.String)[pri:0, instance:com.mlwallet.test.HappyPathScripts@6127a7e]" started-at="2024-03-04T15:12:39 PST" name="before" finished-at="2024-03-04T15:18:08 PST" duration-ms="329750" status="PASS">
+        <test-method is-config="true" signature="before(java.lang.String, java.lang.String)[pri:0, instance:com.mlwallet.test.HappyPathScripts@75f95314]" started-at="2024-03-05T08:18:31 PST" name="before" finished-at="2024-03-05T08:22:28 PST" duration-ms="236851" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -23,15 +23,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- before -->
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:com.mlwallet.test.HappyPathScripts@6127a7e]" started-at="2024-03-04T15:18:08 PST" name="beforeMethod" finished-at="2024-03-04T15:18:08 PST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:com.mlwallet.test.HappyPathScripts@75f95314]" started-at="2024-03-05T08:22:28 PST" name="beforeMethod" finished-at="2024-03-05T08:22:28 PST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="GC_SM_TC_76_Validate_Back_Home_Btn_In_GCash_View_Recent_Transaction_Dashboard_Page()[pri:18, instance:com.mlwallet.test.HappyPathScripts@6127a7e]" started-at="2024-03-04T15:18:08 PST" name="GC_SM_TC_76_Validate_Back_Home_Btn_In_GCash_View_Recent_Transaction_Dashboard_Page" finished-at="2024-03-04T15:23:15 PST" duration-ms="306209" status="PASS">
+        <test-method signature="GC_SM_TC_76_Validate_Back_Home_Btn_In_GCash_View_Recent_Transaction_Dashboard_Page()[pri:18, instance:com.mlwallet.test.HappyPathScripts@75f95314]" started-at="2024-03-05T08:22:28 PST" name="GC_SM_TC_76_Validate_Back_Home_Btn_In_GCash_View_Recent_Transaction_Dashboard_Page" finished-at="2024-03-05T08:28:17 PST" duration-ms="349391" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- GC_SM_TC_76_Validate_Back_Home_Btn_In_GCash_View_Recent_Transaction_Dashboard_Page -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.mlwallet.test.HappyPathScripts@6127a7e]" started-at="2024-03-04T15:23:23 PST" name="afterMethod" finished-at="2024-03-04T15:23:26 PST" duration-ms="3368" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.mlwallet.test.HappyPathScripts@75f95314]" started-at="2024-03-05T08:28:20 PST" name="afterMethod" finished-at="2024-03-05T08:28:24 PST" duration-ms="3688" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
