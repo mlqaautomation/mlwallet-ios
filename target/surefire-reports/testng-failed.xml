@@ -12,19 +12,10 @@
     <classes>
       <class name="com.mlwallet.test.HappyPathScripts">
         <methods>
-          <include name="topUpGamesSuccessfulLoadTransaction_TUG_TC_06"/>
-          <include name="sendMoneyMLWalletToExistingReceiver_STW_TC_02"/>
-          <include name="buyELoadSuccessfulTransactionUIValidation_BE_TC_26"/>
-          <include name="paybillsRecentTransaction_PB_TC_19"/>
           <include name="afterMethod"/>
-          <include name="shopItemsReviewingItemDetailsAndFeeBeforePlacingTheOrder_SI_TC_69"/>
-          <include name="cashOutBankTransactionOTPContinueBtnFunctionality_WM_TC_123"/>
+          <include name="beforeMethod"/>
           <include name="before"/>
           <include name="GC_SM_TC_76_Validate_Back_Home_Btn_In_GCash_View_Recent_Transaction_Dashboard_Page"/>
-          <include name="sendMoneyToSavedRecipient_STB_TC_02"/>
-          <include name="cashInViaBranchTransactionWithValidMLPin_CIBR_TC_43"/>
-          <include name="beforeMethod"/>
-          <include name="cashInViaBankSemiVerifiedTierStatusTransaction_CIBA_TC_25"/>
         </methods>
       </class> <!-- com.mlwallet.test.HappyPathScripts -->
     </classes>

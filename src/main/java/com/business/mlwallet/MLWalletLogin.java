@@ -27,11 +27,11 @@ public class MLWalletLogin extends BaseClass {
         waitTime(1000);
         click(MLWalletLoginPage.objLoginBtn, "Login Button");
         enterOTP("111111");
-        waitTime(2000);
-//        if(verifyElementDisplayed(MLWalletLoginPage.objExittestingPage,"Exit Testing Page")){
-//            click(MLWalletLoginPage.objExittestingPage,"Exit Testing Page");
-//            logger.info("Exit Testing Page");
-//        }
+        waitTime(1000);
+        if(verifyElementDisplayed(MLWalletLoginPage.objExittestingPage,"Exit Testing Page")){
+            click(MLWalletLoginPage.objExittestingPage,"Exit Testing Page");
+            logger.info("Exit Testing Page");
+        }
         handleMpin("11111", "MPin");
         waitTime(2000);
         if(verifyElementDisplayed(MLWalletLoginPage.objConfirmWentWrongBtn,"Something Went Wrong Occured")){
