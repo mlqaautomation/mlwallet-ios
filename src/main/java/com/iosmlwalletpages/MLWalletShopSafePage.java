@@ -23,8 +23,8 @@ public class MLWalletShopSafePage {
     public static By objSuccessfInviteLabel = By.xpath("//XCUIElementTypeStaticText[@name=\"Successfully Invited\"]");
     public static By objOkayBtn = By.xpath("//XCUIElementTypeOther[@name=\"modal-confirm-button\"]");
     //-------Invites Transaction Page
-
-    //--------Buyer Invite Seller Page
+    public static By objFirstInTab = By.xpath("//XCUIElementTypeScrollView/XCUIElementTypeOther/XCUIElementTypeOther[1]");
+    //------Buyer Invite Seller Page
     public static By objBuyerDetailsLabel = By.xpath("//XCUIElementTypeStaticText[@name=\"Buyer Details\"]");
     public static By objBuyerNameVal = By.xpath("(//XCUIElementTypeStaticText[@name=\"Buyer Name\"])[2]");
     public static By objBuyerNoVal = By.xpath("(//XCUIElementTypeStaticText[@name=\"Buyer Mobile No.\"])[2]");
@@ -33,7 +33,7 @@ public class MLWalletShopSafePage {
     public static By objCancelInviteBtn = By.xpath("//XCUIElementTypeOther[@name=\"Cancel Invitation\"]");
     public static By objBackToHomesBtn = By.xpath("//XCUIElementTypeOther[@name=\"Back To Home\"]");
 
-    //--------Seller Received Invites Page
+    //--------Seller Received Invites Page 
     public static By objPicOfItemBtn = By.xpath("//XCUIElementTypeOther[@name=\"Pictures of your Item *\"]");
     public static By objItemInformation = By.xpath("//XCUIElementTypeStaticText[@name=\"Item Information\"]");
     public static By objItemNameTxtBx = By.xpath("//XCUIElementTypeOther[@name=\"Item Name *\"]/XCUIElementTypeTextField");
