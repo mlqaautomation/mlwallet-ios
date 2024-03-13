@@ -1,5 +1,6 @@
 package com.business.mlwallet;
 
+import com.iosmlwalletpages.MLWalletHomePage;
 import com.utility.yamlReader;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Reporter;
@@ -56,6 +57,25 @@ public class BaseClass {
 		yamlReader();
 	}
 
+	public double getWalletBalance() throws Exception {
+		String balanceText = "";
+		if (verifyElementPresent(MLWalletHomePage.objHiddenAvailableBalance, "Hidden Balance")) {
+			click(MLWalletHomePage.objEyeIcon, "Eye Icon");
+			waitTime(5000);
+			balanceText = getText(MLWalletHomePage.objAvailableBalance);
+			logger.info("Balance is = " + balanceText);
+		} else {
+			balanceText = getText(MLWalletHomePage.objAvailableBalance);
+			logger.info("Balance is = " + balanceText);
+		}
+		// Remove commas from the balance text and parse it as a double
+		double balance = Double.parseDouble(balanceText.replace(",", ""));
+		return balance;
+	}
+	public double parseDouble(String value)throws Exception {
+		String cleanValue = value.replace(",", "").trim();
+		return Double.parseDouble(cleanValue);
+	}
 
 	//Tear Down Application
 	public void tearDown() {

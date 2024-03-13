@@ -342,45 +342,42 @@ public class MLWalletGCash extends BaseClass {
     //GC_RM_TC_76
     public void GC_SM_TC_76_Validate_Back_Home_Btn_In_GCash_View_Recent_Transaction_Dashboard_Page() throws Exception {
         ExtentReporter.HeaderChildNode("To Validate Back Home Button In GCash View Recent Transaction Dashboard Page");
-        changeNumberPage();
         mlWalletLogin(prop.getproperty("Branch_Verified"));
-        verifyElementPresentAndClick(MLWalletHomePage.objEyeIcon,"Eye Icon");
-//        String currentBalance = getText(MLWalletHomePage.objAvailableBalance);
+        double prevBalance = getWalletBalance();
         confirmGcashTransaction();
         waitTime(1000);
         verifyElementPresent(MLWalletGCashPage.objTransactionDetailsHeader, "Transaction Details");
-//        String amount = getText(MLWalletGCashPage.objAmountTransactValue);
+        Swipe("UP", 1);
+
+        String total = getText(MLWalletGCashPage.objTotalTransactValue);
+        String numericTotal = total.replaceAll("[^\\d.]", ""); // Remove non-numeric characters
+        double totalValue = parseDouble(numericTotal);
+
         verifyElementPresentAndClick(MLWalletGCashPage.objBackToHomePage, "Back to Home Page");
-        if (verifyElementPresent(MLWalletLoginPage.objAvailableBalance, getTextVal(MLWalletLoginPage.objAvailableBalance, "Text"))) {
-            verifyElementPresentAndClick(MLWalletHomePage.objEyeIcon,"Eye Icon");
-            String NewBalance = getText(MLWalletHomePage.objAvailableBalance);
+        waitTime(5000);
+        if (verifyElementDisplayed(MLWalletLoginPage.objAvailableBalance,"Available Balance")) {
             Swipe("DOWN", 1);
+            verifyElementPresentAndClick(MLWalletHomePage.objEyeIcon, "Eye Icon");
+            double newBalance = getWalletBalance();
+            double expectedBalance = prevBalance - totalValue;
+            assertionValidation(newBalance, expectedBalance);
             Swipe("UP", 1);
             verifyElementPresent(MLWalletHomePage.objRecentTransactions, getTextVal(MLWalletHomePage.objRecentTransactions, "Header"));
-            Swipe("UP", 1);
-            //-----------Formula----------------------
-//            int cBalance = Integer.parseInt(currentBalance);
-//            int cAmount = Integer.parseInt(amount);
-//            int deduction = cBalance- cAmount;
-//            String Sdeduction = String.valueOf(deduction);
-            //----------------------------------------
+            Swipe("UP", 2);
             click(MLWalletTransactionHistoryPage.objSeeMoreBtn, "See More Button");
-            waitTime(10000);
+            waitTime(5000);
             verifyElementPresent(MLWalletTransactionHistoryPage.objTransactionHistory, getTextVal(MLWalletTransactionHistoryPage.objTransactionHistory, "Page"));
             verifyElementPresentAndClick(MLWalletTransactionHistoryPage.objSendMoneyTab, getTextVal(MLWalletTransactionHistoryPage.objSendMoneyTab, "Tab"));
-            verifyElementPresentAndClick(MLWalletTransactionHistoryPage.objFirstTransactionInTab, getTextVal(MLWalletTransactionHistoryPage.objFirstTransactionInTab,"First Transaction"));
-            verifyElementPresent(MLWalletTransactionHistoryPage.objTotalAmount, getTextVal(MLWalletTransactionHistoryPage.objTotalAmount, "amount"));
-//            String amountHistory = getText(MLWalletTransactionHistoryPage.objTotalAmount);
-//            if(amount == amountHistory && currentBalance != NewBalance && Sdeduction == NewBalance){
-                logger.info("GC_SM_TC_76, Same amount in transaction history Validated");
-//            }
-//            else
-//            {
-//                logger.info("GC_SM_TC_76, Not same amount in transaction history Failed");
-//            }
+            verifyElementPresentAndClick(MLWalletTransactionHistoryPage.objFirstTransaction, getTextVal(MLWalletTransactionHistoryPage.objFirstTransaction, "First Transaction"));
+
+            String amountHistory = getText(MLWalletTransactionHistoryPage.objTotalAmount);
+            String historyTotal = amountHistory.replaceAll("[^\\d.]", ""); // Remove non-numeric characters
+            double amountHistoryValue = parseDouble(historyTotal);
+
+            assertionValidation(totalValue, amountHistoryValue);
+            logger.info("GC_SM_TC_76, Back Home Button In GCash View Recent Transaction Dashboard Page Validated");
+            ExtentReporter.extentLoggerPass("GC_SM_TC_76", "To Validate Back Home Button In GCash View Recent Transaction Dashboard Page");
         }
-        logger.info("GC_SM_TC_76, Back Home Button In GCash View Recent Transaction Dashboard Page Validated");
-        ExtentReporter.extentLoggerPass("GC_SM_TC_76", "To Validate Back Home Button In GCash View Recent Transaction Dashboard Page");
         System.out.println("-----------------------------------------------------------");
     }
 
