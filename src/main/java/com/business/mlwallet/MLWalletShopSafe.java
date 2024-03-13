@@ -129,4 +129,114 @@ public class MLWalletShopSafe extends BaseClass{
     }
 
 
+
+
+//--------------------Back Button--------------------
+    public void SSM_TC_100_Validate_back_button_to_Shop_Safe_Page_back_to_Dashboard() throws Exception {
+        ExtentReporter.HeaderChildNode("Validate back button to Shop Safe Page back to Dashboard");
+        changeNumberPage();
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
+        waitTime(1000);
+        click(MLWalletShopSafePage.objShopSafeIconBtn, "Shop Safe Icon Button");
+        click(MLWalletShopSafePage.objBackBtn, "Back Button");
+        verifyElementPresent(MLWalletHomePage.objAvailableBalance," Available Text");
+        verifyElementPresent(MLWalletHomePage.objEyeIcon,"Eye Icon");
+        logger.info("Redirect back to Dashboard Page Navigation Success");
+        ExtentReporter.extentLoggerPass("SSM_TC_03", "Validate back button to Shop Safe Page back to Dashboard");
+    }
+    public void SSM_TC_101_Validate_back_button_to_Create_Transaction_Page_back_to_Shop_Safe_page() throws Exception {
+        ExtentReporter.HeaderChildNode("Validate back button to Create Transaction Page back to Shop Safe page");
+        changeNumberPage();
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
+        waitTime(1000);
+        click(MLWalletShopSafePage.objShopSafeIconBtn, "Shop Safe Icon Button");
+        click(MLWalletShopSafePage.objStartTransactBtn, "Start Transaction Button");
+        click(MLWalletShopSafePage.objBackBtn, "Back Button");
+        verifyElementPresent(MLWalletShopSafePage.objShopSafeLabel, "Shop Safe Label");
+        verifyElementPresent(MLWalletShopSafePage.objStartTransactBtn, "Start Transaction Button");
+        logger.info("Redirect back to Shop Safe Page Navigation Success");
+        ExtentReporter.extentLoggerPass("SSM_TC_03", "Validate back button to Create Transaction Page back to Shop Safe page");
+    }
+    public void SSM_TC_102_Validate_back_button_to_Invites_Page_back_to_Shop_Safe_page() throws Exception {
+        ExtentReporter.HeaderChildNode("Validate back button to Invites Page back to Shop Safe page");
+        changeNumberPage();
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
+        waitTime(1000);
+        click(MLWalletShopSafePage.objShopSafeIconBtn, "Shop Safe Icon Button");
+        click(MLWalletShopSafePage.objInvitesTransactTxtBtn, "View All Invites Button");
+        click(MLWalletShopSafePage.objBackBtn, "Back Button");
+        verifyElementPresent(MLWalletShopSafePage.objShopSafeLabel, "Shop Safe Label");
+        logger.info("Redirect back to Shop Safe Page Navigation Success");
+        ExtentReporter.extentLoggerPass("SSM_TC_03", "Validate back button to Invites Page back to Shop Safe page");
+    }
+
+    public void SSM_TC_103_Validate_back_button_to_Invitation_Request_back_to_Shop_Invites_Page() throws Exception {
+        ExtentReporter.HeaderChildNode("Validate back button to Invitation Request back to Invites Page");
+        changeNumberPage();
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
+        waitTime(1000);
+        click(MLWalletShopSafePage.objShopSafeIconBtn, "Shop Safe Icon Button");
+        click(MLWalletShopSafePage.objInvitesTransactTxtBtn, "View All Invites Button");
+        click(MLWalletShopSafePage.objFirstInTab,"New Invitation");
+        click(MLWalletShopSafePage.objBackBtn, "Back Button");
+        verifyElementPresent(MLWalletShopSafePage.objShopSafeLabel, "Shop Safe Label");
+        logger.info("Redirect back to Invites Page Navigation Success");
+        ExtentReporter.extentLoggerPass("SSM_TC_03", "Validate back button to Invitation Request back to Invites Page");
+    }
+
+    public void SSM_TC_104_Validate_back_button_to_Shop_Ongoing_Transaction_Page_back_to_Shop_Safe_Page() throws Exception {
+        ExtentReporter.HeaderChildNode("Validate back button to Ongoing Transaction Page back to Shop Safe Page");
+        changeNumberPage();
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
+        waitTime(1000);
+        click(MLWalletShopSafePage.objShopSafeIconBtn, "Shop Safe Icon Button");
+        click(MLWalletShopSafePage.objOngoingTransactTxtBtn, "View All Invites Button");
+        click(MLWalletShopSafePage.objBackBtn, "Back Button");
+        verifyElementPresent(MLWalletShopSafePage.objShopSafeLabel, "Shop Safe Label");
+        verifyElementPresent(MLWalletShopSafePage.objStartTransactBtn, "Start Transaction Button");
+        logger.info("Redirect back to Dashboard Page Navigation Success");
+        ExtentReporter.extentLoggerPass("SSM_TC_03", "Validate back button to Ongoing Transaction Page back to Shop Safe Page");
+    }
+//--------------------Invalid Input textbox
+    public void SSM_TC_150_Validate_enter_characters_seller_number_in_Create_Transaction_Page() throws Exception {
+        ExtentReporter.HeaderChildNode("Validate enter characters seller number in Create Transaction Page");
+        changeNumberPage();
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
+        waitTime(1000);
+        click(MLWalletShopSafePage.objShopSafeIconBtn, "Shop Safe Icon Button");
+        click(MLWalletShopSafePage.objStartTransactBtn, "Start Transaction Button");
+        type(MLWalletShopSafePage.objSellerNoTxtbx, shopsafeprop.getproperty("CharacterNumber"), "Enter Character");
+        click(MLWalletShopSafePage.objInviteSellerBtn, "Invite Seller Button");
+        assertionValidation(getText(MLWalletShopSafePage.objGetErrMsg(shopsafeprop.getproperty("InvalidMobileNum"))), shopsafeprop.getproperty("InvalidMobileNum"));
+        logger.info("Prompt Display should be Mobile number is invalid");
+        ExtentReporter.extentLoggerPass("SSM_TC_03", "Validate enter characters seller number in Create Transaction Page");
+    }
+
+    public void SSM_TC_151_Validate_enter_decimal_seller_number_in_Create_Transaction_Page() throws Exception {
+        ExtentReporter.HeaderChildNode("Validate enter decimal seller number in Create Transaction Page");
+        changeNumberPage();
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
+        waitTime(1000);
+        click(MLWalletShopSafePage.objShopSafeIconBtn, "Shop Safe Icon Button");
+        click(MLWalletShopSafePage.objStartTransactBtn, "Start Transaction Button");
+        type(MLWalletShopSafePage.objSellerNoTxtbx, shopsafeprop.getproperty("DecimalNumber"), "Enter Decimal");
+        click(MLWalletShopSafePage.objInviteSellerBtn, "Invite Seller Button");
+        assertionValidation(getText(MLWalletShopSafePage.objGetErrMsg(shopsafeprop.getproperty("InvalidMobileNum"))), shopsafeprop.getproperty("InvalidMobileNum"));
+        logger.info("Prompt Display should be Mobile number is invalid");
+        ExtentReporter.extentLoggerPass("SSM_TC_03", "Validate enter decimal seller number in Create Transaction Page");
+    }
+
+    public void SSM_TC_152_Validate_enter_empty_seller_number_in_Create_Transaction_Page() throws Exception {
+        ExtentReporter.HeaderChildNode("Validate enter empty seller number in Create Transaction Page");
+        changeNumberPage();
+        mlWalletLogin(prop.getproperty("Branch_Verified"));
+        waitTime(1000);
+        click(MLWalletShopSafePage.objShopSafeIconBtn, "Shop Safe Icon Button");
+        click(MLWalletShopSafePage.objStartTransactBtn, "Start Transaction Button");
+        click(MLWalletShopSafePage.objInviteSellerBtn, "Invite Seller Button");
+        assertionValidation(getText(MLWalletShopSafePage.objGetErrMsg(shopsafeprop.getproperty("EmptyMobileNum"))), shopsafeprop.getproperty("EmptyMobileNum"));
+        logger.info("Prompt Display should be Mobile number is required");
+        ExtentReporter.extentLoggerPass("SSM_TC_03", "Validate enter empty seller number in Create Transaction Page");
+    }
+
 }

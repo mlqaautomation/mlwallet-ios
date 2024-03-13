@@ -16,6 +16,9 @@ public class MLWalletShopSafePage {
     public static By objInvitesTransactTxtBtn = By.xpath("(//XCUIElementTypeOther[@name=\"View All Invites\"])[1]");
     public static By objOngoingTransactTxtBtn = By.xpath("(//XCUIElementTypeOther[@name=\"View All Invites\"])[2]");
     //------- Create Transaction Page
+    public static By objGetErrMsg (String msg){
+        return By.xpath("//*[@text='"+msg+"']");
+    }
     public static By objCreateTransactLabel = By.xpath("//XCUIElementTypeStaticText[@name=\"Create Transaction\"]");
     public static By objBackBtn = By.xpath("//XCUIElementTypeOther[@name=\"\"]");
     public static By objSellerNoTxtbx = By.xpath("//XCUIElementTypeOther[@name=\"Seller Mobile Number *\"]/XCUIElementTypeTextField");
