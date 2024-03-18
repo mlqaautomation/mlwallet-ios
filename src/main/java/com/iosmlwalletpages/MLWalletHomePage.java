@@ -54,11 +54,11 @@ public class MLWalletHomePage {
 
     public static By objAvailableBalanceHeader = By.xpath("//*[@name='UTJ9TN' or @ label='Available Balance']");
 
-    public static By objEyeIcon = By.xpath("//*[@name='JKRBGQ' or @ label='']");
+    public static By objEyeIcon = By.xpath("//*[@name='JKRBGQ']");
 
-    public static By objAvailableBalance = By.xpath("//*[@name='0619JV']");
+    public static By objAvailableBalance = By.xpath("//XCUIElementTypeStaticText[@name=\"0619JV\"]");
 
-    public static By objHiddenAvailableBalance = By.xpath("//*[@name='3P4KX3']");
+    public static By objHiddenAvailableBalance = By.xpath("//XCUIElementTypeStaticText[@name=\"JKRBGQ\"]");
 
     public static By objTransactions = By.xpath("//*[@name='OSJVNX']/descendant::XCUIElementTypeScrollView/descendant::XCUIElementTypeOther[contains(@name,'Php')]");
 

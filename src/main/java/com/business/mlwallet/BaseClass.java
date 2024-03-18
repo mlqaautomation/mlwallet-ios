@@ -61,11 +61,11 @@ public class BaseClass {
 		String balanceText = "";
 		if (verifyElementPresent(MLWalletHomePage.objHiddenAvailableBalance, "Hidden Balance")) {
 			click(MLWalletHomePage.objEyeIcon, "Eye Icon");
-			waitTime(5000);
-			balanceText = getText(MLWalletHomePage.objAvailableBalance);
+			waitTime(1000);
+			balanceText = getTextVal(MLWalletHomePage.objAvailableBalance,"");
 			logger.info("Balance is = " + balanceText);
 		} else {
-			balanceText = getText(MLWalletHomePage.objAvailableBalance);
+			balanceText = getTextVal(MLWalletHomePage.objAvailableBalance,"");
 			logger.info("Balance is = " + balanceText);
 		}
 		// Remove commas from the balance text and parse it as a double

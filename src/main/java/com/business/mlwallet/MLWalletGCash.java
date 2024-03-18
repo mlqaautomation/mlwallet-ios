@@ -349,7 +349,7 @@ public class MLWalletGCash extends BaseClass {
         verifyElementPresent(MLWalletGCashPage.objTransactionDetailsHeader, "Transaction Details");
         Swipe("UP", 1);
 
-        String total = getText(MLWalletGCashPage.objTotalTransactValue);
+        String total = getTextVal(MLWalletGCashPage.objTotalTransactValue,"");
         String numericTotal = total.replaceAll("[^\\d.]", ""); // Remove non-numeric characters
         double totalValue = parseDouble(numericTotal);
 
@@ -370,7 +370,7 @@ public class MLWalletGCash extends BaseClass {
             verifyElementPresentAndClick(MLWalletTransactionHistoryPage.objSendMoneyTab, getTextVal(MLWalletTransactionHistoryPage.objSendMoneyTab, "Tab"));
             verifyElementPresentAndClick(MLWalletTransactionHistoryPage.objFirstTransaction, getTextVal(MLWalletTransactionHistoryPage.objFirstTransaction, "First Transaction"));
 
-            String amountHistory = getText(MLWalletTransactionHistoryPage.objTotalAmount);
+            String amountHistory = getTextVal(MLWalletTransactionHistoryPage.objTotalAmount,"");
             String historyTotal = amountHistory.replaceAll("[^\\d.]", ""); // Remove non-numeric characters
             double amountHistoryValue = parseDouble(historyTotal);
 

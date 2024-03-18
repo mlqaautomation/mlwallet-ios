@@ -3,6 +3,7 @@ com\mlwallet\test\MLWalletTransactionHistoryScripts.class
 com\mlwallet\test\MLWalletUseQRScripts.class
 com\mlwallet\test\MLWalletSettingsScripts.class
 com\mlwallet\test\MLWalletHomeAndDashBoardScripts.class
+com\mlwallet\test\MLWalletShopSafeScripts.class
 com\mlwallet\test\BaseTest.class
 com\mlwallet\test\MLWalletShopItemsScripts.class
 com\mlwallet\test\MLWalletLoginScripts.class

@@ -25,6 +25,7 @@ D:\IOS_2\mlwallet-ios\src\main\java\com\utility\yamlReader.java
 D:\IOS_2\mlwallet-ios\src\main\java\com\business\mlwallet\MLWalletTierUpgrade.java
 D:\IOS_2\mlwallet-ios\src\main\java\com\driverInstance\ExcelFunctions.java
 D:\IOS_2\mlwallet-ios\src\main\java\com\business\mlwallet\MLWalletSendTransferToMLBranch.java
+D:\IOS_2\mlwallet-ios\src\main\java\com\business\mlwallet\MLWalletShopSafe.java
 D:\IOS_2\mlwallet-ios\src\main\java\com\iosmlwalletpages\MLWalletHomePage.java
 D:\IOS_2\mlwallet-ios\src\main\java\com\business\mlwallet\MLWalletBranchLocator.java
 D:\IOS_2\mlwallet-ios\src\main\java\com\iosmlwalletpages\MLWalletUseQRPage.java
@@ -44,6 +45,7 @@ D:\IOS_2\mlwallet-ios\src\main\java\com\iosmlwalletpages\MLWalletTierUpgradePage
 D:\IOS_2\mlwallet-ios\src\main\java\com\business\mlwallet\MLWalletTopUpGames.java
 D:\IOS_2\mlwallet-ios\src\main\java\com\iosmlwalletpages\MLWalletTopUpGamesPages.java
 D:\IOS_2\mlwallet-ios\src\main\java\com\utility\Json.java
+D:\IOS_2\mlwallet-ios\src\main\java\com\iosmlwalletpages\MLWalletShopSafePage.java
 D:\IOS_2\mlwallet-ios\src\main\java\com\business\mlwallet\MLWalletCashInViaBank.java
 D:\IOS_2\mlwallet-ios\src\main\java\com\emailReport\SendEmail.java
 D:\IOS_2\mlwallet-ios\src\main\java\com\iosmlwalletpages\MLWalletSettingsPage.java

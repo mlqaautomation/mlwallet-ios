@@ -16,6 +16,7 @@ com\business\mlwallet\MLWalletPayBills.class
 com\business\mlwallet\MLWalletTierUpgrade.class
 com\utility\Excel.class
 com\business\mlwallet\MLWalletCashInViaBranch.class
+com\business\mlwallet\MLWalletShopSafe.class
 com\business\mlwallet\MlWalletHomeAndDashBoard.class
 com\iosmlwalletpages\MLWalletGCashPage.class
 com\business\mlwallet\MLWalletCashInViaBank.class
@@ -24,6 +25,7 @@ com\driverInstance\AppiumServer.class
 com\business\mlwallet\MLWalletShopItems.class
 com\business\mlwallet\MLWalletSendTransferToMLBranch.class
 com\excel\ExcelUpdate.class
+com\iosmlwalletpages\MLWalletShopSafePage.class
 com\utility\RandomStringGenerator.class
 com\business\mlwallet\MLWalletTransactionHistory.class
 com\iosmlwalletpages\MLWalletSendTransferPage.class
